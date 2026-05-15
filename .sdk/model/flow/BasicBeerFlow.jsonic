@@ -1,0 +1,44 @@
+# BasicBeerFlow
+
+main: kit: flow: BasicBeerFlow:
+{
+  entity: "beer",
+  kind: "basic",
+  name: "BasicBeerFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "beer_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      input: {
+        ref: "beer_ref01",
+        srcdatavar: "beer_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "beer01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-beer_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBeerFlow"
+}

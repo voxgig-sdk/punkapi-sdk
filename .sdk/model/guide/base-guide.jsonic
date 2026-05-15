@@ -1,0 +1,28 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 2
+  metrics: count: path: 4
+  metrics: count: method: 4
+
+  entity: beer: {
+    path: "/beers": {
+      op: list: method: *GET
+    }
+    path: "/beers/random": {
+      action: "random": {}
+      op: list: method: *GET
+    }
+    path: "/beers/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: image: {
+    path: "/images/{filename}": {
+      rename: param: "filename": *"id"
+      op: load: method: *GET
+    }
+  }
+
+}

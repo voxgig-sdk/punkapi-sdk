@@ -1,0 +1,14 @@
+{
+  "existing": {
+    "image": {
+      "IMAGE00": {},
+      "IMAGE01": {},
+      "IMAGE02": {}
+    }
+  },
+  "new": {
+    "image": {
+      "image_ref01": {}
+    }
+  }
+}

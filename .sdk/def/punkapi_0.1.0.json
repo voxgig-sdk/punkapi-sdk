@@ -1,0 +1,554 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "PunkAPI",
+    "description": "BrewDog's DIY Dog beer catalogue as an API. A FastAPI-based project that serves as a digital archive of BrewDog's DIY Dog beers. It provides an API to access detailed information about each beer, including its recipe and associated image.",
+    "version": "3.0.0",
+    "contact": {
+      "name": "Alexander Ivanovsky",
+      "url": "https://github.com/alxiw/punkapi"
+    },
+    "license": {
+      "name": "MIT",
+      "url": "https://github.com/alxiw/punkapi/blob/master/LICENSE"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://punkapi-alxiw.amvera.io/v3",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/beers": {
+      "get": {
+        "summary": "Get list of beers",
+        "description": "Retrieve a list of all the beers with paging and optional filters",
+        "operationId": "getBeers",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Page number for pagination",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 1,
+              "minimum": 1
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "description": "Number of items to return per page",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "default": 30,
+              "minimum": 10,
+              "maximum": 80
+            }
+          },
+          {
+            "name": "beer_name",
+            "in": "query",
+            "description": "Filter beers by name (partial match)",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "ids",
+            "in": "query",
+            "description": "Comma-separated list of beer IDs to retrieve",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "1,2,3"
+            }
+          },
+          {
+            "name": "brewed_before",
+            "in": "query",
+            "description": "Filter beers brewed before the specified date (format: MM-YYYY or YYYY)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "12-2018"
+            }
+          },
+          {
+            "name": "brewed_after",
+            "in": "query",
+            "description": "Filter beers brewed after the specified date (format: MM-YYYY or YYYY)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "01-2015"
+            }
+          },
+          {
+            "name": "abv_gt",
+            "in": "query",
+            "description": "Filter beers with ABV greater than the specified value",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "example": 5
+            }
+          },
+          {
+            "name": "abv_lt",
+            "in": "query",
+            "description": "Filter beers with ABV less than the specified value",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "example": 10
+            }
+          },
+          {
+            "name": "ibu_gt",
+            "in": "query",
+            "description": "Filter beers with IBU greater than the specified value",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "example": 40
+            }
+          },
+          {
+            "name": "ibu_lt",
+            "in": "query",
+            "description": "Filter beers with IBU less than the specified value",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "example": 100
+            }
+          },
+          {
+            "name": "ebc_gt",
+            "in": "query",
+            "description": "Filter beers with EBC greater than the specified value",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "example": 20
+            }
+          },
+          {
+            "name": "ebc_lt",
+            "in": "query",
+            "description": "Filter beers with EBC less than the specified value",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "example": 50
+            }
+          },
+          {
+            "name": "food",
+            "in": "query",
+            "description": "Filter beers that pair well with the specified food",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "chicken"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Beer"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request - invalid parameters"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/beers/{id}": {
+      "get": {
+        "summary": "Get beer by ID",
+        "description": "Retrieve a single beer by its ID",
+        "operationId": "getBeerById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Beer ID",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 415
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beer"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Beer not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/beers/random": {
+      "get": {
+        "summary": "Get random beer",
+        "description": "Retrieve a random beer from the catalogue",
+        "operationId": "getRandomBeer",
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Beer"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    },
+    "/images/{filename}": {
+      "get": {
+        "summary": "Get beer image",
+        "description": "Retrieve the beer's image. The filename should be taken from the image field of the beer object (e.g., 001.png, 336.png, keg.png)",
+        "operationId": "getBeerImage",
+        "parameters": [
+          {
+            "name": "filename",
+            "in": "path",
+            "description": "Image filename (from the beer's image field)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "366.png"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "image/png": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Image not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Beer": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique identifier for the beer",
+            "example": 366
+          },
+          "name": {
+            "type": "string",
+            "description": "Name of the beer",
+            "example": "Lost Lager"
+          },
+          "tagline": {
+            "type": "string",
+            "description": "Short tagline or description",
+            "example": "Dry-Hopped Pilsner."
+          },
+          "first_brewed": {
+            "type": "string",
+            "description": "Date when the beer was first brewed (format: MM/YYYY or YYYY)",
+            "example": "2018"
+          },
+          "description": {
+            "type": "string",
+            "description": "Detailed description of the beer",
+            "example": "A pilsner that combines the light, crisp and clean lager profile provided by Weihenstephan's house yeast, with the vibrant citrus and stonefruit aromas associated with new German hop Saphir. This lager is easy-going but has subtle depths; toast, hints of spice and a zesty lime marmalade character."
+          },
+          "image": {
+            "type": "string",
+            "description": "Filename of the beer's image",
+            "example": "366.png"
+          },
+          "abv": {
+            "type": "number",
+            "format": "float",
+            "description": "Alcohol by volume percentage",
+            "example": 4.7
+          },
+          "ibu": {
+            "type": "number",
+            "format": "float",
+            "description": "International Bitterness Units",
+            "example": 37
+          },
+          "target_fg": {
+            "type": "number",
+            "format": "float",
+            "description": "Target final gravity",
+            "example": 1006
+          },
+          "target_og": {
+            "type": "number",
+            "format": "float",
+            "description": "Target original gravity",
+            "example": 1042
+          },
+          "ebc": {
+            "type": "number",
+            "format": "float",
+            "description": "European Brewery Convention color scale",
+            "example": 5
+          },
+          "srm": {
+            "type": "number",
+            "format": "float",
+            "description": "Standard Reference Method color scale",
+            "example": 3
+          },
+          "ph": {
+            "type": "number",
+            "format": "float",
+            "description": "pH level of the beer",
+            "example": 4.4
+          },
+          "attenuation_level": {
+            "type": "number",
+            "format": "float",
+            "description": "Attenuation level percentage",
+            "example": 86
+          },
+          "volume": {
+            "$ref": "#/components/schemas/Volume"
+          },
+          "boil_volume": {
+            "$ref": "#/components/schemas/Volume"
+          },
+          "method": {
+            "$ref": "#/components/schemas/Method"
+          },
+          "ingredients": {
+            "$ref": "#/components/schemas/Ingredients"
+          },
+          "food_pairing": {
+            "type": "array",
+            "description": "List of foods that pair well with this beer",
+            "items": {
+              "type": "string"
+            },
+            "example": [
+              "Vietnamese Pho",
+              "Buffalo Chicken Wings",
+              "Sashimi"
+            ]
+          },
+          "brewers_tips": {
+            "type": "string",
+            "description": "Tips from the brewers",
+            "example": "Temperature control is extremely important for Lager, fermentation temperature around 10-12°C and a maturation period of 3-4 weeks at 1.5-2°C is ideal."
+          },
+          "contributed_by": {
+            "type": "string",
+            "description": "Contributor information",
+            "example": "Alexander Ivanovsky <alxiw>"
+          }
+        }
+      },
+      "Volume": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "number",
+            "format": "float",
+            "description": "Volume value",
+            "example": 20
+          },
+          "unit": {
+            "type": "string",
+            "description": "Unit of measurement",
+            "example": "litres"
+          }
+        }
+      },
+      "Method": {
+        "type": "object",
+        "properties": {
+          "mash_temp": {
+            "type": "array",
+            "description": "Mash temperature steps",
+            "items": {
+              "$ref": "#/components/schemas/MashTemp"
+            }
+          },
+          "fermentation": {
+            "$ref": "#/components/schemas/Fermentation"
+          },
+          "twist": {
+            "type": "string",
+            "description": "Special twist or additional method information",
+            "example": "Amyloglucosidase: 1g"
+          }
+        }
+      },
+      "MashTemp": {
+        "type": "object",
+        "properties": {
+          "temp": {
+            "$ref": "#/components/schemas/Temperature"
+          },
+          "duration": {
+            "type": "number",
+            "description": "Duration in minutes",
+            "example": 65
+          }
+        }
+      },
+      "Temperature": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "number",
+            "format": "float",
+            "description": "Temperature value",
+            "example": 65
+          },
+          "unit": {
+            "type": "string",
+            "description": "Temperature unit",
+            "example": "celsius"
+          }
+        }
+      },
+      "Fermentation": {
+        "type": "object",
+        "properties": {
+          "temp": {
+            "$ref": "#/components/schemas/Temperature"
+          }
+        }
+      },
+      "Ingredients": {
+        "type": "object",
+        "properties": {
+          "malt": {
+            "type": "array",
+            "description": "List of malts used",
+            "items": {
+              "$ref": "#/components/schemas/Malt"
+            }
+          },
+          "hops": {
+            "type": "array",
+            "description": "List of hops used",
+            "items": {
+              "$ref": "#/components/schemas/Hop"
+            }
+          },
+          "yeast": {
+            "type": "string",
+            "description": "Yeast strain used",
+            "example": "W34/70"
+          }
+        }
+      },
+      "Malt": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the malt",
+            "example": "Pilsner Malt"
+          },
+          "amount": {
+            "$ref": "#/components/schemas/Amount"
+          }
+        }
+      },
+      "Hop": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Name of the hop",
+            "example": "Hallertauer Taurus"
+          },
+          "amount": {
+            "$ref": "#/components/schemas/Amount"
+          },
+          "add": {
+            "type": "string",
+            "description": "When to add the hop (in minutes or stage)",
+            "example": "60"
+          },
+          "attribute": {
+            "type": "string",
+            "description": "Hop attribute (Bitter, Flavour, Aroma)",
+            "example": "Bitter"
+          }
+        }
+      },
+      "Amount": {
+        "type": "object",
+        "properties": {
+          "value": {
+            "type": "number",
+            "format": "float",
+            "description": "Amount value",
+            "example": 3.36
+          },
+          "unit": {
+            "type": "string",
+            "description": "Unit of measurement",
+            "example": "kilograms"
+          }
+        }
+      }
+    }
+  }
+}

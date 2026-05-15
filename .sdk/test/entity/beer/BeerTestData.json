@@ -1,0 +1,101 @@
+{
+  "existing": {
+    "beer": {
+      "BEER00": {
+        "abv": 210,
+        "attenuation_level": 211,
+        "boil_volume": {},
+        "brewers_tip": "sd5",
+        "contributed_by": "sd6",
+        "description": "sd7",
+        "ebc": 216,
+        "first_brewed": "sd9",
+        "food_pairing": [],
+        "ibu": 219,
+        "id": "BEER00",
+        "image": "sdd",
+        "ingredient": {},
+        "method": {},
+        "name": "se0",
+        "ph": 225,
+        "srm": 226,
+        "tagline": "se3",
+        "target_fg": 228,
+        "target_og": 229,
+        "volume": {}
+      },
+      "BEER01": {
+        "abv": 420,
+        "attenuation_level": 421,
+        "boil_volume": {},
+        "brewers_tip": "s1a7",
+        "contributed_by": "s1a8",
+        "description": "s1a9",
+        "ebc": 426,
+        "first_brewed": "s1ab",
+        "food_pairing": [],
+        "ibu": 429,
+        "id": "BEER01",
+        "image": "s1af",
+        "ingredient": {},
+        "method": {},
+        "name": "s1b2",
+        "ph": 435,
+        "srm": 436,
+        "tagline": "s1b5",
+        "target_fg": 438,
+        "target_og": 439,
+        "volume": {}
+      },
+      "BEER02": {
+        "abv": 630,
+        "attenuation_level": 631,
+        "boil_volume": {},
+        "brewers_tip": "s279",
+        "contributed_by": "s27a",
+        "description": "s27b",
+        "ebc": 636,
+        "first_brewed": "s27d",
+        "food_pairing": [],
+        "ibu": 639,
+        "id": "BEER02",
+        "image": "s281",
+        "ingredient": {},
+        "method": {},
+        "name": "s284",
+        "ph": 645,
+        "srm": 646,
+        "tagline": "s287",
+        "target_fg": 648,
+        "target_og": 649,
+        "volume": {}
+      }
+    }
+  },
+  "new": {
+    "beer": {
+      "beer_ref01": {
+        "abv": 840,
+        "attenuation_level": 841,
+        "boil_volume": {},
+        "brewers_tip": "s34b",
+        "contributed_by": "s34c",
+        "description": "s34d",
+        "ebc": 846,
+        "first_brewed": "s34f",
+        "food_pairing": [],
+        "ibu": 849,
+        "image": "s353",
+        "ingredient": {},
+        "method": {},
+        "name": "s356",
+        "ph": 855,
+        "srm": 856,
+        "tagline": "s359",
+        "target_fg": 858,
+        "target_og": 859,
+        "volume": {}
+      }
+    }
+  }
+}

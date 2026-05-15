@@ -1,0 +1,314 @@
+# Entity: beer
+
+main: kit: entity: beer: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "abv"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "attenuation_level"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "boil_volume"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "brewers_tip"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "contributed_by"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "description"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "ebc"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "first_brewed"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "food_pairing"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "ibu"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "id"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "image"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "ingredient"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "method"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "name"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "ph"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "srm"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "tagline"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "target_fg"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "target_og"
+      req: false
+      type: "`$NUMBER`"
+    }
+    {
+      name: "volume"
+      req: false
+      type: "`$OBJECT`"
+    }
+  ]
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "beer"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: 5
+                kind: "query"
+                name: "abv_gt"
+                orig: "abv_gt"
+                reqd: false
+                type: "`$NUMBER`"
+              }
+              {
+                example: 10
+                kind: "query"
+                name: "abv_lt"
+                orig: "abv_lt"
+                reqd: false
+                type: "`$NUMBER`"
+              }
+              {
+                kind: "query"
+                name: "beer_name"
+                orig: "beer_name"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "01-2015"
+                kind: "query"
+                name: "brewed_after"
+                orig: "brewed_after"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "12-2018"
+                kind: "query"
+                name: "brewed_before"
+                orig: "brewed_before"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 20
+                kind: "query"
+                name: "ebc_gt"
+                orig: "ebc_gt"
+                reqd: false
+                type: "`$NUMBER`"
+              }
+              {
+                example: 50
+                kind: "query"
+                name: "ebc_lt"
+                orig: "ebc_lt"
+                reqd: false
+                type: "`$NUMBER`"
+              }
+              {
+                example: "chicken"
+                kind: "query"
+                name: "food"
+                orig: "food"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 40
+                kind: "query"
+                name: "ibu_gt"
+                orig: "ibu_gt"
+                reqd: false
+                type: "`$NUMBER`"
+              }
+              {
+                example: 100
+                kind: "query"
+                name: "ibu_lt"
+                orig: "ibu_lt"
+                reqd: false
+                type: "`$NUMBER`"
+              }
+              {
+                example: "1,2,3"
+                kind: "query"
+                name: "ids"
+                orig: "ids"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: 1
+                kind: "query"
+                name: "page"
+                orig: "page"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+              {
+                example: 30
+                kind: "query"
+                name: "per_page"
+                orig: "per_page"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/beers"
+          parts: [
+            "beers"
+          ]
+          select: {
+            exist: [
+              "abv_gt"
+              "abv_lt"
+              "beer_name"
+              "brewed_after"
+              "brewed_before"
+              "ebc_gt"
+              "ebc_lt"
+              "food"
+              "ibu_gt"
+              "ibu_lt"
+              "ids"
+              "page"
+              "per_page"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/beers/random"
+          parts: [
+            "beers"
+            "random"
+          ]
+          select: {
+            "$action": "random"
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                kind: "param"
+                name: "id"
+                orig: "id"
+                reqd: true
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/beers/{id}"
+          parts: [
+            "beers"
+            "{id}"
+          ]
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

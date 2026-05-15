@@ -1,0 +1,52 @@
+# Entity: image
+
+main: kit: entity: image: {
+
+  alias: field: {}
+
+  name: "image"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "366.png"
+                kind: "param"
+                name: "id"
+                orig: "filename"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/images/{filename}"
+          parts: [
+            "images"
+            "{id}"
+          ]
+          rename: {
+            param: {
+              filename: "id"
+            }
+          }
+          select: {
+            exist: [
+              "id"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
