@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/punkapi-sdk"
-	"github.com/voxgig-sdk/punkapi-sdk/core"
+	sdk "github.com/voxgig-sdk/punkapi-sdk/go"
+	"github.com/voxgig-sdk/punkapi-sdk/go/core"
 )
 
 func TestBeerDirect(t *testing.T) {

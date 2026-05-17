@@ -1,10 +1,10 @@
 package voxgigpunkapisdk
 
 import (
-	"github.com/voxgig-sdk/punkapi-sdk/core"
-	"github.com/voxgig-sdk/punkapi-sdk/entity"
-	"github.com/voxgig-sdk/punkapi-sdk/feature"
-	_ "github.com/voxgig-sdk/punkapi-sdk/utility"
+	"github.com/voxgig-sdk/punkapi-sdk/go/core"
+	"github.com/voxgig-sdk/punkapi-sdk/go/entity"
+	"github.com/voxgig-sdk/punkapi-sdk/go/feature"
+	_ "github.com/voxgig-sdk/punkapi-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

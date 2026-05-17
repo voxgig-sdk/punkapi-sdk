@@ -29,7 +29,7 @@ class Config {
 
 
   options = {
-    base: 'https://punkapi-alxiw.amvera.io/v3',
+    base: '$$main.kit.info.servers.0.url$$',
 
     'AUTHBLOCK'headers: 'HEADERS',
 

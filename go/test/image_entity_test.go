@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/punkapi-sdk"
-	"github.com/voxgig-sdk/punkapi-sdk/core"
+	sdk "github.com/voxgig-sdk/punkapi-sdk/go"
+	"github.com/voxgig-sdk/punkapi-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/punkapi-sdk/go/utility/struct"
 )
 
 func TestImageEntity(t *testing.T) {
