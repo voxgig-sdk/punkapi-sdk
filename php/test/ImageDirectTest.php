@@ -75,14 +75,12 @@ function image_direct_setup($mockres)
     $env = Runner::env_override([
         "PUNKAPI_TEST_IMAGE_ENTID" => [],
         "PUNKAPI_TEST_LIVE" => "FALSE",
-        "PUNKAPI_APIKEY" => "NONE",
     ]);
 
     $live = $env["PUNKAPI_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["PUNKAPI_APIKEY"],
         ];
         $client = new PunkapiSDK($merged_opts);
         return [

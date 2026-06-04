@@ -15,9 +15,6 @@ module PunkapiConfig
       },
       "options" => {
         "base" => "https://punkapi-alxiw.amvera.io/v3",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },
