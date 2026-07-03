@@ -10,7 +10,7 @@ The TypeScript SDK for the Punkapi API — a type-safe, entity-oriented client w
 
 ## Install
 ```bash
-npm install punkapi
+npm install @voxgig-sdk/punkapi
 ```
 ## Tutorial: your first API call
 

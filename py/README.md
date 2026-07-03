@@ -10,7 +10,7 @@ The Python SDK for the Punkapi API — an entity-oriented client following Pytho
 
 ## Install
 ```bash
-pip install punkapi-sdk
+pip install voxgig-sdk-punkapi
 ```
 
 Or install from source:

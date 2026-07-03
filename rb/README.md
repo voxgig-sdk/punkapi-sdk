@@ -10,13 +10,13 @@ The Ruby SDK for the Punkapi API — an entity-oriented client using idiomatic R
 
 ## Install
 ```bash
-gem install punkapi-sdk
+gem install voxgig-sdk-punkapi
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "punkapi-sdk"
+gem "voxgig-sdk-punkapi"
 ```
 
 Then run:
