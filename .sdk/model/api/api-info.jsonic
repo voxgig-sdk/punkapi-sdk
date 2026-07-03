@@ -21,29 +21,7 @@ main: {
       ]
       title: "PunkAPI"
       version: "3.0.0"
-      tagline: "Browse BrewDog's DIY Dog beer catalogue with recipes, stats and artwork for 415 brews"
-      homepage: "https://punkapi-alxiw.amvera.io/v3/"
-      docs_url: "https://github.com/alxiw/punkapi"
-      license_short: "MIT licence, maintained by alxiw; data sourced from BrewDog's DIY Dog catalogue."
-      license_md: `- Code and service released under the MIT licence by alxiw.
-- Beer data is drawn from BrewDog's publicly published DIY Dog catalogue.
-- BrewDog branding, recipe text and artwork remain the property of their respective owners; check BrewDog's terms before redistributing.
-- This is a community rebuild of an earlier PunkAPI that was discontinued in May 2024; treat the service as best-effort.`
-      about_md: `PunkAPI is a FastAPI-based reimplementation of the original PunkAPI, maintained by [alxiw](https://github.com/alxiw/punkapi). It exposes [BrewDog](https://www.brewdog.com/)'s DIY Dog homebrew catalogue as a JSON API, acting as a digital archive of every recipe BrewDog has published.
-
-What you get from the API:
-
-- A catalogue of 415 beers migrated from the original DIY Dog PDF.
-- Per-beer detail including name, tagline, brewing date, description, ABV, IBU, EBC, SRM, pH, attenuation level, volume, fermentation method, malt / hops / yeast ingredient lists, food pairings and brewer's notes.
-- Endpoints to fetch a single beer by id, a random beer, or a paginated list (30 per page by default), plus PNG artwork for each beer.
-- Query filters across name, id range, brewing date (MM-YYYY or YYYY), ABV / IBU / EBC ranges and food pairings.
-
-The service is open and requires no authentication or API key. CORS is disabled on the upstream service, so browser-side calls will need to go through a proxy. The v3 base URL is \`https://punkapi-alxiw.amvera.io/v3/\`.`
-      entity_desc: {
-        beer: "A single brew from the DIY Dog catalogue with recipe stats, ingredients and brewer notes; available via `/beers`, `/beers/{id}` and `/beers/random`."
-        image: "PNG artwork associated with a beer entry, served from `/images/{id}.png`."
-      }
-      auth: false
     }
   }
 }
+

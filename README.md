@@ -1,21 +1,8 @@
 # Punkapi SDK
 
-Browse BrewDog's DIY Dog beer catalogue with recipes, stats and artwork for 415 brews
+PunkAPI client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About PunkAPI
-
-PunkAPI is a FastAPI-based reimplementation of the original PunkAPI, maintained by [alxiw](https://github.com/alxiw/punkapi). It exposes [BrewDog](https://www.brewdog.com/)'s DIY Dog homebrew catalogue as a JSON API, acting as a digital archive of every recipe BrewDog has published.
-
-What you get from the API:
-
-- A catalogue of 415 beers migrated from the original DIY Dog PDF.
-- Per-beer detail including name, tagline, brewing date, description, ABV, IBU, EBC, SRM, pH, attenuation level, volume, fermentation method, malt / hops / yeast ingredient lists, food pairings and brewer's notes.
-- Endpoints to fetch a single beer by id, a random beer, or a paginated list (30 per page by default), plus PNG artwork for each beer.
-- Query filters across name, id range, brewing date (MM-YYYY or YYYY), ABV / IBU / EBC ranges and food pairings.
-
-The service is open and requires no authentication or API key. CORS is disabled on the upstream service, so browser-side calls will need to go through a proxy. The v3 base URL is `https://punkapi-alxiw.amvera.io/v3/`.
 
 ## Try it
 
@@ -49,29 +36,31 @@ gem install punkapi-sdk
 luarocks install punkapi-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { PunkapiSDK } from 'punkapi'
 
-const client = new PunkapiSDK({})
+const client = new PunkapiSDK({
+  apikey: process.env.PUNKAPI_APIKEY,
+})
 
 // List all beers
 const beers = await client.Beer().list()
+console.log(beers.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -101,8 +90,8 @@ The API exposes 2 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Beer** | A single brew from the DIY Dog catalogue with recipe stats, ingredients and brewer notes; available via `/beers`, `/beers/{id}` and `/beers/random`. | `/beers` |
-| **Image** | PNG artwork associated with a beer entry, served from `/images/{id}.png`. | `/images/{filename}` |
+| **Beer** |  | `/beers` |
+| **Image** |  | `/images/{filename}` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -112,17 +101,20 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from punkapi_sdk import PunkapiSDK
 
-client = PunkapiSDK({})
+client = PunkapiSDK({
+    "apikey": os.environ.get("PUNKAPI_APIKEY"),
+})
 
 # List all beers
-beers, err = client.Beer(None).list(None, None)
+beers, err = client.Beer().list()
+print(beers)
 
 # Load a specific beer
-beer, err = client.Beer(None).load(
-    {"id": "example_id"}, None
-)
+beer, err = client.Beer().load({"id": "example_id"})
+print(beer)
 ```
 
 ### PHP
@@ -131,15 +123,17 @@ beer, err = client.Beer(None).load(
 <?php
 require_once 'punkapi_sdk.php';
 
-$client = new PunkapiSDK([]);
+$client = new PunkapiSDK([
+    "apikey" => getenv("PUNKAPI_APIKEY"),
+]);
 
 // List all beers
-[$beers, $err] = $client->Beer(null)->list(null, null);
+[$beers, $err] = $client->Beer()->list();
+print_r($beers);
 
 // Load a specific beer
-[$beer, $err] = $client->Beer(null)->load(
-    ["id" => "example_id"], null
-);
+[$beer, $err] = $client->Beer()->load(["id" => "example_id"]);
+print_r($beer);
 ```
 
 ### Golang
@@ -147,10 +141,13 @@ $client = new PunkapiSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/punkapi-sdk/go"
 
-client := sdk.NewPunkapiSDK(map[string]any{})
+client := sdk.NewPunkapiSDK(map[string]any{
+    "apikey": os.Getenv("PUNKAPI_APIKEY"),
+})
 
 // List all beers
 beers, err := client.Beer(nil).List(nil, nil)
+fmt.Println(beers)
 ```
 
 ### Ruby
@@ -158,15 +155,17 @@ beers, err := client.Beer(nil).List(nil, nil)
 ```ruby
 require_relative "Punkapi_sdk"
 
-client = PunkapiSDK.new({})
+client = PunkapiSDK.new({
+  "apikey" => ENV["PUNKAPI_APIKEY"],
+})
 
 # List all beers
-beers, err = client.Beer(nil).list(nil, nil)
+beers, err = client.Beer().list
+puts beers
 
 # Load a specific beer
-beer, err = client.Beer(nil).load(
-  { "id" => "example_id" }, nil
-)
+beer, err = client.Beer().load({ "id" => "example_id" })
+puts beer
 ```
 
 ### Lua
@@ -174,15 +173,17 @@ beer, err = client.Beer(nil).load(
 ```lua
 local sdk = require("punkapi_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("PUNKAPI_APIKEY"),
+})
 
 -- List all beers
-local beers, err = client:Beer(nil):list(nil, nil)
+local beers, err = client:Beer():list()
+print(beers)
 
 -- Load a specific beer
-local beer, err = client:Beer(nil):load(
-  { id = "example_id" }, nil
-)
+local beer, err = client:Beer():load({ id = "example_id" })
+print(beer)
 ```
 
 ## Unit testing in offline mode
@@ -201,25 +202,21 @@ const result = await client.Beer().load({ id: 'test01' })
 ### Python
 
 ```python
-client = PunkapiSDK.test(None, None)
-result, err = client.Beer(None).load(
-    {"id": "test01"}, None
-)
+client = PunkapiSDK.test()
+result, err = client.Beer().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = PunkapiSDK::test(null, null);
-[$result, $err] = $client->Beer(null)->load(
-    ["id" => "test01"], null
-);
+$client = PunkapiSDK::test();
+[$result, $err] = $client->Beer()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Beer(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -228,19 +225,15 @@ result, err := client.Beer(nil).Load(
 ### Ruby
 
 ```ruby
-client = PunkapiSDK.test(nil, nil)
-result, err = client.Beer(nil).load(
-  { "id" => "test01" }, nil
-)
+client = PunkapiSDK.test
+result, err = client.Beer().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Beer(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Beer():load({ id = "test01" })
 ```
 
 ## How it works
@@ -344,16 +337,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the PunkAPI
-
-- Upstream: [https://punkapi-alxiw.amvera.io/v3/](https://punkapi-alxiw.amvera.io/v3/)
-- API docs: [https://github.com/alxiw/punkapi](https://github.com/alxiw/punkapi)
-
-- Code and service released under the MIT licence by alxiw.
-- Beer data is drawn from BrewDog's publicly published DIY Dog catalogue.
-- BrewDog branding, recipe text and artwork remain the property of their respective owners; check BrewDog's terms before redistributing.
-- This is a community rebuild of an earlier PunkAPI that was discontinued in May 2024; treat the service as best-effort.
 
 ---
 

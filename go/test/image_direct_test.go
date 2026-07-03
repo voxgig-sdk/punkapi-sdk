@@ -110,12 +110,14 @@ func imageDirectSetup(mockres any) *imageDirectSetupResult {
 	env := envOverride(map[string]any{
 		"PUNKAPI_TEST_IMAGE_ENTID": map[string]any{},
 		"PUNKAPI_TEST_LIVE":    "FALSE",
+		"PUNKAPI_APIKEY":       "NONE",
 	})
 
 	live := env["PUNKAPI_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["PUNKAPI_APIKEY"],
 		}
 		client := sdk.NewPunkapiSDK(mergedOpts)
 

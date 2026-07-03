@@ -135,6 +135,7 @@ func beerBasicSetup(extra map[string]any) *entityTestSetup {
 		"PUNKAPI_TEST_BEER_ENTID": idmap,
 		"PUNKAPI_TEST_LIVE":      "FALSE",
 		"PUNKAPI_TEST_EXPLAIN":   "FALSE",
+		"PUNKAPI_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["PUNKAPI_TEST_BEER_ENTID"])
@@ -145,6 +146,7 @@ func beerBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["PUNKAPI_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["PUNKAPI_APIKEY"],
 			},
 			extra,
 		})

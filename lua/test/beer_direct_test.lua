@@ -117,12 +117,14 @@ function beer_direct_setup(mockres)
   local env = runner.env_override({
     ["PUNKAPI_TEST_BEER_ENTID"] = {},
     ["PUNKAPI_TEST_LIVE"] = "FALSE",
+    ["PUNKAPI_APIKEY"] = "NONE",
   })
 
   local live = env["PUNKAPI_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
+      apikey = env["PUNKAPI_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

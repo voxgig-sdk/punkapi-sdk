@@ -93,6 +93,7 @@ def beer_basic_setup(extra)
     "PUNKAPI_TEST_BEER_ENTID" => idmap,
     "PUNKAPI_TEST_LIVE" => "FALSE",
     "PUNKAPI_TEST_EXPLAIN" => "FALSE",
+    "PUNKAPI_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -104,6 +105,7 @@ def beer_basic_setup(extra)
   if env["PUNKAPI_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
+        "apikey" => env["PUNKAPI_APIKEY"],
       },
       extra || {},
     ])

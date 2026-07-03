@@ -194,12 +194,14 @@ func beerDirectSetup(mockres any) *beerDirectSetupResult {
 	env := envOverride(map[string]any{
 		"PUNKAPI_TEST_BEER_ENTID": map[string]any{},
 		"PUNKAPI_TEST_LIVE":    "FALSE",
+		"PUNKAPI_APIKEY":       "NONE",
 	})
 
 	live := env["PUNKAPI_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["PUNKAPI_APIKEY"],
 		}
 		client := sdk.NewPunkapiSDK(mergedOpts)
 
