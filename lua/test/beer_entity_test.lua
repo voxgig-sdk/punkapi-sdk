@@ -102,7 +102,6 @@ function beer_basic_setup(extra)
     ["PUNKAPI_TEST_BEER_ENTID"] = idmap,
     ["PUNKAPI_TEST_LIVE"] = "FALSE",
     ["PUNKAPI_TEST_EXPLAIN"] = "FALSE",
-    ["PUNKAPI_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -114,7 +113,6 @@ function beer_basic_setup(extra)
   if env["PUNKAPI_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
-        apikey = env["PUNKAPI_APIKEY"],
       },
       extra or {},
     })

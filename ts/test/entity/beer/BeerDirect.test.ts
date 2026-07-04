@@ -136,14 +136,12 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'PUNKAPI_TEST_BEER_ENTID': {},
     'PUNKAPI_TEST_LIVE': 'FALSE',
-    'PUNKAPI_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.PUNKAPI_TEST_LIVE
 
   if (live) {
     const client = new PunkapiSDK({
-      apikey: env.PUNKAPI_APIKEY,
     })
 
     let idmap: any = env['PUNKAPI_TEST_BEER_ENTID']

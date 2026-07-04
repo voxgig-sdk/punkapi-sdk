@@ -50,16 +50,14 @@ class TestBeerEntity:
         beer_ref01_ent = client.Beer(None)
         beer_ref01_match = {}
 
-        beer_ref01_list_result, err = beer_ref01_ent.list(beer_ref01_match, None)
-        assert err is None
+        beer_ref01_list_result = beer_ref01_ent.list(beer_ref01_match, None)
         assert isinstance(beer_ref01_list_result, list)
 
         # LOAD
         beer_ref01_match_dt0 = {
             "id": beer_ref01_data["id"],
         }
-        beer_ref01_data_dt0_loaded, err = beer_ref01_ent.load(beer_ref01_match_dt0, None)
-        assert err is None
+        beer_ref01_data_dt0_loaded = beer_ref01_ent.load(beer_ref01_match_dt0, None)
         beer_ref01_data_dt0_load_result = helpers.to_map(beer_ref01_data_dt0_loaded)
         assert beer_ref01_data_dt0_load_result is not None
         assert beer_ref01_data_dt0_load_result["id"] == beer_ref01_data["id"]
@@ -102,7 +100,6 @@ def _beer_basic_setup(extra):
         "PUNKAPI_TEST_BEER_ENTID": idmap,
         "PUNKAPI_TEST_LIVE": "FALSE",
         "PUNKAPI_TEST_EXPLAIN": "FALSE",
-        "PUNKAPI_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -113,7 +110,6 @@ def _beer_basic_setup(extra):
     if env.get("PUNKAPI_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("PUNKAPI_APIKEY"),
             },
             extra or {},
         ])

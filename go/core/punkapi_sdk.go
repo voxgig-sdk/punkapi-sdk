@@ -245,11 +245,17 @@ func (sdk *PunkapiSDK) Direct(fetchargs map[string]any) (map[string]any, error) 
 }
 
 
+// Beer returns a Beer entity bound to this client.
+// Idiomatic usage: client.Beer(nil).List(nil, nil) or
+// client.Beer(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *PunkapiSDK) Beer(data map[string]any) PunkapiEntity {
 	return NewBeerEntityFunc(sdk, data)
 }
 
 
+// Image returns a Image entity bound to this client.
+// Idiomatic usage: client.Image(nil).List(nil, nil) or
+// client.Image(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *PunkapiSDK) Image(data map[string]any) PunkapiEntity {
 	return NewImageEntityFunc(sdk, data)
 }

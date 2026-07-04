@@ -43,16 +43,14 @@ class BeerEntityTest < Minitest::Test
     beer_ref01_ent = client.Beer(nil)
     beer_ref01_match = {}
 
-    beer_ref01_list_result, err = beer_ref01_ent.list(beer_ref01_match, nil)
-    assert_nil err
+    beer_ref01_list_result = beer_ref01_ent.list(beer_ref01_match, nil)
     assert beer_ref01_list_result.is_a?(Array)
 
     # LOAD
     beer_ref01_match_dt0 = {
       "id" => beer_ref01_data["id"],
     }
-    beer_ref01_data_dt0_loaded, err = beer_ref01_ent.load(beer_ref01_match_dt0, nil)
-    assert_nil err
+    beer_ref01_data_dt0_loaded = beer_ref01_ent.load(beer_ref01_match_dt0, nil)
     beer_ref01_data_dt0_load_result = Helpers.to_map(beer_ref01_data_dt0_loaded)
     assert !beer_ref01_data_dt0_load_result.nil?
     assert_equal beer_ref01_data_dt0_load_result["id"], beer_ref01_data["id"]
@@ -93,7 +91,6 @@ def beer_basic_setup(extra)
     "PUNKAPI_TEST_BEER_ENTID" => idmap,
     "PUNKAPI_TEST_LIVE" => "FALSE",
     "PUNKAPI_TEST_EXPLAIN" => "FALSE",
-    "PUNKAPI_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -105,7 +102,6 @@ def beer_basic_setup(extra)
   if env["PUNKAPI_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["PUNKAPI_APIKEY"],
       },
       extra || {},
     ])

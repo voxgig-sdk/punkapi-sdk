@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -88,7 +87,7 @@ same parameters as `direct()`.
 ## BeerEntity
 
 ```lua
-local beer = client:Beer(nil)
+local beer = client:beer(nil)
 ```
 
 ### Fields
@@ -124,7 +123,7 @@ local beer = client:Beer(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:Beer():list()
+local results, err = client:beer():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -132,7 +131,7 @@ local results, err = client:Beer():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Beer():load({ id = "beer_id" })
+local result, err = client:beer():load({ id = "beer_id" })
 ```
 
 ### Common Methods
@@ -168,7 +167,7 @@ Return the entity name.
 ## ImageEntity
 
 ```lua
-local image = client:Image(nil)
+local image = client:image(nil)
 ```
 
 ### Operations
@@ -178,7 +177,7 @@ local image = client:Image(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Image():load({ id = "image_id" })
+local result, err = client:image():load({ id = "image_id" })
 ```
 
 ### Common Methods

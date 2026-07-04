@@ -244,12 +244,38 @@ end
 
 
 
+-- Idiomatic facade: client:beer():list() / client:beer():load({ id = ... })
+function PunkapiSDK:beer(data)
+  local EntityMod = require("entity.beer_entity")
+  if data == nil then
+    if self._beer == nil then
+      self._beer = EntityMod.new(self, nil)
+    end
+    return self._beer
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:beer() instead.
 function PunkapiSDK:Beer(data)
   local EntityMod = require("entity.beer_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:image():list() / client:image():load({ id = ... })
+function PunkapiSDK:image(data)
+  local EntityMod = require("entity.image_entity")
+  if data == nil then
+    if self._image == nil then
+      self._image = EntityMod.new(self, nil)
+    end
+    return self._image
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:image() instead.
 function PunkapiSDK:Image(data)
   local EntityMod = require("entity.image_entity")
   return EntityMod.new(self, data)

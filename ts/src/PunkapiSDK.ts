@@ -3,6 +3,8 @@
 import { BeerEntity } from './entity/BeerEntity'
 import { ImageEntity } from './entity/ImageEntity'
 
+export type * from './PunkapiTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -203,12 +205,28 @@ class PunkapiSDK {
 
 
 
+  _beer?: BeerEntity
+
+  // Idiomatic facade: `client.beer.list()` / `client.beer.load({ id })`.
+  get beer(): BeerEntity {
+    return (this._beer ??= new BeerEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.beer` instead. */
   Beer(data?: any) {
     const self = this
     return new BeerEntity(self,data)
   }
 
 
+  _image?: ImageEntity
+
+  // Idiomatic facade: `client.image.list()` / `client.image.load({ id })`.
+  get image(): ImageEntity {
+    return (this._image ??= new ImageEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.image` instead. */
   Image(data?: any) {
     const self = this
     return new ImageEntity(self,data)

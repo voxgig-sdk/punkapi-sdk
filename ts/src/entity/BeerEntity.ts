@@ -14,9 +14,14 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Beer,
+  BeerLoadMatch,
+  BeerListMatch,
+} from '../PunkapiTypes'
 
 // TODO: needs Entity superclass
-class BeerEntity extends PunkapiEntityBase {
+class BeerEntity extends PunkapiEntityBase<Beer> {
 
   constructor(client: PunkapiSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +37,7 @@ class BeerEntity extends PunkapiEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: BeerLoadMatch, ctrl?: Control): Promise<Beer> {
 
     const utility = this._utility
 
@@ -136,14 +141,16 @@ class BeerEntity extends PunkapiEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Beer> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: BeerListMatch, ctrl?: Control): Promise<Beer[]> {
 
     const utility = this._utility
 
@@ -243,7 +250,9 @@ class BeerEntity extends PunkapiEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Beer[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

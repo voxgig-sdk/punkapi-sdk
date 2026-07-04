@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -122,7 +121,7 @@ Alias for `PunkapiSDK.test()`.
 ## BeerEntity
 
 ```ts
-const beer = client.Beer()
+const beer = client.beer
 ```
 
 ### Fields
@@ -158,7 +157,7 @@ const beer = client.Beer()
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.Beer().list()
+const results = await client.beer.list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -166,7 +165,7 @@ const results = await client.Beer().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Beer().load({ id: 'beer_id' })
+const result = await client.beer.load({ id: 'beer_id' })
 ```
 
 ### Common Methods
@@ -200,7 +199,7 @@ Return a copy of the entity options.
 ## ImageEntity
 
 ```ts
-const image = client.Image()
+const image = client.image
 ```
 
 ### Operations
@@ -210,7 +209,7 @@ const image = client.Image()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Image().load({ id: 'image_id' })
+const result = await client.image.load({ id: 'image_id' })
 ```
 
 ### Common Methods

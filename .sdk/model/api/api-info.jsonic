@@ -4,6 +4,7 @@
 main: {
   kit: {
     info: {
+      auth: false
       contact: {
         name: "Alexander Ivanovsky"
         url: "https://github.com/alxiw/punkapi"

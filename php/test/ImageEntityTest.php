@@ -49,8 +49,7 @@ class ImageEntityTest extends TestCase
         // LOAD
         $image_ref01_ent = $client->Image(null);
         $image_ref01_match_dt0 = [];
-        [$image_ref01_data_dt0_loaded, $err] = $image_ref01_ent->load($image_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $image_ref01_data_dt0_loaded = $image_ref01_ent->load($image_ref01_match_dt0, null);
         $this->assertNotNull($image_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function image_basic_setup($extra)
         "PUNKAPI_TEST_IMAGE_ENTID" => $idmap,
         "PUNKAPI_TEST_LIVE" => "FALSE",
         "PUNKAPI_TEST_EXPLAIN" => "FALSE",
-        "PUNKAPI_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function image_basic_setup($extra)
     if ($env["PUNKAPI_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["PUNKAPI_APIKEY"],
             ],
             $extra ?? [],
         ]);

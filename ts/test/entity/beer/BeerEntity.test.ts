@@ -120,7 +120,6 @@ function basicSetup(extra?: any) {
     'PUNKAPI_TEST_BEER_ENTID': idmap,
     'PUNKAPI_TEST_LIVE': 'FALSE',
     'PUNKAPI_TEST_EXPLAIN': 'FALSE',
-    'PUNKAPI_APIKEY': 'NONE',
   })
 
   idmap = env['PUNKAPI_TEST_BEER_ENTID']
@@ -130,7 +129,6 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new PunkapiSDK(merge([
       {
-        apikey: env.PUNKAPI_APIKEY,
       },
       extra
     ]))

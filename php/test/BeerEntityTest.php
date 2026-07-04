@@ -50,16 +50,14 @@ class BeerEntityTest extends TestCase
         $beer_ref01_ent = $client->Beer(null);
         $beer_ref01_match = [];
 
-        [$beer_ref01_list_result, $err] = $beer_ref01_ent->list($beer_ref01_match, null);
-        $this->assertNull($err);
+        $beer_ref01_list_result = $beer_ref01_ent->list($beer_ref01_match, null);
         $this->assertIsArray($beer_ref01_list_result);
 
         // LOAD
         $beer_ref01_match_dt0 = [
             "id" => $beer_ref01_data["id"],
         ];
-        [$beer_ref01_data_dt0_loaded, $err] = $beer_ref01_ent->load($beer_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $beer_ref01_data_dt0_loaded = $beer_ref01_ent->load($beer_ref01_match_dt0, null);
         $beer_ref01_data_dt0_load_result = Helpers::to_map($beer_ref01_data_dt0_loaded);
         $this->assertNotNull($beer_ref01_data_dt0_load_result);
         $this->assertEquals($beer_ref01_data_dt0_load_result["id"], $beer_ref01_data["id"]);
@@ -96,7 +94,6 @@ function beer_basic_setup($extra)
         "PUNKAPI_TEST_BEER_ENTID" => $idmap,
         "PUNKAPI_TEST_LIVE" => "FALSE",
         "PUNKAPI_TEST_EXPLAIN" => "FALSE",
-        "PUNKAPI_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -108,7 +105,6 @@ function beer_basic_setup($extra)
     if ($env["PUNKAPI_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["PUNKAPI_APIKEY"],
             ],
             $extra ?? [],
         ]);

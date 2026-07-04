@@ -85,6 +85,27 @@ func (e *BeerEntity) Match(args ...any) any {
 	return out
 }
 
+// DataTyped is the statically-typed accessor for this entity's data. With no
+// argument it returns the current data as an Beer; with an argument it
+// sets the data and returns the stored value. It delegates to the untyped Data
+// (identical runtime) and converts at the typed boundary.
+func (e *BeerEntity) DataTyped(data ...Beer) Beer {
+	if len(data) > 0 {
+		return typedFrom[Beer](e.Data(asMap(data[0])))
+	}
+	return typedFrom[Beer](e.Data())
+}
+
+// MatchTyped mirrors DataTyped for the entity's match filter. The match is a
+// partial of the entity, so it round-trips through Beer (all fields
+// optional at the wire level).
+func (e *BeerEntity) MatchTyped(match ...Beer) Beer {
+	if len(match) > 0 {
+		return typedFrom[Beer](e.Match(asMap(match[0])))
+	}
+	return typedFrom[Beer](e.Match())
+}
+
 
 func (e *BeerEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, error) {
 	utility := e.utility
@@ -111,6 +132,17 @@ func (e *BeerEntity) Load(reqmatch map[string]any, ctrl map[string]any) (any, er
 	})
 }
 
+// LoadTyped is the statically-typed variant of Load: it takes an
+// BeerLoadMatch and returns an Beer. It delegates to the untyped
+// Load (identical runtime) and converts at the typed boundary.
+func (e *BeerEntity) LoadTyped(reqmatch BeerLoadMatch, ctrl map[string]any) (Beer, error) {
+	res, err := e.Load(asMap(reqmatch), ctrl)
+	if err != nil {
+		return Beer{}, err
+	}
+	return typedFrom[Beer](res), nil
+}
+
 
 
 
@@ -131,6 +163,17 @@ func (e *BeerEntity) List(reqmatch map[string]any, ctrl map[string]any) (any, er
 			}
 		}
 	})
+}
+
+// ListTyped is the statically-typed variant of List: it takes an
+// BeerListMatch and returns []Beer. It delegates to the untyped
+// List (identical runtime) and converts at the typed boundary.
+func (e *BeerEntity) ListTyped(reqmatch BeerListMatch, ctrl map[string]any) ([]Beer, error) {
+	res, err := e.List(asMap(reqmatch), ctrl)
+	if err != nil {
+		return nil, err
+	}
+	return typedSliceFrom[Beer](res), nil
 }
 
 

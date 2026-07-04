@@ -45,6 +45,7 @@ class BeerEntity
     end
   end
 
+  # @return [Beer, Hash] the current Beer data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,12 +58,18 @@ class BeerEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of Beer fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
   end
 
   
+  # Load a single Beer.
+  #
+  # @param reqmatch [BeerLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Beer, Hash] the loaded Beer; raises PunkapiError on failure
   def load(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
@@ -86,6 +93,11 @@ class BeerEntity
 
 
   
+  # List Beer items matching the given filter.
+  #
+  # @param reqmatch [BeerListMatch, Hash, nil] match filter (any subset of Beer fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<Beer>, Array] the matching Beer items; raises PunkapiError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

@@ -20,9 +20,6 @@ class PunkapiConfig
             ],
             "options" => [
                 "base" => "https://punkapi-alxiw.amvera.io/v3",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],
@@ -374,6 +371,7 @@ class PunkapiConfig
                         'orig' => 'id',
                         'reqd' => true,
                         'type' => '`$INTEGER`',
+                        'index$' => 0,
                       ],
                     ],
                   ],
@@ -422,6 +420,7 @@ class PunkapiConfig
                         'orig' => 'filename',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 0,
                       ],
                     ],
                   ],
