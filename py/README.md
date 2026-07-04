@@ -31,24 +31,28 @@ from punkapi_sdk import PunkapiSDK
 client = PunkapiSDK()
 ```
 
-### 2. List beers
+### 2. List beer records
+
+`list()` returns a `list` of records (each a `dict`) and raises on
+error — iterate it directly.
 
 ```python
 try:
-    result = client.beer.list()
-    for item in result:
-        d = item.data_get()
-        print(d["id"], d["name"])
+    beers = client.Beer().list({})
+    for beer in beers:
+        print(beer)
 except Exception as err:
     print(f"list failed: {err}")
 ```
 
 ### 3. Load a beer
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.beer.load({"id": "example_id"})
-    print(result)
+    beer = client.Beer().load({"id": "example_id"})
+    print(beer)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -96,8 +100,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = PunkapiSDK.test()
 
-result = client.beer.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+beer = client.Beer().load({"id": "test01"})
+# beer contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -174,7 +179,7 @@ Creates a test-mode client with mock transport. Both arguments may be `None`.
 | `prepare` | `(fetchargs) -> dict` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> dict` | Build and send an HTTP request. Returns a result dict (branch on `ok`). |
 | `Beer` | `(data) -> BeerEntity` | Create a Beer entity instance. |
-| `Image` | `(data) -> ImageEntity` | Create a Image entity instance. |
+| `Image` | `(data) -> ImageEntity` | Create an Image entity instance. |
 
 ### Entity interface
 
@@ -260,7 +265,7 @@ API path: `/images/{filename}`
 
 ### Beer
 
-Create an instance: `const beer = client.beer`
+Create an instance: `beer = client.Beer()`
 
 #### Operations
 
@@ -297,20 +302,20 @@ Create an instance: `const beer = client.beer`
 
 #### Example: Load
 
-```ts
-const beer = await client.beer.load({ id: 'beer_id' })
+```python
+beer = client.Beer().load({"id": "beer_id"})
 ```
 
 #### Example: List
 
-```ts
-const beers = await client.beer.list()
+```python
+beers = client.Beer().list({})
 ```
 
 
 ### Image
 
-Create an instance: `const image = client.image`
+Create an instance: `image = client.Image()`
 
 #### Operations
 
@@ -320,8 +325,8 @@ Create an instance: `const image = client.image`
 
 #### Example: Load
 
-```ts
-const image = await client.image.load({ id: 'image_id' })
+```python
+image = client.Image().load({"id": "image_id"})
 ```
 
 
@@ -395,7 +400,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-beer = client.beer
+beer = client.Beer()
 beer.load({"id": "example_id"})
 
 # beer.data_get() now returns the loaded beer data

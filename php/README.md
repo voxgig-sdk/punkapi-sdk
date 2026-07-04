@@ -29,18 +29,16 @@ require_once 'punkapi_sdk.php';
 $client = new PunkapiSDK();
 ```
 
-### 2. List beers
+### 2. List beer records
 
 ```php
 try {
-    $result = $client->beer()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Beer records — iterate directly.
+    $beers = $client->Beer()->list();
+    foreach ($beers as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -49,9 +47,10 @@ try {
 
 ```php
 try {
-    $result = $client->beer()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare Beer record (throws on error).
+    $beer = $client->Beer()->load(["id" => "example_id"]);
+    print_r($beer);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -97,13 +96,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = PunkapiSDK::test();
+$client = PunkapiSDK::test([
+    "entity" => ["beer" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->beer()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$beer = $client->Beer()->load(["id" => "test01"]);
+print_r($beer);
 ```
 
 ### Use a custom fetch function
@@ -183,7 +186,7 @@ Creates a test-mode client with mock transport. Both arguments may be `null`.
 | `prepare` | `(array $fetchargs): array` | Build an HTTP request definition without sending. |
 | `direct` | `(array $fetchargs): array` | Build and send an HTTP request. |
 | `Beer` | `($data): BeerEntity` | Create a Beer entity instance. |
-| `Image` | `($data): ImageEntity` | Create a Image entity instance. |
+| `Image` | `($data): ImageEntity` | Create an Image entity instance. |
 
 ### Entity interface
 
@@ -269,7 +272,7 @@ API path: `/images/{filename}`
 
 ### Beer
 
-Create an instance: `const beer = client.beer`
+Create an instance: `$beer = $client->Beer();`
 
 #### Operations
 
@@ -306,20 +309,22 @@ Create an instance: `const beer = client.beer`
 
 #### Example: Load
 
-```ts
-const beer = await client.beer.load({ id: 'beer_id' })
+```php
+// load() returns the bare Beer record (throws on error).
+$beer = $client->Beer()->load(["id" => "beer_id"]);
 ```
 
 #### Example: List
 
-```ts
-const beers = await client.beer.list()
+```php
+// list() returns an array of Beer records (throws on error).
+$beers = $client->Beer()->list();
 ```
 
 
 ### Image
 
-Create an instance: `const image = client.image`
+Create an instance: `$image = $client->Image();`
 
 #### Operations
 
@@ -329,8 +334,9 @@ Create an instance: `const image = client.image`
 
 #### Example: Load
 
-```ts
-const image = await client.image.load({ id: 'image_id' })
+```php
+// load() returns the bare Image record (throws on error).
+$image = $client->Image()->load(["id" => "image_id"]);
 ```
 
 
@@ -405,7 +411,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$beer = $client->beer();
+$beer = $client->Beer();
 $beer->load(["id" => "example_id"]);
 
 // $beer->dataGet() now returns the loaded beer data

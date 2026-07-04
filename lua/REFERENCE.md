@@ -87,7 +87,7 @@ same parameters as `direct()`.
 ## BeerEntity
 
 ```lua
-local beer = client:beer(nil)
+local beer = client:Beer(nil)
 ```
 
 ### Fields
@@ -123,7 +123,7 @@ local beer = client:beer(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:beer():list()
+local results, err = client:Beer():list()
 ```
 
 #### `load(reqmatch, ctrl) -> any, err`
@@ -131,7 +131,7 @@ local results, err = client:beer():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:beer():load({ id = "beer_id" })
+local result, err = client:Beer():load({ id = "beer_id" })
 ```
 
 ### Common Methods
@@ -167,7 +167,7 @@ Return the entity name.
 ## ImageEntity
 
 ```lua
-local image = client:image(nil)
+local image = client:Image(nil)
 ```
 
 ### Operations
@@ -177,7 +177,7 @@ local image = client:image(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:image():load({ id = "image_id" })
+local result, err = client:Image():load({ id = "image_id" })
 ```
 
 ### Common Methods

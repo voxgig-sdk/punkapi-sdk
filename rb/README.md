@@ -28,16 +28,14 @@ require_relative "Punkapi_sdk"
 client = PunkapiSDK.new
 ```
 
-### 2. List beers
+### 2. List beer records
 
 ```ruby
 begin
-  result = client.beer.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Beer records — iterate directly.
+  beers = client.Beer.list
+  beers.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -48,8 +46,9 @@ end
 
 ```ruby
 begin
-  result = client.beer.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare Beer record (raises on error).
+  beer = client.Beer.load({ "id" => "example_id" })
+  puts beer
 rescue => err
   warn "load failed: #{err}"
 end
@@ -96,13 +95,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = PunkapiSDK.test
+client = PunkapiSDK.test({
+  "entity" => { "beer" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.beer.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+beer = client.Beer.load({ "id" => "test01" })
+puts beer
 ```
 
 ### Use a custom fetch function
@@ -179,7 +182,7 @@ Creates a test-mode client with mock transport. Both arguments may be `nil`.
 | `prepare` | `(fetchargs) -> Hash` | Build an HTTP request definition without sending. Raises on error. |
 | `direct` | `(fetchargs) -> Hash` | Build and send an HTTP request. Returns a result hash (`result["ok"]`); does not raise. |
 | `Beer` | `(data) -> BeerEntity` | Create a Beer entity instance. |
-| `Image` | `(data) -> ImageEntity` | Create a Image entity instance. |
+| `Image` | `(data) -> ImageEntity` | Create an Image entity instance. |
 
 ### Entity interface
 
@@ -264,7 +267,7 @@ API path: `/images/{filename}`
 
 ### Beer
 
-Create an instance: `const beer = client.beer`
+Create an instance: `beer = client.Beer`
 
 #### Operations
 
@@ -301,20 +304,22 @@ Create an instance: `const beer = client.beer`
 
 #### Example: Load
 
-```ts
-const beer = await client.beer.load({ id: 'beer_id' })
+```ruby
+# load returns the bare Beer record (raises on error).
+beer = client.Beer.load({ "id" => "beer_id" })
 ```
 
 #### Example: List
 
-```ts
-const beers = await client.beer.list()
+```ruby
+# list returns an Array of Beer records (raises on error).
+beers = client.Beer.list
 ```
 
 
 ### Image
 
-Create an instance: `const image = client.image`
+Create an instance: `image = client.Image`
 
 #### Operations
 
@@ -324,8 +329,9 @@ Create an instance: `const image = client.image`
 
 #### Example: Load
 
-```ts
-const image = await client.image.load({ id: 'image_id' })
+```ruby
+# load returns the bare Image record (raises on error).
+image = client.Image.load({ "id" => "image_id" })
 ```
 
 
@@ -400,7 +406,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-beer = client.beer
+beer = client.Beer
 beer.load({ "id" => "example_id" })
 
 # beer.data_get now returns the loaded beer data

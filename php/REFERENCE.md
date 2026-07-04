@@ -89,7 +89,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## BeerEntity
 
 ```php
-$beer = $client->beer();
+$beer = $client->Beer();
 ```
 
 ### Fields
@@ -125,7 +125,7 @@ $beer = $client->beer();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->beer()->list([]);
+$results = $client->Beer()->list([]);
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -133,7 +133,7 @@ $results = $client->beer()->list([]);
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->beer()->load(["id" => "beer_id"]);
+$result = $client->Beer()->load(["id" => "beer_id"]);
 ```
 
 ### Common Methods
@@ -169,7 +169,7 @@ Return the entity name.
 ## ImageEntity
 
 ```php
-$image = $client->image();
+$image = $client->Image();
 ```
 
 ### Operations
@@ -179,7 +179,7 @@ $image = $client->image();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->image()->load(["id" => "image_id"]);
+$result = $client->Image()->load(["id" => "image_id"]);
 ```
 
 ### Common Methods

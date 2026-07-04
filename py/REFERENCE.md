@@ -84,7 +84,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## BeerEntity
 
 ```python
-beer = client.beer
+beer = client.Beer()
 ```
 
 ### Fields
@@ -120,7 +120,9 @@ beer = client.beer
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.beer.list({})
+results = client.Beer().list({})
+for beer in results:
+    print(beer)
 ```
 
 #### `load(reqmatch, ctrl=None) -> dict`
@@ -128,7 +130,7 @@ results = client.beer.list({})
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.beer.load({"id": "beer_id"})
+result = client.Beer().load({"id": "beer_id"})
 ```
 
 ### Common Methods
@@ -163,7 +165,7 @@ Return the entity name.
 ## ImageEntity
 
 ```python
-image = client.image
+image = client.Image()
 ```
 
 ### Operations
@@ -173,7 +175,7 @@ image = client.image
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.image.load({"id": "image_id"})
+result = client.Image().load({"id": "image_id"})
 ```
 
 ### Common Methods

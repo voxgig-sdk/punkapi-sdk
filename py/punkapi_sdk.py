@@ -220,41 +220,21 @@ class PunkapiSDK:
         }
 
 
-    @property
-    def beer(self):
-        """Idiomatic facade: client.beer.list() / client.beer.load({"id": ...})."""
-        from entity.beer_entity import BeerEntity
-        cached = getattr(self, "_beer", None)
-        if cached is None:
-            cached = BeerEntity(self, None)
-            self._beer = cached
-        return cached
-
-    def Beer(self, data=None):
-        # Deprecated: use client.beer instead.
+    def Beer(self, data=None) -> "BeerEntity":
+        """Entity factory: client.Beer().list({}) / client.Beer().load({"id": ...})."""
         from entity.beer_entity import BeerEntity
         return BeerEntity(self, data)
 
 
-    @property
-    def image(self):
-        """Idiomatic facade: client.image.list() / client.image.load({"id": ...})."""
-        from entity.image_entity import ImageEntity
-        cached = getattr(self, "_image", None)
-        if cached is None:
-            cached = ImageEntity(self, None)
-            self._image = cached
-        return cached
-
-    def Image(self, data=None):
-        # Deprecated: use client.image instead.
+    def Image(self, data=None) -> "ImageEntity":
+        """Entity factory: client.Image().list({}) / client.Image().load({"id": ...})."""
         from entity.image_entity import ImageEntity
         return ImageEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "PunkapiSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -274,3 +254,10 @@ class PunkapiSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.beer_entity import BeerEntity
+    from entity.image_entity import ImageEntity

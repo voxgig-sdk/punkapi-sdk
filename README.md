@@ -26,9 +26,11 @@ import { PunkapiSDK } from '@voxgig-sdk/punkapi'
 
 const client = new PunkapiSDK()
 
-// List all beers
-const beers = await client.beer.list()
-console.log(beers.data)
+// List all beers (returns Beer[])
+const beers = await client.Beer().list()
+for (const beer of beers) {
+  console.log(beer)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -84,12 +86,13 @@ from punkapi_sdk import PunkapiSDK
 
 client = PunkapiSDK()
 
-# List all beers
-beers = client.beer.list()
-print(beers)
+# List all beers (returns a list, raises on error)
+beers = client.Beer().list({})
+for beer in beers:
+    print(beer)
 
-# Load a specific beer
-beer = client.beer.load({"id": "example_id"})
+# Load a specific beer (returns the record, raises on error)
+beer = client.Beer().load({"id": "example_id"})
 print(beer)
 ```
 
@@ -101,12 +104,12 @@ require_once 'punkapi_sdk.php';
 
 $client = new PunkapiSDK();
 
-// List all beers (throws on error)
-$beers = $client->beer()->list();
+// List all beers (returns an array; throws on error)
+$beers = $client->Beer()->list();
 print_r($beers);
 
-// Load a specific beer
-$beer = $client->beer()->load(["id" => "example_id"]);
+// Load a specific beer (returns the bare record; throws on error)
+$beer = $client->Beer()->load(["id" => "example_id"]);
 print_r($beer);
 ```
 
@@ -129,12 +132,12 @@ require_relative "Punkapi_sdk"
 
 client = PunkapiSDK.new
 
-# List all beers
-beers = client.beer.list
+# List all beers (returns an Array; raises on error)
+beers = client.Beer.list
 puts beers
 
-# Load a specific beer
-beer = client.beer.load({ "id" => "example_id" })
+# Load a specific beer (returns the bare record; raises on error)
+beer = client.Beer.load({ "id" => "example_id" })
 puts beer
 ```
 
@@ -146,11 +149,11 @@ local sdk = require("punkapi_sdk")
 local client = sdk.new()
 
 -- List all beers
-local beers, err = client:beer():list()
+local beers, err = client:Beer():list()
 print(beers)
 
 -- Load a specific beer
-local beer, err = client:beer():load({ id = "example_id" })
+local beer, err = client:Beer():load({ id = "example_id" })
 print(beer)
 ```
 
@@ -163,22 +166,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = PunkapiSDK.test()
-const result = await client.beer.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const beer = await client.Beer().load({ id: 1 })
+// beer is a bare Beer populated with mock data
+console.log(beer)
 ```
 
 ### Python
 
 ```python
 client = PunkapiSDK.test()
-result = client.beer.load({"id": "test01"})
+beer = client.Beer().load({"id": "test01"})
+print(beer)
 ```
 
 ### PHP
 
 ```php
-$client = PunkapiSDK::test();
-$result = $client->beer()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = PunkapiSDK::test([
+    "entity" => ["beer" => ["test01" => ["id" => "test01"]]],
+]);
+$beer = $client->Beer()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -193,15 +201,18 @@ result, err := client.Beer(nil).Load(
 ### Ruby
 
 ```ruby
-client = PunkapiSDK.test
-result = client.beer.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = PunkapiSDK.test({
+  "entity" => { "beer" => { "test01" => { "id" => "test01" } } },
+})
+beer = client.Beer.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:beer():load({ id = "test01" })
+local result, err = client:Beer():load({ id = "test01" })
 ```
 
 ## How it works
@@ -249,6 +260,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

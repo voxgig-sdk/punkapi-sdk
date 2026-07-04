@@ -121,7 +121,7 @@ Alias for `PunkapiSDK.test()`.
 ## BeerEntity
 
 ```ts
-const beer = client.beer
+const beer = client.Beer()
 ```
 
 ### Fields
@@ -157,7 +157,7 @@ const beer = client.beer
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.beer.list()
+const results = await client.Beer().list()
 ```
 
 #### `load(match: object, ctrl?: object)`
@@ -165,7 +165,7 @@ const results = await client.beer.list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.beer.load({ id: 'beer_id' })
+const result = await client.Beer().load({ id: 'beer_id' })
 ```
 
 ### Common Methods
@@ -199,7 +199,7 @@ Return a copy of the entity options.
 ## ImageEntity
 
 ```ts
-const image = client.image
+const image = client.Image()
 ```
 
 ### Operations
@@ -209,7 +209,7 @@ const image = client.image
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.image.load({ id: 'image_id' })
+const result = await client.Image().load({ id: 'image_id' })
 ```
 
 ### Common Methods
