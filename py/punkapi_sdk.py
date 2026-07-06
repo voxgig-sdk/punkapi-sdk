@@ -221,13 +221,13 @@ class PunkapiSDK:
 
 
     def Beer(self, data=None) -> "BeerEntity":
-        """Entity factory: client.Beer().list({}) / client.Beer().load({"id": ...})."""
+        """Entity factory: client.Beer().list() / client.Beer().load({"id": ...})."""
         from entity.beer_entity import BeerEntity
         return BeerEntity(self, data)
 
 
     def Image(self, data=None) -> "ImageEntity":
-        """Entity factory: client.Image().list({}) / client.Image().load({"id": ...})."""
+        """Entity factory: client.Image().list() / client.Image().load({"id": ...})."""
         from entity.image_entity import ImageEntity
         return ImageEntity(self, data)
 

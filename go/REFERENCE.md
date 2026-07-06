@@ -101,27 +101,27 @@ beer := client.Beer(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abv` | ``$NUMBER`` | No |  |
-| `attenuation_level` | ``$NUMBER`` | No |  |
-| `boil_volume` | ``$OBJECT`` | No |  |
-| `brewers_tip` | ``$STRING`` | No |  |
-| `contributed_by` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `ebc` | ``$NUMBER`` | No |  |
-| `first_brewed` | ``$STRING`` | No |  |
-| `food_pairing` | ``$ARRAY`` | No |  |
-| `ibu` | ``$NUMBER`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `ingredient` | ``$OBJECT`` | No |  |
-| `method` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `ph` | ``$NUMBER`` | No |  |
-| `srm` | ``$NUMBER`` | No |  |
-| `tagline` | ``$STRING`` | No |  |
-| `target_fg` | ``$NUMBER`` | No |  |
-| `target_og` | ``$NUMBER`` | No |  |
-| `volume` | ``$OBJECT`` | No |  |
+| `abv` | `float64` | No |  |
+| `attenuation_level` | `float64` | No |  |
+| `boil_volume` | `map[string]any` | No |  |
+| `brewers_tip` | `string` | No |  |
+| `contributed_by` | `string` | No |  |
+| `description` | `string` | No |  |
+| `ebc` | `float64` | No |  |
+| `first_brewed` | `string` | No |  |
+| `food_pairing` | `[]any` | No |  |
+| `ibu` | `float64` | No |  |
+| `id` | `int` | No |  |
+| `image` | `string` | No |  |
+| `ingredient` | `map[string]any` | No |  |
+| `method` | `map[string]any` | No |  |
+| `name` | `string` | No |  |
+| `ph` | `float64` | No |  |
+| `srm` | `float64` | No |  |
+| `tagline` | `string` | No |  |
+| `target_fg` | `float64` | No |  |
+| `target_og` | `float64` | No |  |
+| `volume` | `map[string]any` | No |  |
 
 ### Operations
 

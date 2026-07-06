@@ -38,8 +38,7 @@ type BeerLoadMatch struct {
 	Id int `json:"id"`
 }
 
-// BeerListMatch mirrors the beer fields as an all-optional match
-// filter (Go analog of Partial<Beer>).
+// BeerListMatch is the typed request payload for Beer.ListTyped.
 type BeerListMatch struct {
 	Abv *float64 `json:"abv,omitempty"`
 	AttenuationLevel *float64 `json:"attenuation_level,omitempty"`

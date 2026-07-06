@@ -4,6 +4,8 @@
 
 The Ruby SDK for the Punkapi API — an entity-oriented client using idiomatic Ruby conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Beer` — with named operations (`list`/`load`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -35,7 +37,7 @@ begin
   # list returns an Array of Beer records — iterate directly.
   beers = client.Beer.list
   beers.each do |item|
-    puts "#{item["id"]} #{item["name"]}"
+    puts "#{item["id"]} #{item["abv"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -52,6 +54,33 @@ begin
 rescue => err
   warn "load failed: #{err}"
 end
+```
+
+
+## Error handling
+
+Entity operations raise on failure, so rescue them:
+
+```ruby
+begin
+  beers = client.Beer.list()
+rescue => err
+  warn "list failed: #{err}"
+end
+```
+
+`direct` does **not** raise — it returns the result hash. Branch on
+`ok`; on failure `status` holds the HTTP status (for error responses) and
+`err` holds a transport error, so read both defensively:
+
+```ruby
+result = client.direct({
+  "path" => "/api/resource/{id}",
+  "method" => "GET",
+  "params" => { "id" => "example_id" },
+})
+
+warn "request failed: #{result["err"] || "HTTP #{result["status"]}"}" unless result["ok"]
 ```
 
 
@@ -72,7 +101,9 @@ if result["ok"]
   puts result["status"]  # 200
   puts result["data"]    # response body
 else
-  warn result["err"]
+  # On an HTTP error status there is no err (only a transport failure sets
+  # it), so fall back to the status code.
+  warn(result["err"] || "HTTP #{result["status"]}")
 end
 ```
 
@@ -103,8 +134,8 @@ client = PunkapiSDK.test({
   "entity" => { "beer" => { "test01" => { "id" => "test01" } } },
 })
 
-# load returns the bare mock record (raises on error).
-beer = client.Beer.load({ "id" => "test01" })
+# Entity ops return the bare mock record (raises on error).
+beer = client.Beer.list()
 puts beer
 ```
 
@@ -191,10 +222,7 @@ All entities share the same interface.
 | Method | Signature | Description |
 | --- | --- | --- |
 | `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
-| `list` | `(reqmatch, ctrl) -> Array` | List entities matching the criteria. Raises on error. |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
-| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
-| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
+| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all). Raises on error. |
 | `data_get` | `() -> Hash` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> Hash` | Get entity match criteria. |
@@ -280,27 +308,27 @@ Create an instance: `beer = client.Beer`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `abv` | ``$NUMBER`` |  |
-| `attenuation_level` | ``$NUMBER`` |  |
-| `boil_volume` | ``$OBJECT`` |  |
-| `brewers_tip` | ``$STRING`` |  |
-| `contributed_by` | ``$STRING`` |  |
-| `description` | ``$STRING`` |  |
-| `ebc` | ``$NUMBER`` |  |
-| `first_brewed` | ``$STRING`` |  |
-| `food_pairing` | ``$ARRAY`` |  |
-| `ibu` | ``$NUMBER`` |  |
-| `id` | ``$INTEGER`` |  |
-| `image` | ``$STRING`` |  |
-| `ingredient` | ``$OBJECT`` |  |
-| `method` | ``$OBJECT`` |  |
-| `name` | ``$STRING`` |  |
-| `ph` | ``$NUMBER`` |  |
-| `srm` | ``$NUMBER`` |  |
-| `tagline` | ``$STRING`` |  |
-| `target_fg` | ``$NUMBER`` |  |
-| `target_og` | ``$NUMBER`` |  |
-| `volume` | ``$OBJECT`` |  |
+| `abv` | `Float` |  |
+| `attenuation_level` | `Float` |  |
+| `boil_volume` | `Hash` |  |
+| `brewers_tip` | `String` |  |
+| `contributed_by` | `String` |  |
+| `description` | `String` |  |
+| `ebc` | `Float` |  |
+| `first_brewed` | `String` |  |
+| `food_pairing` | `Array` |  |
+| `ibu` | `Float` |  |
+| `id` | `Integer` |  |
+| `image` | `String` |  |
+| `ingredient` | `Hash` |  |
+| `method` | `Hash` |  |
+| `name` | `String` |  |
+| `ph` | `Float` |  |
+| `srm` | `Float` |  |
+| `tagline` | `String` |  |
+| `target_fg` | `Float` |  |
+| `target_og` | `Float` |  |
+| `volume` | `Hash` |  |
 
 #### Example: Load
 
@@ -335,12 +363,16 @@ image = client.Image.load({ "id" => "image_id" })
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -357,8 +389,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as a second return value.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -402,14 +435,14 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
 beer = client.Beer
-beer.load({ "id" => "example_id" })
+beer.list()
 
-# beer.data_get now returns the loaded beer data
+# beer.data_get now returns the beer data from the last list
 # beer.match_get returns the last match criteria
 ```
 

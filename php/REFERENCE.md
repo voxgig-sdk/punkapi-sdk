@@ -49,11 +49,11 @@ Create a new `BeerEntity` instance. Pass `null` for no initial data.
 
 Create a new `ImageEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): PunkapiUtility`
 
 Return a copy of the SDK utility object.
 
@@ -96,36 +96,36 @@ $beer = $client->Beer();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abv` | ``$NUMBER`` | No |  |
-| `attenuation_level` | ``$NUMBER`` | No |  |
-| `boil_volume` | ``$OBJECT`` | No |  |
-| `brewers_tip` | ``$STRING`` | No |  |
-| `contributed_by` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `ebc` | ``$NUMBER`` | No |  |
-| `first_brewed` | ``$STRING`` | No |  |
-| `food_pairing` | ``$ARRAY`` | No |  |
-| `ibu` | ``$NUMBER`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `ingredient` | ``$OBJECT`` | No |  |
-| `method` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `ph` | ``$NUMBER`` | No |  |
-| `srm` | ``$NUMBER`` | No |  |
-| `tagline` | ``$STRING`` | No |  |
-| `target_fg` | ``$NUMBER`` | No |  |
-| `target_og` | ``$NUMBER`` | No |  |
-| `volume` | ``$OBJECT`` | No |  |
+| `abv` | `float` | No |  |
+| `attenuation_level` | `float` | No |  |
+| `boil_volume` | `array` | No |  |
+| `brewers_tip` | `string` | No |  |
+| `contributed_by` | `string` | No |  |
+| `description` | `string` | No |  |
+| `ebc` | `float` | No |  |
+| `first_brewed` | `string` | No |  |
+| `food_pairing` | `array` | No |  |
+| `ibu` | `float` | No |  |
+| `id` | `int` | No |  |
+| `image` | `string` | No |  |
+| `ingredient` | `array` | No |  |
+| `method` | `array` | No |  |
+| `name` | `string` | No |  |
+| `ph` | `float` | No |  |
+| `srm` | `float` | No |  |
+| `tagline` | `string` | No |  |
+| `target_fg` | `float` | No |  |
+| `target_og` | `float` | No |  |
+| `volume` | `array` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Beer()->list([]);
+$results = $client->Beer()->list();
 ```
 
 #### `load(array $reqmatch, ?array $ctrl = null): mixed`
@@ -138,19 +138,19 @@ $result = $client->Beer()->load(["id" => "beer_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -159,7 +159,7 @@ Set the entity match criteria.
 Create a new `BeerEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -184,19 +184,19 @@ $result = $client->Image()->load(["id" => "image_id"]);
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -205,7 +205,7 @@ Set the entity match criteria.
 Create a new `ImageEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

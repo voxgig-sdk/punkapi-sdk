@@ -91,36 +91,36 @@ beer = client.Beer()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abv` | ``$NUMBER`` | No |  |
-| `attenuation_level` | ``$NUMBER`` | No |  |
-| `boil_volume` | ``$OBJECT`` | No |  |
-| `brewers_tip` | ``$STRING`` | No |  |
-| `contributed_by` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `ebc` | ``$NUMBER`` | No |  |
-| `first_brewed` | ``$STRING`` | No |  |
-| `food_pairing` | ``$ARRAY`` | No |  |
-| `ibu` | ``$NUMBER`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `ingredient` | ``$OBJECT`` | No |  |
-| `method` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `ph` | ``$NUMBER`` | No |  |
-| `srm` | ``$NUMBER`` | No |  |
-| `tagline` | ``$STRING`` | No |  |
-| `target_fg` | ``$NUMBER`` | No |  |
-| `target_og` | ``$NUMBER`` | No |  |
-| `volume` | ``$OBJECT`` | No |  |
+| `abv` | `float` | No |  |
+| `attenuation_level` | `float` | No |  |
+| `boil_volume` | `dict` | No |  |
+| `brewers_tip` | `str` | No |  |
+| `contributed_by` | `str` | No |  |
+| `description` | `str` | No |  |
+| `ebc` | `float` | No |  |
+| `first_brewed` | `str` | No |  |
+| `food_pairing` | `list` | No |  |
+| `ibu` | `float` | No |  |
+| `id` | `int` | No |  |
+| `image` | `str` | No |  |
+| `ingredient` | `dict` | No |  |
+| `method` | `dict` | No |  |
+| `name` | `str` | No |  |
+| `ph` | `float` | No |  |
+| `srm` | `float` | No |  |
+| `tagline` | `str` | No |  |
+| `target_fg` | `float` | No |  |
+| `target_og` | `float` | No |  |
+| `volume` | `dict` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Beer().list({})
+results = client.Beer().list()
 for beer in results:
     print(beer)
 ```

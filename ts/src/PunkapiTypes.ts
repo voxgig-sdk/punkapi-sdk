@@ -33,7 +33,29 @@ export interface BeerLoadMatch {
   id: number
 }
 
-export type BeerListMatch = Partial<Beer>
+export interface BeerListMatch {
+  abv?: number
+  attenuation_level?: number
+  boil_volume?: Record<string, any>
+  brewers_tip?: string
+  contributed_by?: string
+  description?: string
+  ebc?: number
+  first_brewed?: string
+  food_pairing?: any[]
+  ibu?: number
+  id?: number
+  image?: string
+  ingredient?: Record<string, any>
+  method?: Record<string, any>
+  name?: string
+  ph?: number
+  srm?: number
+  tagline?: string
+  target_fg?: number
+  target_og?: number
+  volume?: Record<string, any>
+}
 
 export interface Image {
 }

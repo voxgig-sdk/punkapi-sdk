@@ -106,7 +106,7 @@ BeerLoadMatch = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Beer#list (any subset of Beer fields).
+# Request payload for Beer#list.
 #
 # @!attribute [rw] abv
 #   @return [Float, nil]

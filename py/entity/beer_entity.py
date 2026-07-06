@@ -65,8 +65,13 @@ class BeerEntity:
         return vs.clone(self._match)
 
     
-    def load(self, reqmatch: BeerLoadMatch, ctrl=None) -> Beer:
+    def load(self, reqmatch=None, ctrl=None) -> Beer:
         utility = self._utility
+        # reqmatch is optional: an entity with no id-like key loads with no
+        # match. Treat None as an empty match so client.Beer().load()
+        # works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "load",
             "ctrl": ctrl,
@@ -87,8 +92,12 @@ class BeerEntity:
 
 
     
-    def list(self, reqmatch: BeerListMatch, ctrl=None) -> list[Beer]:
+    def list(self, reqmatch=None, ctrl=None) -> list[Beer]:
         utility = self._utility
+        # reqmatch is optional: an omitted match lists all records. Treat None
+        # as an empty match so client.Beer().list() works with no args.
+        if reqmatch is None:
+            reqmatch = {}
         ctx = utility.make_context({
             "opname": "list",
             "ctrl": ctrl,

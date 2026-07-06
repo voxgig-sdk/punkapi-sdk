@@ -67,10 +67,12 @@ class BeerEntity
   
   # Load a single Beer.
   #
-  # @param reqmatch [BeerLoadMatch, Hash, nil] match criteria (id/query fields)
+  # @param reqmatch [BeerLoadMatch, Hash, nil] match criteria (id/query fields);
+  #   optional — an entity with no id-like key loads with no match (nil is treated
+  #   as an empty match, so client.Beer.load works with no args).
   # @param ctrl [Object, nil] optional per-call control
   # @return [Beer, Hash] the loaded Beer; raises PunkapiError on failure
-  def load(reqmatch, ctrl = nil)
+  def load(reqmatch = nil, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
       "opname" => "load",
@@ -95,10 +97,11 @@ class BeerEntity
   
   # List Beer items matching the given filter.
   #
-  # @param reqmatch [BeerListMatch, Hash, nil] match filter (any subset of Beer fields)
+  # @param reqmatch [BeerListMatch, Hash, nil] match filter (any subset of
+  #   Beer fields); defaults to nil, treated as an empty match that lists all.
   # @param ctrl [Object, nil] optional per-call control
   # @return [Array<Beer>, Array] the matching Beer items; raises PunkapiError on failure
-  def list(reqmatch, ctrl = nil)
+  def list(reqmatch = nil, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({
       "opname" => "list",
@@ -108,11 +111,23 @@ class BeerEntity
       "reqmatch" => reqmatch,
     }, @_entctx)
 
-    _run_op(ctx) do
+    records = _run_op(ctx) do
       if ctx.result
         @_match = ctx.result.resmatch if ctx.result.resmatch
       end
     end
+
+    # list yields the BARE Array of records — each an accessible Hash — so
+    # callers can index item["id"] directly, matching py/lua/go. make_result
+    # wraps each entry as an Entity instance for internal use; unwrap those
+    # back to their bare record Hashes here (load/create/etc. are unaffected).
+    if records.is_a?(Array)
+      records = records.map do |item|
+        item.respond_to?(:data_get) ? item.data_get : item
+      end
+    end
+
+    records
   end
 
 

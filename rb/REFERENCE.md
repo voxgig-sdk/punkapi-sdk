@@ -8,7 +8,7 @@ Complete API reference for the Punkapi Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'punkapi_sdk'
+require_relative 'Punkapi_sdk'
 
 client = PunkapiSDK.new(options)
 ```
@@ -97,36 +97,36 @@ beer = client.Beer
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abv` | ``$NUMBER`` | No |  |
-| `attenuation_level` | ``$NUMBER`` | No |  |
-| `boil_volume` | ``$OBJECT`` | No |  |
-| `brewers_tip` | ``$STRING`` | No |  |
-| `contributed_by` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `ebc` | ``$NUMBER`` | No |  |
-| `first_brewed` | ``$STRING`` | No |  |
-| `food_pairing` | ``$ARRAY`` | No |  |
-| `ibu` | ``$NUMBER`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `ingredient` | ``$OBJECT`` | No |  |
-| `method` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `ph` | ``$NUMBER`` | No |  |
-| `srm` | ``$NUMBER`` | No |  |
-| `tagline` | ``$STRING`` | No |  |
-| `target_fg` | ``$NUMBER`` | No |  |
-| `target_og` | ``$NUMBER`` | No |  |
-| `volume` | ``$OBJECT`` | No |  |
+| `abv` | `Float` | No |  |
+| `attenuation_level` | `Float` | No |  |
+| `boil_volume` | `Hash` | No |  |
+| `brewers_tip` | `String` | No |  |
+| `contributed_by` | `String` | No |  |
+| `description` | `String` | No |  |
+| `ebc` | `Float` | No |  |
+| `first_brewed` | `String` | No |  |
+| `food_pairing` | `Array` | No |  |
+| `ibu` | `Float` | No |  |
+| `id` | `Integer` | No |  |
+| `image` | `String` | No |  |
+| `ingredient` | `Hash` | No |  |
+| `method` | `Hash` | No |  |
+| `name` | `String` | No |  |
+| `ph` | `Float` | No |  |
+| `srm` | `Float` | No |  |
+| `tagline` | `String` | No |  |
+| `target_fg` | `Float` | No |  |
+| `target_og` | `Float` | No |  |
+| `volume` | `Hash` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Beer.list(nil)
+results = client.Beer.list
 ```
 
 #### `load(reqmatch, ctrl = nil) -> result`

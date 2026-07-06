@@ -33,6 +33,27 @@
 ---@field id number
 
 ---@class BeerListMatch
+---@field abv? number
+---@field attenuation_level? number
+---@field boil_volume? table
+---@field brewers_tip? string
+---@field contributed_by? string
+---@field description? string
+---@field ebc? number
+---@field first_brewed? string
+---@field food_pairing? table
+---@field ibu? number
+---@field id? number
+---@field image? string
+---@field ingredient? table
+---@field method? table
+---@field name? string
+---@field ph? number
+---@field srm? number
+---@field tagline? string
+---@field target_fg? number
+---@field target_og? number
+---@field volume? table
 
 ---@class Image
 

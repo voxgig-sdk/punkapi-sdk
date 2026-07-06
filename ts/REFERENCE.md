@@ -128,27 +128,27 @@ const beer = client.Beer()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abv` | ``$NUMBER`` | No |  |
-| `attenuation_level` | ``$NUMBER`` | No |  |
-| `boil_volume` | ``$OBJECT`` | No |  |
-| `brewers_tip` | ``$STRING`` | No |  |
-| `contributed_by` | ``$STRING`` | No |  |
-| `description` | ``$STRING`` | No |  |
-| `ebc` | ``$NUMBER`` | No |  |
-| `first_brewed` | ``$STRING`` | No |  |
-| `food_pairing` | ``$ARRAY`` | No |  |
-| `ibu` | ``$NUMBER`` | No |  |
-| `id` | ``$INTEGER`` | No |  |
-| `image` | ``$STRING`` | No |  |
-| `ingredient` | ``$OBJECT`` | No |  |
-| `method` | ``$OBJECT`` | No |  |
-| `name` | ``$STRING`` | No |  |
-| `ph` | ``$NUMBER`` | No |  |
-| `srm` | ``$NUMBER`` | No |  |
-| `tagline` | ``$STRING`` | No |  |
-| `target_fg` | ``$NUMBER`` | No |  |
-| `target_og` | ``$NUMBER`` | No |  |
-| `volume` | ``$OBJECT`` | No |  |
+| `abv` | `number` | No |  |
+| `attenuation_level` | `number` | No |  |
+| `boil_volume` | `Record<string, any>` | No |  |
+| `brewers_tip` | `string` | No |  |
+| `contributed_by` | `string` | No |  |
+| `description` | `string` | No |  |
+| `ebc` | `number` | No |  |
+| `first_brewed` | `string` | No |  |
+| `food_pairing` | `any[]` | No |  |
+| `ibu` | `number` | No |  |
+| `id` | `number` | No |  |
+| `image` | `string` | No |  |
+| `ingredient` | `Record<string, any>` | No |  |
+| `method` | `Record<string, any>` | No |  |
+| `name` | `string` | No |  |
+| `ph` | `number` | No |  |
+| `srm` | `number` | No |  |
+| `tagline` | `string` | No |  |
+| `target_fg` | `number` | No |  |
+| `target_og` | `number` | No |  |
+| `volume` | `Record<string, any>` | No |  |
 
 ### Operations
 
@@ -165,7 +165,7 @@ const results = await client.Beer().list()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Beer().load({ id: 'beer_id' })
+const result = await client.Beer().load({ id: 1 })
 ```
 
 ### Common Methods
