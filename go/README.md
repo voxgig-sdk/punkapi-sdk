@@ -350,7 +350,7 @@ Create an instance: `beer := client.Beer(nil)`
 #### Example: Load
 
 ```go
-beer, err := client.Beer(nil).Load(map[string]any{"id": "beer_id"}, nil)
+beer, err := client.Beer(nil).Load(map[string]any{"id": 1}, nil)
 if err != nil {
     panic(err)
 }

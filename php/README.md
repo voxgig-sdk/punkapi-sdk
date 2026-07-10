@@ -50,7 +50,7 @@ try {
 ```php
 try {
     // load() returns the bare Beer record (throws on error).
-    $beer = $client->Beer()->load(["id" => "example_id"]);
+    $beer = $client->Beer()->load(["id" => 1]);
     print_r($beer);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -344,7 +344,7 @@ Create an instance: `$beer = $client->Beer();`
 
 ```php
 // load() returns the bare Beer record (throws on error).
-$beer = $client->Beer()->load(["id" => "beer_id"]);
+$beer = $client->Beer()->load(["id" => 1]);
 ```
 
 #### Example: List

@@ -20,9 +20,9 @@ main: {
           url: "https://punkapi-alxiw.amvera.io/v3"
         }
       ]
+      summary: "BrewDog's DIY Dog beer catalogue as an API."
       title: "PunkAPI"
       version: "3.0.0"
+      website: "https://punkapi-alxiw.amvera.io"
     }
   }
-}
-

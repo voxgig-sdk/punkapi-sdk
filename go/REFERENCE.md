@@ -95,6 +95,7 @@ same parameters as `Direct()`.
 
 ```go
 beer := client.Beer(nil)
+fmt.Println(beer.GetName()) // "beer"
 ```
 
 ### Fields
@@ -131,6 +132,10 @@ List entities matching the given criteria. Returns an array.
 
 ```go
 results, err := client.Beer(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(results)
 ```
 
 #### `Load(reqmatch, ctrl map[string]any) (any, error)`
@@ -138,7 +143,11 @@ results, err := client.Beer(nil).List(nil, nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Beer(nil).Load(map[string]any{"id": "beer_id"}, nil)
+result, err := client.Beer(nil).Load(map[string]any{"id": 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -169,6 +178,7 @@ Return the entity name.
 
 ```go
 image := client.Image(nil)
+fmt.Println(image.GetName()) // "image"
 ```
 
 ### Operations
@@ -179,6 +189,10 @@ Load a single entity matching the given criteria.
 
 ```go
 result, err := client.Image(nil).Load(map[string]any{"id": "image_id"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

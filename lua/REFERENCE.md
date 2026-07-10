@@ -131,7 +131,7 @@ local results, err = client:Beer():list()
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Beer():load({ id = "beer_id" })
+local result, err = client:Beer():load({ id = 1 })
 ```
 
 ### Common Methods

@@ -49,7 +49,7 @@ end
 ```ruby
 begin
   # load returns the bare Beer record (raises on error).
-  beer = client.Beer.load({ "id" => "example_id" })
+  beer = client.Beer.load({ "id" => 1 })
   puts beer
 rescue => err
   warn "load failed: #{err}"
@@ -334,7 +334,7 @@ Create an instance: `beer = client.Beer`
 
 ```ruby
 # load returns the bare Beer record (raises on error).
-beer = client.Beer.load({ "id" => "beer_id" })
+beer = client.Beer.load({ "id" => 1 })
 ```
 
 #### Example: List

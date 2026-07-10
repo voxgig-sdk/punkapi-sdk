@@ -50,7 +50,7 @@ end
 ### 3. Load a beer
 
 ```lua
-local beer, err = client:Beer():load({ id = "example_id" })
+local beer, err = client:Beer():load({ id = 1 })
 if err then error(err) end
 print(beer)
 ```
@@ -322,7 +322,7 @@ Create an instance: `local beer = client:Beer(nil)`
 #### Example: Load
 
 ```lua
-local beer, err = client:Beer():load({ id = "beer_id" })
+local beer, err = client:Beer():load({ id = 1 })
 ```
 
 #### Example: List

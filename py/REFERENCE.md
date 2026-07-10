@@ -130,7 +130,7 @@ for beer in results:
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Beer().load({"id": "beer_id"})
+result = client.Beer().load({"id": 1})
 ```
 
 ### Common Methods

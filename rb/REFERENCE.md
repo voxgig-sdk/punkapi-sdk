@@ -134,7 +134,7 @@ results = client.Beer.list
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Beer.load({ "id" => "beer_id" })
+result = client.Beer.load({ "id" => 1 })
 ```
 
 ### Common Methods
