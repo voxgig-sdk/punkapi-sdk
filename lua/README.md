@@ -43,7 +43,7 @@ local beers, err = client:Beer():list()
 if err then error(err) end
 
 for _, item in ipairs(beers) do
-  print(item["id"], item["brewers_tip"])
+  print(item["id"], item["brewers_tips"])
 end
 ```
 
@@ -245,7 +245,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | `abv` |  |
 | `attenuation_level` |  |
 | `boil_volume` |  |
-| `brewers_tip` |  |
+| `brewers_tips` |  |
 | `contributed_by` |  |
 | `description` |  |
 | `ebc` |  |
@@ -254,7 +254,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 | `ibu` |  |
 | `id` |  |
 | `image` |  |
-| `ingredient` |  |
+| `ingredients` |  |
 | `method` |  |
 | `name` |  |
 | `ph` |  |
@@ -300,7 +300,7 @@ Create an instance: `local beer = client:Beer(nil)`
 | `abv` | `number` |  |
 | `attenuation_level` | `number` |  |
 | `boil_volume` | `table` |  |
-| `brewers_tip` | `string` |  |
+| `brewers_tips` | `string` |  |
 | `contributed_by` | `string` |  |
 | `description` | `string` |  |
 | `ebc` | `number` |  |
@@ -309,7 +309,7 @@ Create an instance: `local beer = client:Beer(nil)`
 | `ibu` | `number` |  |
 | `id` | `number` |  |
 | `image` | `string` |  |
-| `ingredient` | `table` |  |
+| `ingredients` | `table` |  |
 | `method` | `table` |  |
 | `name` | `string` |  |
 | `ph` | `number` |  |

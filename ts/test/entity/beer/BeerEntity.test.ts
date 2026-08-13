@@ -63,13 +63,13 @@ describe('BeerEntity', async () => {
     const beer_ref01_ent = client.Beer()
     const beer_ref01_match: any = {}
 
-    const beer_ref01_list = await beer_ref01_ent.list(beer_ref01_match)
+    const beer_ref01_list = (await beer_ref01_ent.list(beer_ref01_match)).map((e: any) => e.data())
 
 
     // LOAD
     const beer_ref01_match_dt0: any = {}
     beer_ref01_match_dt0.id = beer_ref01_data.id
-    const beer_ref01_data_dt0 = await beer_ref01_ent.load(beer_ref01_match_dt0)
+    const beer_ref01_data_dt0 = (await beer_ref01_ent.load(beer_ref01_match_dt0)).data()
     assert(beer_ref01_data_dt0.id === beer_ref01_data.id)
 
 

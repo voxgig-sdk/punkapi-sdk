@@ -49,7 +49,7 @@ try {
 
 ```php
 try {
-    // load() returns the bare Beer record (throws on error).
+    // load() returns the ENTITY — call data_get() for the Beer record (throws on error).
     $beer = $client->Beer()->load(["id" => 1]);
     print_r($beer);
 } catch (\Throwable $err) {
@@ -140,7 +140,8 @@ $client = PunkapiSDK::test([
     "entity" => ["beer" => ["test01" => ["id" => "test01"]]],
 ]);
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $beer = $client->Beer()->list();
 print_r($beer);
 ```
@@ -241,7 +242,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -266,7 +267,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 | `abv` |  |
 | `attenuation_level` |  |
 | `boil_volume` |  |
-| `brewers_tip` |  |
+| `brewers_tips` |  |
 | `contributed_by` |  |
 | `description` |  |
 | `ebc` |  |
@@ -275,7 +276,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 | `ibu` |  |
 | `id` |  |
 | `image` |  |
-| `ingredient` |  |
+| `ingredients` |  |
 | `method` |  |
 | `name` |  |
 | `ph` |  |
@@ -321,7 +322,7 @@ Create an instance: `$beer = $client->Beer();`
 | `abv` | `float` |  |
 | `attenuation_level` | `float` |  |
 | `boil_volume` | `array` |  |
-| `brewers_tip` | `string` |  |
+| `brewers_tips` | `string` |  |
 | `contributed_by` | `string` |  |
 | `description` | `string` |  |
 | `ebc` | `float` |  |
@@ -330,7 +331,7 @@ Create an instance: `$beer = $client->Beer();`
 | `ibu` | `float` |  |
 | `id` | `int` |  |
 | `image` | `string` |  |
-| `ingredient` | `array` |  |
+| `ingredients` | `array` |  |
 | `method` | `array` |  |
 | `name` | `string` |  |
 | `ph` | `float` |  |
@@ -343,7 +344,7 @@ Create an instance: `$beer = $client->Beer();`
 #### Example: Load
 
 ```php
-// load() returns the bare Beer record (throws on error).
+// load() returns the ENTITY — call data_get() for the Beer record (throws on error).
 $beer = $client->Beer()->load(["id" => 1]);
 ```
 
@@ -368,7 +369,7 @@ Create an instance: `$image = $client->Image();`
 #### Example: Load
 
 ```php
-// load() returns the bare Image record (throws on error).
+// load() returns the ENTITY — call data_get() for the Image record (throws on error).
 $image = $client->Image()->load(["id" => "image_id"]);
 ```
 

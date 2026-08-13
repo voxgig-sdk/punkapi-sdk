@@ -94,7 +94,7 @@ beer = client.Beer()
 | `abv` | `float` | No |  |
 | `attenuation_level` | `float` | No |  |
 | `boil_volume` | `dict` | No |  |
-| `brewers_tip` | `str` | No |  |
+| `brewers_tips` | `str` | No |  |
 | `contributed_by` | `str` | No |  |
 | `description` | `str` | No |  |
 | `ebc` | `float` | No |  |
@@ -103,7 +103,7 @@ beer = client.Beer()
 | `ibu` | `float` | No |  |
 | `id` | `int` | No |  |
 | `image` | `str` | No |  |
-| `ingredient` | `dict` | No |  |
+| `ingredients` | `dict` | No |  |
 | `method` | `dict` | No |  |
 | `name` | `str` | No |  |
 | `ph` | `float` | No |  |

@@ -105,7 +105,7 @@ fmt.Println(beer.GetName()) // "beer"
 | `abv` | `float64` | No |  |
 | `attenuation_level` | `float64` | No |  |
 | `boil_volume` | `map[string]any` | No |  |
-| `brewers_tip` | `string` | No |  |
+| `brewers_tips` | `string` | No |  |
 | `contributed_by` | `string` | No |  |
 | `description` | `string` | No |  |
 | `ebc` | `float64` | No |  |
@@ -114,7 +114,7 @@ fmt.Println(beer.GetName()) // "beer"
 | `ibu` | `float64` | No |  |
 | `id` | `int` | No |  |
 | `image` | `string` | No |  |
-| `ingredient` | `map[string]any` | No |  |
+| `ingredients` | `map[string]any` | No |  |
 | `method` | `map[string]any` | No |  |
 | `name` | `string` | No |  |
 | `ph` | `float64` | No |  |

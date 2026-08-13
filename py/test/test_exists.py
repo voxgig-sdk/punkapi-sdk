@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# Punkapi SDK exists test
 
 import pytest
 from punkapi_sdk import PunkapiSDK

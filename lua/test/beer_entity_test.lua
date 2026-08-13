@@ -97,7 +97,7 @@ describe("BeerEntity", function()
     }
     local beer_ref01_data_dt0_loaded, err = beer_ref01_ent:load(beer_ref01_match_dt0, nil)
     assert.is_nil(err)
-    local beer_ref01_data_dt0_load_result = helpers.to_map(beer_ref01_data_dt0_loaded)
+    local beer_ref01_data_dt0_load_result = helpers.to_map(type(beer_ref01_data_dt0_loaded) == 'table' and beer_ref01_data_dt0_loaded.data_get and beer_ref01_data_dt0_loaded:data_get() or beer_ref01_data_dt0_loaded)
     assert.is_not_nil(beer_ref01_data_dt0_load_result)
     assert.are.equal(beer_ref01_data_dt0_load_result["id"], beer_ref01_data["id"])
 

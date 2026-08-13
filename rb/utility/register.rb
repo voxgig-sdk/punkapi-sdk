@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ PunkapiUtility.registrar = ->(u) {
   u.prepare_params = PunkapiUtilities::PrepareParams
   u.prepare_path = PunkapiUtilities::PreparePath
   u.prepare_query = PunkapiUtilities::PrepareQuery
+  u.graphql_body = PunkapiUtilities::GraphqlBody
+  u.graphql_errors = PunkapiUtilities::GraphqlErrors
   u.result_basic = PunkapiUtilities::ResultBasic
   u.result_body = PunkapiUtilities::ResultBody
   u.result_headers = PunkapiUtilities::ResultHeaders

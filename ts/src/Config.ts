@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'Punkapi',
   }
 
 
@@ -80,7 +80,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "brewers_tip",
+          "name": "brewers_tips",
           "req": false,
           "type": "`$STRING`",
           "index$": 3
@@ -143,7 +143,7 @@ class Config {
         },
         {
           "active": true,
-          "name": "ingredient",
+          "name": "ingredients",
           "req": false,
           "type": "`$OBJECT`",
           "index$": 12
@@ -333,6 +333,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/beers",
               "parts": [
@@ -364,6 +365,7 @@ class Config {
             {
               "active": true,
               "args": {},
+              "kind": "http",
               "method": "GET",
               "orig": "/beers/random",
               "parts": [
@@ -401,6 +403,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/beers/{id}",
               "parts": [
@@ -450,6 +453,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/images/{filename}",
               "parts": [

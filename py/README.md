@@ -52,7 +52,7 @@ except Exception as err:
 
 ### 3. Load a beer
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -136,7 +136,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = PunkapiSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 beer = client.Beer().list()
 # beer contains the mock response record
 ```
@@ -234,7 +235,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -259,7 +260,7 @@ On error, `ok` is `False` and `err` contains the error value.
 | `abv` |  |
 | `attenuation_level` |  |
 | `boil_volume` |  |
-| `brewers_tip` |  |
+| `brewers_tips` |  |
 | `contributed_by` |  |
 | `description` |  |
 | `ebc` |  |
@@ -268,7 +269,7 @@ On error, `ok` is `False` and `err` contains the error value.
 | `ibu` |  |
 | `id` |  |
 | `image` |  |
-| `ingredient` |  |
+| `ingredients` |  |
 | `method` |  |
 | `name` |  |
 | `ph` |  |
@@ -314,7 +315,7 @@ Create an instance: `beer = client.Beer()`
 | `abv` | `float` |  |
 | `attenuation_level` | `float` |  |
 | `boil_volume` | `dict` |  |
-| `brewers_tip` | `str` |  |
+| `brewers_tips` | `str` |  |
 | `contributed_by` | `str` |  |
 | `description` | `str` |  |
 | `ebc` | `float` |  |
@@ -323,7 +324,7 @@ Create an instance: `beer = client.Beer()`
 | `ibu` | `float` |  |
 | `id` | `int` |  |
 | `image` | `str` |  |
-| `ingredient` | `dict` |  |
+| `ingredients` | `dict` |  |
 | `method` | `dict` |  |
 | `name` | `str` |  |
 | `ph` | `float` |  |

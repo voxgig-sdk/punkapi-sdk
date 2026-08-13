@@ -273,7 +273,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | `"abv"` |  |
 | `"attenuation_level"` |  |
 | `"boil_volume"` |  |
-| `"brewers_tip"` |  |
+| `"brewers_tips"` |  |
 | `"contributed_by"` |  |
 | `"description"` |  |
 | `"ebc"` |  |
@@ -282,7 +282,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 | `"ibu"` |  |
 | `"id"` |  |
 | `"image"` |  |
-| `"ingredient"` |  |
+| `"ingredients"` |  |
 | `"method"` |  |
 | `"name"` |  |
 | `"ph"` |  |
@@ -328,7 +328,7 @@ Create an instance: `beer := client.Beer(nil)`
 | `abv` | `float64` |  |
 | `attenuation_level` | `float64` |  |
 | `boil_volume` | `map[string]any` |  |
-| `brewers_tip` | `string` |  |
+| `brewers_tips` | `string` |  |
 | `contributed_by` | `string` |  |
 | `description` | `string` |  |
 | `ebc` | `float64` |  |
@@ -337,7 +337,7 @@ Create an instance: `beer := client.Beer(nil)`
 | `ibu` | `float64` |  |
 | `id` | `int` |  |
 | `image` | `string` |  |
-| `ingredient` | `map[string]any` |  |
+| `ingredients` | `map[string]any` |  |
 | `method` | `map[string]any` |  |
 | `name` | `string` |  |
 | `ph` | `float64` |  |

@@ -10,7 +10,7 @@
 ---@field abv? number
 ---@field attenuation_level? number
 ---@field boil_volume? table
----@field brewers_tip? string
+---@field brewers_tips? string
 ---@field contributed_by? string
 ---@field description? string
 ---@field ebc? number
@@ -19,7 +19,7 @@
 ---@field ibu? number
 ---@field id? number
 ---@field image? string
----@field ingredient? table
+---@field ingredients? table
 ---@field method? table
 ---@field name? string
 ---@field ph? number
@@ -36,7 +36,7 @@
 ---@field abv? number
 ---@field attenuation_level? number
 ---@field boil_volume? table
----@field brewers_tip? string
+---@field brewers_tips? string
 ---@field contributed_by? string
 ---@field description? string
 ---@field ebc? number
@@ -45,7 +45,7 @@
 ---@field ibu? number
 ---@field id? number
 ---@field image? string
----@field ingredient? table
+---@field ingredients? table
 ---@field method? table
 ---@field name? string
 ---@field ph? number

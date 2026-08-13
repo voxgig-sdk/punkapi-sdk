@@ -19,7 +19,7 @@
 # @!attribute [rw] boil_volume
 #   @return [Hash, nil]
 #
-# @!attribute [rw] brewers_tip
+# @!attribute [rw] brewers_tips
 #   @return [String, nil]
 #
 # @!attribute [rw] contributed_by
@@ -46,7 +46,7 @@
 # @!attribute [rw] image
 #   @return [String, nil]
 #
-# @!attribute [rw] ingredient
+# @!attribute [rw] ingredients
 #   @return [Hash, nil]
 #
 # @!attribute [rw] method
@@ -76,7 +76,7 @@ Beer = Struct.new(
   :abv,
   :attenuation_level,
   :boil_volume,
-  :brewers_tip,
+  :brewers_tips,
   :contributed_by,
   :description,
   :ebc,
@@ -85,7 +85,7 @@ Beer = Struct.new(
   :ibu,
   :id,
   :image,
-  :ingredient,
+  :ingredients,
   :method,
   :name,
   :ph,
@@ -117,7 +117,7 @@ BeerLoadMatch = Struct.new(
 # @!attribute [rw] boil_volume
 #   @return [Hash, nil]
 #
-# @!attribute [rw] brewers_tip
+# @!attribute [rw] brewers_tips
 #   @return [String, nil]
 #
 # @!attribute [rw] contributed_by
@@ -144,7 +144,7 @@ BeerLoadMatch = Struct.new(
 # @!attribute [rw] image
 #   @return [String, nil]
 #
-# @!attribute [rw] ingredient
+# @!attribute [rw] ingredients
 #   @return [Hash, nil]
 #
 # @!attribute [rw] method
@@ -174,7 +174,7 @@ BeerListMatch = Struct.new(
   :abv,
   :attenuation_level,
   :boil_volume,
-  :brewers_tip,
+  :brewers_tips,
   :contributed_by,
   :description,
   :ebc,
@@ -183,7 +183,7 @@ BeerListMatch = Struct.new(
   :ibu,
   :id,
   :image,
-  :ingredient,
+  :ingredients,
   :method,
   :name,
   :ph,

@@ -49,7 +49,7 @@ module PunkapiConfig
             },
             {
               "active" => true,
-              "name" => "brewers_tip",
+              "name" => "brewers_tips",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 3,
@@ -112,7 +112,7 @@ module PunkapiConfig
             },
             {
               "active" => true,
-              "name" => "ingredient",
+              "name" => "ingredients",
               "req" => false,
               "type" => "`$OBJECT`",
               "index$" => 12,
@@ -302,6 +302,7 @@ module PunkapiConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/beers",
                   "parts" => [
@@ -333,6 +334,7 @@ module PunkapiConfig
                 {
                   "active" => true,
                   "args" => {},
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/beers/random",
                   "parts" => [
@@ -370,6 +372,7 @@ module PunkapiConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/beers/{id}",
                   "parts" => [
@@ -419,6 +422,7 @@ module PunkapiConfig
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/images/{filename}",
                   "parts" => [

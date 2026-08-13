@@ -99,7 +99,7 @@ $beer = $client->Beer();
 | `abv` | `float` | No |  |
 | `attenuation_level` | `float` | No |  |
 | `boil_volume` | `array` | No |  |
-| `brewers_tip` | `string` | No |  |
+| `brewers_tips` | `string` | No |  |
 | `contributed_by` | `string` | No |  |
 | `description` | `string` | No |  |
 | `ebc` | `float` | No |  |
@@ -108,7 +108,7 @@ $beer = $client->Beer();
 | `ibu` | `float` | No |  |
 | `id` | `int` | No |  |
 | `image` | `string` | No |  |
-| `ingredient` | `array` | No |  |
+| `ingredients` | `array` | No |  |
 | `method` | `array` | No |  |
 | `name` | `string` | No |  |
 | `ph` | `float` | No |  |

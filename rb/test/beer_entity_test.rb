@@ -87,7 +87,7 @@ class BeerEntityTest < Minitest::Test
       "id" => beer_ref01_data["id"],
     }
     beer_ref01_data_dt0_loaded = beer_ref01_ent.load(beer_ref01_match_dt0, nil)
-    beer_ref01_data_dt0_load_result = Helpers.to_map(beer_ref01_data_dt0_loaded)
+    beer_ref01_data_dt0_load_result = Helpers.to_map(beer_ref01_data_dt0_loaded.respond_to?(:data_get) ? beer_ref01_data_dt0_loaded.data_get : beer_ref01_data_dt0_loaded)
     assert !beer_ref01_data_dt0_load_result.nil?
     assert_equal beer_ref01_data_dt0_load_result["id"], beer_ref01_data["id"]
 

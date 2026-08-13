@@ -16,11 +16,11 @@
 import pytest
 
 from punkapi_sdk import PunkapiSDK
-from core.error import PunkapiError
-from core.result import PunkapiResult
-from core.response import PunkapiResponse
-from core.spec import PunkapiSpec
-from feature.base_feature import PunkapiBaseFeature
+from punkapi_sdk.core.error import PunkapiError
+from punkapi_sdk.core.result import PunkapiResult
+from punkapi_sdk.core.response import PunkapiResponse
+from punkapi_sdk.core.spec import PunkapiSpec
+from punkapi_sdk.feature.base_feature import PunkapiBaseFeature
 
 
 def _client():

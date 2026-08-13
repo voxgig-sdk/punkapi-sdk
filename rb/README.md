@@ -48,7 +48,7 @@ end
 
 ```ruby
 begin
-  # load returns the bare Beer record (raises on error).
+  # load returns the ENTITY — call data_get for the Beer record (raises on error).
   beer = client.Beer.load({ "id" => 1 })
   puts beer
 rescue => err
@@ -134,7 +134,8 @@ client = PunkapiSDK.test({
   "entity" => { "beer" => { "test01" => { "id" => "test01" } } },
 })
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 beer = client.Beer.list()
 puts beer
 ```
@@ -256,7 +257,7 @@ returns a result `Hash` with these keys:
 | `abv` |  |
 | `attenuation_level` |  |
 | `boil_volume` |  |
-| `brewers_tip` |  |
+| `brewers_tips` |  |
 | `contributed_by` |  |
 | `description` |  |
 | `ebc` |  |
@@ -265,7 +266,7 @@ returns a result `Hash` with these keys:
 | `ibu` |  |
 | `id` |  |
 | `image` |  |
-| `ingredient` |  |
+| `ingredients` |  |
 | `method` |  |
 | `name` |  |
 | `ph` |  |
@@ -311,7 +312,7 @@ Create an instance: `beer = client.Beer`
 | `abv` | `Float` |  |
 | `attenuation_level` | `Float` |  |
 | `boil_volume` | `Hash` |  |
-| `brewers_tip` | `String` |  |
+| `brewers_tips` | `String` |  |
 | `contributed_by` | `String` |  |
 | `description` | `String` |  |
 | `ebc` | `Float` |  |
@@ -320,7 +321,7 @@ Create an instance: `beer = client.Beer`
 | `ibu` | `Float` |  |
 | `id` | `Integer` |  |
 | `image` | `String` |  |
-| `ingredient` | `Hash` |  |
+| `ingredients` | `Hash` |  |
 | `method` | `Hash` |  |
 | `name` | `String` |  |
 | `ph` | `Float` |  |
@@ -333,7 +334,7 @@ Create an instance: `beer = client.Beer`
 #### Example: Load
 
 ```ruby
-# load returns the bare Beer record (raises on error).
+# load returns the ENTITY — call data_get for the Beer record (raises on error).
 beer = client.Beer.load({ "id" => 1 })
 ```
 
@@ -358,7 +359,7 @@ Create an instance: `image = client.Image`
 #### Example: Load
 
 ```ruby
-# load returns the bare Image record (raises on error).
+# load returns the ENTITY — call data_get for the Image record (raises on error).
 image = client.Image.load({ "id" => "image_id" })
 ```
 

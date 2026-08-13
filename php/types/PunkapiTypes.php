@@ -18,7 +18,7 @@ class Beer
     public ?float $abv = null;
     public ?float $attenuation_level = null;
     public ?array $boil_volume = null;
-    public ?string $brewers_tip = null;
+    public ?string $brewers_tips = null;
     public ?string $contributed_by = null;
     public ?string $description = null;
     public ?float $ebc = null;
@@ -27,7 +27,7 @@ class Beer
     public ?float $ibu = null;
     public ?int $id = null;
     public ?string $image = null;
-    public ?array $ingredient = null;
+    public ?array $ingredients = null;
     public ?array $method = null;
     public ?string $name = null;
     public ?float $ph = null;
@@ -50,7 +50,7 @@ class BeerListMatch
     public ?float $abv = null;
     public ?float $attenuation_level = null;
     public ?array $boil_volume = null;
-    public ?string $brewers_tip = null;
+    public ?string $brewers_tips = null;
     public ?string $contributed_by = null;
     public ?string $description = null;
     public ?float $ebc = null;
@@ -59,7 +59,7 @@ class BeerListMatch
     public ?float $ibu = null;
     public ?int $id = null;
     public ?string $image = null;
-    public ?array $ingredient = null;
+    public ?array $ingredients = null;
     public ?array $method = null;
     public ?string $name = null;
     public ?float $ph = null;

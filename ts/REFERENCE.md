@@ -131,7 +131,7 @@ const beer = client.Beer()
 | `abv` | `number` | No |  |
 | `attenuation_level` | `number` | No |  |
 | `boil_volume` | `Record<string, any>` | No |  |
-| `brewers_tip` | `string` | No |  |
+| `brewers_tips` | `string` | No |  |
 | `contributed_by` | `string` | No |  |
 | `description` | `string` | No |  |
 | `ebc` | `number` | No |  |
@@ -140,7 +140,7 @@ const beer = client.Beer()
 | `ibu` | `number` | No |  |
 | `id` | `number` | No |  |
 | `image` | `string` | No |  |
-| `ingredient` | `Record<string, any>` | No |  |
+| `ingredients` | `Record<string, any>` | No |  |
 | `method` | `Record<string, any>` | No |  |
 | `name` | `string` | No |  |
 | `ph` | `number` | No |  |
@@ -149,6 +149,26 @@ const beer = client.Beer()
 | `target_fg` | `number` | No |  |
 | `target_og` | `number` | No |  |
 | `volume` | `Record<string, any>` | No |  |
+
+### Actions
+
+This entity exposes custom API actions in addition to the standard
+operations. Select one with `$action` in the call's argument; the
+remaining keys are sent as that action's payload.
+
+| Action | Route | Call |
+| --- | --- | --- |
+| `random` | `/beers/random` | `client.Beer().list({ $action: 'random', ... })` |
+
+An action returns that action's OWN response, which is not necessarily a
+Beer record — check the API definition for its shape.
+
+```ts
+const result = await client.Beer().list({
+  $action: 'random',
+  /* ...the action's own arguments */
+})
+```
 
 ### Operations
 

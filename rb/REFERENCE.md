@@ -100,7 +100,7 @@ beer = client.Beer
 | `abv` | `Float` | No |  |
 | `attenuation_level` | `Float` | No |  |
 | `boil_volume` | `Hash` | No |  |
-| `brewers_tip` | `String` | No |  |
+| `brewers_tips` | `String` | No |  |
 | `contributed_by` | `String` | No |  |
 | `description` | `String` | No |  |
 | `ebc` | `Float` | No |  |
@@ -109,7 +109,7 @@ beer = client.Beer
 | `ibu` | `Float` | No |  |
 | `id` | `Integer` | No |  |
 | `image` | `String` | No |  |
-| `ingredient` | `Hash` | No |  |
+| `ingredients` | `Hash` | No |  |
 | `method` | `Hash` | No |  |
 | `name` | `String` | No |  |
 | `ph` | `Float` | No |  |

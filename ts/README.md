@@ -35,7 +35,9 @@ const client = new PunkapiSDK()
 
 ### 2. List beer records
 
-`list()` resolves to an array of Beer objects — iterate it directly:
+`list()` resolves to an array of Beer ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const beers = await client.Beer().list()
@@ -133,7 +135,8 @@ Create a mock client for unit testing — no server required:
 const client = PunkapiSDK.test()
 
 const beer = await client.Beer().list()
-// beer is a bare entity populated with mock response data
+// beer is the entity, populated with mock response data
+// — call beer.data() for the record itself
 console.log(beer)
 ```
 
@@ -303,7 +306,7 @@ The `prepare()` method returns:
 | `abv` |  |
 | `attenuation_level` |  |
 | `boil_volume` |  |
-| `brewers_tip` |  |
+| `brewers_tips` |  |
 | `contributed_by` |  |
 | `description` |  |
 | `ebc` |  |
@@ -312,7 +315,7 @@ The `prepare()` method returns:
 | `ibu` |  |
 | `id` |  |
 | `image` |  |
-| `ingredient` |  |
+| `ingredients` |  |
 | `method` |  |
 | `name` |  |
 | `ph` |  |
@@ -358,7 +361,7 @@ Create an instance: `const beer = client.Beer()`
 | `abv` | `number` |  |
 | `attenuation_level` | `number` |  |
 | `boil_volume` | `Record<string, any>` |  |
-| `brewers_tip` | `string` |  |
+| `brewers_tips` | `string` |  |
 | `contributed_by` | `string` |  |
 | `description` | `string` |  |
 | `ebc` | `number` |  |
@@ -367,7 +370,7 @@ Create an instance: `const beer = client.Beer()`
 | `ibu` | `number` |  |
 | `id` | `number` |  |
 | `image` | `string` |  |
-| `ingredient` | `Record<string, any>` |  |
+| `ingredients` | `Record<string, any>` |  |
 | `method` | `Record<string, any>` |  |
 | `name` | `string` |  |
 | `ph` | `number` |  |

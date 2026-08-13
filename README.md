@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = PunkapiSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = PunkapiSDK.test({
+  entity: {
+    beer: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const beers = await client.Beer().list()
-// beers is an array of bare Beer records populated with mock data
+// beers is an array of Beer entities, populated with mock data
+// — call beers[0].data() for the record itself
 console.log(beers)
 ```
 
@@ -110,7 +119,7 @@ import { PunkapiSDK } from '@voxgig-sdk/punkapi'
 
 const client = new PunkapiSDK()
 
-// List all beers (returns Beer[])
+// List all beers (returns BeerEntity[] — .data() for the record)
 const beers = await client.Beer().list()
 for (const beer of beers) {
   console.log(beer)
@@ -192,7 +201,7 @@ $client = new PunkapiSDK();
 $beers = $client->Beer()->list();
 print_r($beers);
 
-// Load a specific beer (returns the bare record; throws on error)
+// Load a specific beer (returns the ENTITY; call data_get() for the record; throws on error)
 $beer = $client->Beer()->load(["id" => 1]);
 print_r($beer);
 ```
@@ -223,7 +232,7 @@ client = PunkapiSDK.new
 beers = client.Beer.list
 puts beers
 
-# Load a specific beer (returns the bare record; raises on error)
+# Load a specific beer (returns the ENTITY; call data_get for the record)
 beer = client.Beer.load({ "id" => 1 })
 puts beer
 ```
@@ -360,6 +369,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://github.com/alxiw/punkapi](https://github.com/alxiw/punkapi)
 

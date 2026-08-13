@@ -97,7 +97,7 @@ class BeerEntityTest extends TestCase
             "id" => $beer_ref01_data["id"],
         ];
         $beer_ref01_data_dt0_loaded = $beer_ref01_ent->load($beer_ref01_match_dt0, null);
-        $beer_ref01_data_dt0_load_result = Helpers::to_map($beer_ref01_data_dt0_loaded);
+        $beer_ref01_data_dt0_load_result = Helpers::to_map(is_object($beer_ref01_data_dt0_loaded) && method_exists($beer_ref01_data_dt0_loaded, 'data_get') ? $beer_ref01_data_dt0_loaded->data_get() : $beer_ref01_data_dt0_loaded);
         $this->assertNotNull($beer_ref01_data_dt0_load_result);
         $this->assertEquals($beer_ref01_data_dt0_load_result["id"], $beer_ref01_data["id"]);
 

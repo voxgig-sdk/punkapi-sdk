@@ -9,7 +9,7 @@ export interface Beer {
   abv?: number
   attenuation_level?: number
   boil_volume?: Record<string, any>
-  brewers_tip?: string
+  brewers_tips?: string
   contributed_by?: string
   description?: string
   ebc?: number
@@ -18,7 +18,7 @@ export interface Beer {
   ibu?: number
   id?: number
   image?: string
-  ingredient?: Record<string, any>
+  ingredients?: Record<string, any>
   method?: Record<string, any>
   name?: string
   ph?: number
@@ -37,7 +37,7 @@ export interface BeerListMatch {
   abv?: number
   attenuation_level?: number
   boil_volume?: Record<string, any>
-  brewers_tip?: string
+  brewers_tips?: string
   contributed_by?: string
   description?: string
   ebc?: number
@@ -46,7 +46,7 @@ export interface BeerListMatch {
   ibu?: number
   id?: number
   image?: string
-  ingredient?: Record<string, any>
+  ingredients?: Record<string, any>
   method?: Record<string, any>
   name?: string
   ph?: number
@@ -55,6 +55,12 @@ export interface BeerListMatch {
   target_fg?: number
   target_og?: number
   volume?: Record<string, any>
+
+  // Selects a custom action instead of the plain list:
+  //   'random'
+  // The remaining keys are that action's own payload.
+  $action?: string
+  [action: string]: any
 }
 
 export interface Image {

@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from punkapi_sdk.utility.voxgig_struct import voxgig_struct as vs
 from punkapi_sdk import PunkapiSDK
-from core import helpers
+from punkapi_sdk.core import helpers
 from test import runner
 
 

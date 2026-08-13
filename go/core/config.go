@@ -48,7 +48,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "brewers_tip",
+						"name": "brewers_tips",
 						"req": false,
 						"type": "`$STRING`",
 						"index$": 3,
@@ -111,7 +111,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"active": true,
-						"name": "ingredient",
+						"name": "ingredients",
 						"req": false,
 						"type": "`$OBJECT`",
 						"index$": 12,
@@ -301,6 +301,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/beers",
 								"parts": []any{
@@ -332,6 +333,7 @@ func MakeConfig() map[string]any {
 							map[string]any{
 								"active": true,
 								"args": map[string]any{},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/beers/random",
 								"parts": []any{
@@ -348,7 +350,6 @@ func MakeConfig() map[string]any {
 								"index$": 1,
 							},
 						},
-						"key$": "list",
 					},
 					"load": map[string]any{
 						"input": "data",
@@ -369,6 +370,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/beers/{id}",
 								"parts": []any{
@@ -387,7 +389,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
@@ -418,6 +419,7 @@ func MakeConfig() map[string]any {
 										},
 									},
 								},
+								"kind": "http",
 								"method": "GET",
 								"orig": "/images/{filename}",
 								"parts": []any{
@@ -441,7 +443,6 @@ func MakeConfig() map[string]any {
 								"index$": 0,
 							},
 						},
-						"key$": "load",
 					},
 				},
 				"relations": map[string]any{
