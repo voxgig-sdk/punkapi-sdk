@@ -1,6 +1,20 @@
 # Punkapi SDK configuration
 
 module PunkapiConfig
+  # Return the process-wide config, built once on first use. The SDK reads
+  # the config on every request and never writes to it, so one instance is
+  # shared by every client rather than rebuilt per client.
+  #
+  # The returned hash is shared: treat it as read-only. Callers that need to
+  # mutate should use make_config, which always returns a fresh copy.
+  def self.shared_config
+    @shared_config ||= make_config
+  end
+
+
+  # Build a fresh, fully materialised config hash. Every call rebuilds the
+  # whole structure, so prefer shared_config unless you need a private copy
+  # you intend to mutate.
   def self.make_config
     {
       "main" => {
@@ -27,151 +41,88 @@ module PunkapiConfig
         "beer" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "abv",
-              "req" => false,
               "type" => "`$NUMBER`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "attenuation_level",
-              "req" => false,
               "type" => "`$NUMBER`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "boil_volume",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 2,
             },
             {
-              "active" => true,
               "name" => "brewers_tips",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 3,
             },
             {
-              "active" => true,
               "name" => "contributed_by",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 4,
             },
             {
-              "active" => true,
               "name" => "description",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 5,
             },
             {
-              "active" => true,
               "name" => "ebc",
-              "req" => false,
               "type" => "`$NUMBER`",
-              "index$" => 6,
             },
             {
-              "active" => true,
               "name" => "first_brewed",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 7,
             },
             {
-              "active" => true,
               "name" => "food_pairing",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 8,
             },
             {
-              "active" => true,
               "name" => "ibu",
-              "req" => false,
               "type" => "`$NUMBER`",
-              "index$" => 9,
             },
             {
-              "active" => true,
               "name" => "id",
-              "req" => false,
               "type" => "`$INTEGER`",
-              "index$" => 10,
             },
             {
-              "active" => true,
               "name" => "image",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 11,
             },
             {
-              "active" => true,
               "name" => "ingredients",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 12,
             },
             {
-              "active" => true,
               "name" => "method",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 13,
             },
             {
-              "active" => true,
               "name" => "name",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 14,
             },
             {
-              "active" => true,
               "name" => "ph",
-              "req" => false,
               "type" => "`$NUMBER`",
-              "index$" => 15,
             },
             {
-              "active" => true,
               "name" => "srm",
-              "req" => false,
               "type" => "`$NUMBER`",
-              "index$" => 16,
             },
             {
-              "active" => true,
               "name" => "tagline",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 17,
             },
             {
-              "active" => true,
               "name" => "target_fg",
-              "req" => false,
               "type" => "`$NUMBER`",
-              "index$" => 18,
             },
             {
-              "active" => true,
               "name" => "target_og",
-              "req" => false,
               "type" => "`$NUMBER`",
-              "index$" => 19,
             },
             {
-              "active" => true,
               "name" => "volume",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 20,
             },
           ],
           "name" => "beer",
@@ -181,123 +132,96 @@ module PunkapiConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => 5,
                         "kind" => "query",
                         "name" => "abv_gt",
                         "orig" => "abv_gt",
-                        "reqd" => false,
                         "type" => "`$NUMBER`",
                       },
                       {
-                        "active" => true,
                         "example" => 10,
                         "kind" => "query",
                         "name" => "abv_lt",
                         "orig" => "abv_lt",
-                        "reqd" => false,
                         "type" => "`$NUMBER`",
                       },
                       {
-                        "active" => true,
                         "kind" => "query",
                         "name" => "beer_name",
                         "orig" => "beer_name",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => "01-2015",
                         "kind" => "query",
                         "name" => "brewed_after",
                         "orig" => "brewed_after",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => "12-2018",
                         "kind" => "query",
                         "name" => "brewed_before",
                         "orig" => "brewed_before",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 20,
                         "kind" => "query",
                         "name" => "ebc_gt",
                         "orig" => "ebc_gt",
-                        "reqd" => false,
                         "type" => "`$NUMBER`",
                       },
                       {
-                        "active" => true,
                         "example" => 50,
                         "kind" => "query",
                         "name" => "ebc_lt",
                         "orig" => "ebc_lt",
-                        "reqd" => false,
                         "type" => "`$NUMBER`",
                       },
                       {
-                        "active" => true,
                         "example" => "chicken",
                         "kind" => "query",
                         "name" => "food",
                         "orig" => "food",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 40,
                         "kind" => "query",
                         "name" => "ibu_gt",
                         "orig" => "ibu_gt",
-                        "reqd" => false,
                         "type" => "`$NUMBER`",
                       },
                       {
-                        "active" => true,
                         "example" => 100,
                         "kind" => "query",
                         "name" => "ibu_lt",
                         "orig" => "ibu_lt",
-                        "reqd" => false,
                         "type" => "`$NUMBER`",
                       },
                       {
-                        "active" => true,
                         "example" => "1,2,3",
                         "kind" => "query",
                         "name" => "ids",
                         "orig" => "ids",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => 1,
                         "kind" => "query",
                         "name" => "page",
                         "orig" => "page",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                       {
-                        "active" => true,
                         "example" => 30,
                         "kind" => "query",
                         "name" => "per_page",
                         "orig" => "per_page",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                     ],
@@ -329,10 +253,8 @@ module PunkapiConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
                 {
-                  "active" => true,
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
@@ -348,27 +270,22 @@ module PunkapiConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 1,
                 },
               ],
-              "key$" => "list",
             },
             "load" => {
               "input" => "data",
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "params" => [
                       {
-                        "active" => true,
                         "kind" => "param",
                         "name" => "id",
                         "orig" => "id",
                         "reqd" => true,
                         "type" => "`$INTEGER`",
-                        "index$" => 0,
                       },
                     ],
                   },
@@ -388,10 +305,8 @@ module PunkapiConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {
@@ -407,18 +322,15 @@ module PunkapiConfig
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "params" => [
                       {
-                        "active" => true,
                         "example" => "366.png",
                         "kind" => "param",
                         "name" => "id",
                         "orig" => "filename",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 0,
                       },
                     ],
                   },
@@ -443,10 +355,8 @@ module PunkapiConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {

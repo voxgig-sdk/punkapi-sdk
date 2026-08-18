@@ -28,7 +28,7 @@ class PunkapiSDK
     utility = PunkapiUtility.new
     @_utility = utility
 
-    config = PunkapiConfig.make_config
+    config = PunkapiConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

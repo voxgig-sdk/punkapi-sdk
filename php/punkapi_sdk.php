@@ -40,7 +40,7 @@ class PunkapiSDK
         $utility = new PunkapiUtility();
         $this->_utility = $utility;
 
-        $config = PunkapiConfig::make_config();
+        $config = PunkapiConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,
