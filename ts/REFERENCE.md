@@ -128,26 +128,26 @@ const beer = client.Beer()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abv` | `number` | No |  |
-| `attenuation_level` | `number` | No |  |
+| `abv` | `number` | No | Alcohol by volume percentage |
+| `attenuation_level` | `number` | No | Attenuation level percentage |
 | `boil_volume` | `Record<string, any>` | No |  |
-| `brewers_tips` | `string` | No |  |
-| `contributed_by` | `string` | No |  |
-| `description` | `string` | No |  |
-| `ebc` | `number` | No |  |
-| `first_brewed` | `string` | No |  |
-| `food_pairing` | `any[]` | No |  |
-| `ibu` | `number` | No |  |
-| `id` | `number` | No |  |
-| `image` | `string` | No |  |
+| `brewers_tips` | `string` | No | Tips from the brewers |
+| `contributed_by` | `string` | No | Contributor information |
+| `description` | `string` | No | Detailed description of the beer |
+| `ebc` | `number` | No | European Brewery Convention color scale |
+| `first_brewed` | `string` | No | Date when the beer was first brewed (format: MM/YYYY or YYYY) |
+| `food_pairing` | `any[]` | No | List of foods that pair well with this beer |
+| `ibu` | `number` | No | International Bitterness Units |
+| `id` | `number` | No | Unique identifier for the beer |
+| `image` | `string` | No | Filename of the beer's image |
 | `ingredients` | `Record<string, any>` | No |  |
 | `method` | `Record<string, any>` | No |  |
-| `name` | `string` | No |  |
-| `ph` | `number` | No |  |
-| `srm` | `number` | No |  |
-| `tagline` | `string` | No |  |
-| `target_fg` | `number` | No |  |
-| `target_og` | `number` | No |  |
+| `name` | `string` | No | Name of the beer |
+| `ph` | `number` | No | pH level of the beer |
+| `srm` | `number` | No | Standard Reference Method color scale |
+| `tagline` | `string` | No | Short tagline or description |
+| `target_fg` | `number` | No | Target final gravity |
+| `target_og` | `number` | No | Target original gravity |
 | `volume` | `Record<string, any>` | No |  |
 
 ### Actions

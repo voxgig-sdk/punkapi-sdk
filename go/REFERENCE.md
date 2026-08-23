@@ -102,26 +102,26 @@ fmt.Println(beer.GetName()) // "beer"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abv` | `float64` | No |  |
-| `attenuation_level` | `float64` | No |  |
+| `abv` | `float64` | No | Alcohol by volume percentage |
+| `attenuation_level` | `float64` | No | Attenuation level percentage |
 | `boil_volume` | `map[string]any` | No |  |
-| `brewers_tips` | `string` | No |  |
-| `contributed_by` | `string` | No |  |
-| `description` | `string` | No |  |
-| `ebc` | `float64` | No |  |
-| `first_brewed` | `string` | No |  |
-| `food_pairing` | `[]any` | No |  |
-| `ibu` | `float64` | No |  |
-| `id` | `int` | No |  |
-| `image` | `string` | No |  |
+| `brewers_tips` | `string` | No | Tips from the brewers |
+| `contributed_by` | `string` | No | Contributor information |
+| `description` | `string` | No | Detailed description of the beer |
+| `ebc` | `float64` | No | European Brewery Convention color scale |
+| `first_brewed` | `string` | No | Date when the beer was first brewed (format: MM/YYYY or YYYY) |
+| `food_pairing` | `[]any` | No | List of foods that pair well with this beer |
+| `ibu` | `float64` | No | International Bitterness Units |
+| `id` | `int` | No | Unique identifier for the beer |
+| `image` | `string` | No | Filename of the beer's image |
 | `ingredients` | `map[string]any` | No |  |
 | `method` | `map[string]any` | No |  |
-| `name` | `string` | No |  |
-| `ph` | `float64` | No |  |
-| `srm` | `float64` | No |  |
-| `tagline` | `string` | No |  |
-| `target_fg` | `float64` | No |  |
-| `target_og` | `float64` | No |  |
+| `name` | `string` | No | Name of the beer |
+| `ph` | `float64` | No | pH level of the beer |
+| `srm` | `float64` | No | Standard Reference Method color scale |
+| `tagline` | `string` | No | Short tagline or description |
+| `target_fg` | `float64` | No | Target final gravity |
+| `target_og` | `float64` | No | Target original gravity |
 | `volume` | `map[string]any` | No |  |
 
 ### Operations

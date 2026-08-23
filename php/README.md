@@ -264,26 +264,26 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `abv` |  |
-| `attenuation_level` |  |
+| `abv` | Alcohol by volume percentage |
+| `attenuation_level` | Attenuation level percentage |
 | `boil_volume` |  |
-| `brewers_tips` |  |
-| `contributed_by` |  |
-| `description` |  |
-| `ebc` |  |
-| `first_brewed` |  |
-| `food_pairing` |  |
-| `ibu` |  |
-| `id` |  |
-| `image` |  |
+| `brewers_tips` | Tips from the brewers |
+| `contributed_by` | Contributor information |
+| `description` | Detailed description of the beer |
+| `ebc` | European Brewery Convention color scale |
+| `first_brewed` | Date when the beer was first brewed (format: MM/YYYY or YYYY) |
+| `food_pairing` | List of foods that pair well with this beer |
+| `ibu` | International Bitterness Units |
+| `id` | Unique identifier for the beer |
+| `image` | Filename of the beer's image |
 | `ingredients` |  |
 | `method` |  |
-| `name` |  |
-| `ph` |  |
-| `srm` |  |
-| `tagline` |  |
-| `target_fg` |  |
-| `target_og` |  |
+| `name` | Name of the beer |
+| `ph` | pH level of the beer |
+| `srm` | Standard Reference Method color scale |
+| `tagline` | Short tagline or description |
+| `target_fg` | Target final gravity |
+| `target_og` | Target original gravity |
 | `volume` |  |
 
 Operations: List, Load.
@@ -319,26 +319,26 @@ Create an instance: `$beer = $client->Beer();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `abv` | `float` |  |
-| `attenuation_level` | `float` |  |
+| `abv` | `float` | Alcohol by volume percentage |
+| `attenuation_level` | `float` | Attenuation level percentage |
 | `boil_volume` | `array` |  |
-| `brewers_tips` | `string` |  |
-| `contributed_by` | `string` |  |
-| `description` | `string` |  |
-| `ebc` | `float` |  |
-| `first_brewed` | `string` |  |
-| `food_pairing` | `array` |  |
-| `ibu` | `float` |  |
-| `id` | `int` |  |
-| `image` | `string` |  |
+| `brewers_tips` | `string` | Tips from the brewers |
+| `contributed_by` | `string` | Contributor information |
+| `description` | `string` | Detailed description of the beer |
+| `ebc` | `float` | European Brewery Convention color scale |
+| `first_brewed` | `string` | Date when the beer was first brewed (format: MM/YYYY or YYYY) |
+| `food_pairing` | `array` | List of foods that pair well with this beer |
+| `ibu` | `float` | International Bitterness Units |
+| `id` | `int` | Unique identifier for the beer |
+| `image` | `string` | Filename of the beer's image |
 | `ingredients` | `array` |  |
 | `method` | `array` |  |
-| `name` | `string` |  |
-| `ph` | `float` |  |
-| `srm` | `float` |  |
-| `tagline` | `string` |  |
-| `target_fg` | `float` |  |
-| `target_og` | `float` |  |
+| `name` | `string` | Name of the beer |
+| `ph` | `float` | pH level of the beer |
+| `srm` | `float` | Standard Reference Method color scale |
+| `tagline` | `string` | Short tagline or description |
+| `target_fg` | `float` | Target final gravity |
+| `target_og` | `float` | Target original gravity |
 | `volume` | `array` |  |
 
 #### Example: Load

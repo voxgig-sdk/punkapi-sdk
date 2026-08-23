@@ -254,26 +254,26 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `abv` |  |
-| `attenuation_level` |  |
+| `abv` | Alcohol by volume percentage |
+| `attenuation_level` | Attenuation level percentage |
 | `boil_volume` |  |
-| `brewers_tips` |  |
-| `contributed_by` |  |
-| `description` |  |
-| `ebc` |  |
-| `first_brewed` |  |
-| `food_pairing` |  |
-| `ibu` |  |
-| `id` |  |
-| `image` |  |
+| `brewers_tips` | Tips from the brewers |
+| `contributed_by` | Contributor information |
+| `description` | Detailed description of the beer |
+| `ebc` | European Brewery Convention color scale |
+| `first_brewed` | Date when the beer was first brewed (format: MM/YYYY or YYYY) |
+| `food_pairing` | List of foods that pair well with this beer |
+| `ibu` | International Bitterness Units |
+| `id` | Unique identifier for the beer |
+| `image` | Filename of the beer's image |
 | `ingredients` |  |
 | `method` |  |
-| `name` |  |
-| `ph` |  |
-| `srm` |  |
-| `tagline` |  |
-| `target_fg` |  |
-| `target_og` |  |
+| `name` | Name of the beer |
+| `ph` | pH level of the beer |
+| `srm` | Standard Reference Method color scale |
+| `tagline` | Short tagline or description |
+| `target_fg` | Target final gravity |
+| `target_og` | Target original gravity |
 | `volume` |  |
 
 Operations: List, Load.
@@ -309,26 +309,26 @@ Create an instance: `beer = client.Beer`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `abv` | `Float` |  |
-| `attenuation_level` | `Float` |  |
+| `abv` | `Float` | Alcohol by volume percentage |
+| `attenuation_level` | `Float` | Attenuation level percentage |
 | `boil_volume` | `Hash` |  |
-| `brewers_tips` | `String` |  |
-| `contributed_by` | `String` |  |
-| `description` | `String` |  |
-| `ebc` | `Float` |  |
-| `first_brewed` | `String` |  |
-| `food_pairing` | `Array` |  |
-| `ibu` | `Float` |  |
-| `id` | `Integer` |  |
-| `image` | `String` |  |
+| `brewers_tips` | `String` | Tips from the brewers |
+| `contributed_by` | `String` | Contributor information |
+| `description` | `String` | Detailed description of the beer |
+| `ebc` | `Float` | European Brewery Convention color scale |
+| `first_brewed` | `String` | Date when the beer was first brewed (format: MM/YYYY or YYYY) |
+| `food_pairing` | `Array` | List of foods that pair well with this beer |
+| `ibu` | `Float` | International Bitterness Units |
+| `id` | `Integer` | Unique identifier for the beer |
+| `image` | `String` | Filename of the beer's image |
 | `ingredients` | `Hash` |  |
 | `method` | `Hash` |  |
-| `name` | `String` |  |
-| `ph` | `Float` |  |
-| `srm` | `Float` |  |
-| `tagline` | `String` |  |
-| `target_fg` | `Float` |  |
-| `target_og` | `Float` |  |
+| `name` | `String` | Name of the beer |
+| `ph` | `Float` | pH level of the beer |
+| `srm` | `Float` | Standard Reference Method color scale |
+| `tagline` | `String` | Short tagline or description |
+| `target_fg` | `Float` | Target final gravity |
+| `target_og` | `Float` | Target original gravity |
 | `volume` | `Hash` |  |
 
 #### Example: Load

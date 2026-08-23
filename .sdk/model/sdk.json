@@ -36,12 +36,14 @@
               "active": true,
               "name": "abv",
               "req": false,
+              "short": "Alcohol by volume percentage",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "attenuation_level",
               "req": false,
+              "short": "Attenuation level percentage",
               "type": "`$NUMBER`"
             },
             {
@@ -54,54 +56,63 @@
               "active": true,
               "name": "brewers_tips",
               "req": false,
+              "short": "Tips from the brewers",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "contributed_by",
               "req": false,
+              "short": "Contributor information",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "description",
               "req": false,
+              "short": "Detailed description of the beer",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "ebc",
               "req": false,
+              "short": "European Brewery Convention color scale",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "first_brewed",
               "req": false,
+              "short": "Date when the beer was first brewed (format: MM/YYYY or YYYY)",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "food_pairing",
               "req": false,
+              "short": "List of foods that pair well with this beer",
               "type": "`$ARRAY`"
             },
             {
               "active": true,
               "name": "ibu",
               "req": false,
+              "short": "International Bitterness Units",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "id",
               "req": false,
+              "short": "Unique identifier for the beer",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "image",
               "req": false,
+              "short": "Filename of the beer's image",
               "type": "`$STRING`"
             },
             {
@@ -120,36 +131,42 @@
               "active": true,
               "name": "name",
               "req": false,
+              "short": "Name of the beer",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "ph",
               "req": false,
+              "short": "pH level of the beer",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "srm",
               "req": false,
+              "short": "Standard Reference Method color scale",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "tagline",
               "req": false,
+              "short": "Short tagline or description",
               "type": "`$STRING`"
             },
             {
               "active": true,
               "name": "target_fg",
               "req": false,
+              "short": "Target final gravity",
               "type": "`$NUMBER`"
             },
             {
               "active": true,
               "name": "target_og",
               "req": false,
+              "short": "Target original gravity",
               "type": "`$NUMBER`"
             },
             {

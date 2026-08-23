@@ -6,7 +6,7 @@ The Golang SDK for the Punkapi API — an entity-oriented client using standard 
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.Beer(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -270,26 +270,26 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"abv"` |  |
-| `"attenuation_level"` |  |
+| `"abv"` | Alcohol by volume percentage |
+| `"attenuation_level"` | Attenuation level percentage |
 | `"boil_volume"` |  |
-| `"brewers_tips"` |  |
-| `"contributed_by"` |  |
-| `"description"` |  |
-| `"ebc"` |  |
-| `"first_brewed"` |  |
-| `"food_pairing"` |  |
-| `"ibu"` |  |
-| `"id"` |  |
-| `"image"` |  |
+| `"brewers_tips"` | Tips from the brewers |
+| `"contributed_by"` | Contributor information |
+| `"description"` | Detailed description of the beer |
+| `"ebc"` | European Brewery Convention color scale |
+| `"first_brewed"` | Date when the beer was first brewed (format: MM/YYYY or YYYY) |
+| `"food_pairing"` | List of foods that pair well with this beer |
+| `"ibu"` | International Bitterness Units |
+| `"id"` | Unique identifier for the beer |
+| `"image"` | Filename of the beer's image |
 | `"ingredients"` |  |
 | `"method"` |  |
-| `"name"` |  |
-| `"ph"` |  |
-| `"srm"` |  |
-| `"tagline"` |  |
-| `"target_fg"` |  |
-| `"target_og"` |  |
+| `"name"` | Name of the beer |
+| `"ph"` | pH level of the beer |
+| `"srm"` | Standard Reference Method color scale |
+| `"tagline"` | Short tagline or description |
+| `"target_fg"` | Target final gravity |
+| `"target_og"` | Target original gravity |
 | `"volume"` |  |
 
 Operations: List, Load.
@@ -325,26 +325,26 @@ Create an instance: `beer := client.Beer(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `abv` | `float64` |  |
-| `attenuation_level` | `float64` |  |
+| `abv` | `float64` | Alcohol by volume percentage |
+| `attenuation_level` | `float64` | Attenuation level percentage |
 | `boil_volume` | `map[string]any` |  |
-| `brewers_tips` | `string` |  |
-| `contributed_by` | `string` |  |
-| `description` | `string` |  |
-| `ebc` | `float64` |  |
-| `first_brewed` | `string` |  |
-| `food_pairing` | `[]any` |  |
-| `ibu` | `float64` |  |
-| `id` | `int` |  |
-| `image` | `string` |  |
+| `brewers_tips` | `string` | Tips from the brewers |
+| `contributed_by` | `string` | Contributor information |
+| `description` | `string` | Detailed description of the beer |
+| `ebc` | `float64` | European Brewery Convention color scale |
+| `first_brewed` | `string` | Date when the beer was first brewed (format: MM/YYYY or YYYY) |
+| `food_pairing` | `[]any` | List of foods that pair well with this beer |
+| `ibu` | `float64` | International Bitterness Units |
+| `id` | `int` | Unique identifier for the beer |
+| `image` | `string` | Filename of the beer's image |
 | `ingredients` | `map[string]any` |  |
 | `method` | `map[string]any` |  |
-| `name` | `string` |  |
-| `ph` | `float64` |  |
-| `srm` | `float64` |  |
-| `tagline` | `string` |  |
-| `target_fg` | `float64` |  |
-| `target_og` | `float64` |  |
+| `name` | `string` | Name of the beer |
+| `ph` | `float64` | pH level of the beer |
+| `srm` | `float64` | Standard Reference Method color scale |
+| `tagline` | `string` | Short tagline or description |
+| `target_fg` | `float64` | Target final gravity |
+| `target_og` | `float64` | Target original gravity |
 | `volume` | `map[string]any` |  |
 
 #### Example: Load

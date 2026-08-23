@@ -96,26 +96,26 @@ $beer = $client->Beer();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abv` | `float` | No |  |
-| `attenuation_level` | `float` | No |  |
+| `abv` | `float` | No | Alcohol by volume percentage |
+| `attenuation_level` | `float` | No | Attenuation level percentage |
 | `boil_volume` | `array` | No |  |
-| `brewers_tips` | `string` | No |  |
-| `contributed_by` | `string` | No |  |
-| `description` | `string` | No |  |
-| `ebc` | `float` | No |  |
-| `first_brewed` | `string` | No |  |
-| `food_pairing` | `array` | No |  |
-| `ibu` | `float` | No |  |
-| `id` | `int` | No |  |
-| `image` | `string` | No |  |
+| `brewers_tips` | `string` | No | Tips from the brewers |
+| `contributed_by` | `string` | No | Contributor information |
+| `description` | `string` | No | Detailed description of the beer |
+| `ebc` | `float` | No | European Brewery Convention color scale |
+| `first_brewed` | `string` | No | Date when the beer was first brewed (format: MM/YYYY or YYYY) |
+| `food_pairing` | `array` | No | List of foods that pair well with this beer |
+| `ibu` | `float` | No | International Bitterness Units |
+| `id` | `int` | No | Unique identifier for the beer |
+| `image` | `string` | No | Filename of the beer's image |
 | `ingredients` | `array` | No |  |
 | `method` | `array` | No |  |
-| `name` | `string` | No |  |
-| `ph` | `float` | No |  |
-| `srm` | `float` | No |  |
-| `tagline` | `string` | No |  |
-| `target_fg` | `float` | No |  |
-| `target_og` | `float` | No |  |
+| `name` | `string` | No | Name of the beer |
+| `ph` | `float` | No | pH level of the beer |
+| `srm` | `float` | No | Standard Reference Method color scale |
+| `tagline` | `string` | No | Short tagline or description |
+| `target_fg` | `float` | No | Target final gravity |
+| `target_og` | `float` | No | Target original gravity |
 | `volume` | `array` | No |  |
 
 ### Operations

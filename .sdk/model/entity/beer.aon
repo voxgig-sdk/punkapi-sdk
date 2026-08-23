@@ -8,11 +8,13 @@ main: kit: entity: beer: {
     {
       name: "abv"
       req: false
+      short: "Alcohol by volume percentage"
       type: "`$NUMBER`"
     }
     {
       name: "attenuation_level"
       req: false
+      short: "Attenuation level percentage"
       type: "`$NUMBER`"
     }
     {
@@ -23,46 +25,55 @@ main: kit: entity: beer: {
     {
       name: "brewers_tips"
       req: false
+      short: "Tips from the brewers"
       type: "`$STRING`"
     }
     {
       name: "contributed_by"
       req: false
+      short: "Contributor information"
       type: "`$STRING`"
     }
     {
       name: "description"
       req: false
+      short: "Detailed description of the beer"
       type: "`$STRING`"
     }
     {
       name: "ebc"
       req: false
+      short: "European Brewery Convention color scale"
       type: "`$NUMBER`"
     }
     {
       name: "first_brewed"
       req: false
+      short: "Date when the beer was first brewed (format: MM/YYYY or YYYY)"
       type: "`$STRING`"
     }
     {
       name: "food_pairing"
       req: false
+      short: "List of foods that pair well with this beer"
       type: "`$ARRAY`"
     }
     {
       name: "ibu"
       req: false
+      short: "International Bitterness Units"
       type: "`$NUMBER`"
     }
     {
       name: "id"
       req: false
+      short: "Unique identifier for the beer"
       type: "`$INTEGER`"
     }
     {
       name: "image"
       req: false
+      short: "Filename of the beer's image"
       type: "`$STRING`"
     }
     {
@@ -78,31 +89,37 @@ main: kit: entity: beer: {
     {
       name: "name"
       req: false
+      short: "Name of the beer"
       type: "`$STRING`"
     }
     {
       name: "ph"
       req: false
+      short: "pH level of the beer"
       type: "`$NUMBER`"
     }
     {
       name: "srm"
       req: false
+      short: "Standard Reference Method color scale"
       type: "`$NUMBER`"
     }
     {
       name: "tagline"
       req: false
+      short: "Short tagline or description"
       type: "`$STRING`"
     }
     {
       name: "target_fg"
       req: false
+      short: "Target final gravity"
       type: "`$NUMBER`"
     }
     {
       name: "target_og"
       req: false
+      short: "Target original gravity"
       type: "`$NUMBER`"
     }
     {

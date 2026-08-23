@@ -91,26 +91,26 @@ beer = client.Beer()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abv` | `float` | No |  |
-| `attenuation_level` | `float` | No |  |
+| `abv` | `float` | No | Alcohol by volume percentage |
+| `attenuation_level` | `float` | No | Attenuation level percentage |
 | `boil_volume` | `dict` | No |  |
-| `brewers_tips` | `str` | No |  |
-| `contributed_by` | `str` | No |  |
-| `description` | `str` | No |  |
-| `ebc` | `float` | No |  |
-| `first_brewed` | `str` | No |  |
-| `food_pairing` | `list` | No |  |
-| `ibu` | `float` | No |  |
-| `id` | `int` | No |  |
-| `image` | `str` | No |  |
+| `brewers_tips` | `str` | No | Tips from the brewers |
+| `contributed_by` | `str` | No | Contributor information |
+| `description` | `str` | No | Detailed description of the beer |
+| `ebc` | `float` | No | European Brewery Convention color scale |
+| `first_brewed` | `str` | No | Date when the beer was first brewed (format: MM/YYYY or YYYY) |
+| `food_pairing` | `list` | No | List of foods that pair well with this beer |
+| `ibu` | `float` | No | International Bitterness Units |
+| `id` | `int` | No | Unique identifier for the beer |
+| `image` | `str` | No | Filename of the beer's image |
 | `ingredients` | `dict` | No |  |
 | `method` | `dict` | No |  |
-| `name` | `str` | No |  |
-| `ph` | `float` | No |  |
-| `srm` | `float` | No |  |
-| `tagline` | `str` | No |  |
-| `target_fg` | `float` | No |  |
-| `target_og` | `float` | No |  |
+| `name` | `str` | No | Name of the beer |
+| `ph` | `float` | No | pH level of the beer |
+| `srm` | `float` | No | Standard Reference Method color scale |
+| `tagline` | `str` | No | Short tagline or description |
+| `target_fg` | `float` | No | Target final gravity |
+| `target_og` | `float` | No | Target original gravity |
 | `volume` | `dict` | No |  |
 
 ### Operations

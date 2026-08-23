@@ -97,26 +97,26 @@ beer = client.Beer
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `abv` | `Float` | No |  |
-| `attenuation_level` | `Float` | No |  |
+| `abv` | `Float` | No | Alcohol by volume percentage |
+| `attenuation_level` | `Float` | No | Attenuation level percentage |
 | `boil_volume` | `Hash` | No |  |
-| `brewers_tips` | `String` | No |  |
-| `contributed_by` | `String` | No |  |
-| `description` | `String` | No |  |
-| `ebc` | `Float` | No |  |
-| `first_brewed` | `String` | No |  |
-| `food_pairing` | `Array` | No |  |
-| `ibu` | `Float` | No |  |
-| `id` | `Integer` | No |  |
-| `image` | `String` | No |  |
+| `brewers_tips` | `String` | No | Tips from the brewers |
+| `contributed_by` | `String` | No | Contributor information |
+| `description` | `String` | No | Detailed description of the beer |
+| `ebc` | `Float` | No | European Brewery Convention color scale |
+| `first_brewed` | `String` | No | Date when the beer was first brewed (format: MM/YYYY or YYYY) |
+| `food_pairing` | `Array` | No | List of foods that pair well with this beer |
+| `ibu` | `Float` | No | International Bitterness Units |
+| `id` | `Integer` | No | Unique identifier for the beer |
+| `image` | `String` | No | Filename of the beer's image |
 | `ingredients` | `Hash` | No |  |
 | `method` | `Hash` | No |  |
-| `name` | `String` | No |  |
-| `ph` | `Float` | No |  |
-| `srm` | `Float` | No |  |
-| `tagline` | `String` | No |  |
-| `target_fg` | `Float` | No |  |
-| `target_og` | `Float` | No |  |
+| `name` | `String` | No | Name of the beer |
+| `ph` | `Float` | No | pH level of the beer |
+| `srm` | `Float` | No | Standard Reference Method color scale |
+| `tagline` | `String` | No | Short tagline or description |
+| `target_fg` | `Float` | No | Target final gravity |
+| `target_og` | `Float` | No | Target original gravity |
 | `volume` | `Hash` | No |  |
 
 ### Operations

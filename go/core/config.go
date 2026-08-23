@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "Punkapi",
+			"slug": "punkapi",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -34,10 +37,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "abv",
+						"short": "Alcohol by volume percentage",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "attenuation_level",
+						"short": "Attenuation level percentage",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
@@ -46,38 +51,47 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "brewers_tips",
+						"short": "Tips from the brewers",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "contributed_by",
+						"short": "Contributor information",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "description",
+						"short": "Detailed description of the beer",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "ebc",
+						"short": "European Brewery Convention color scale",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "first_brewed",
+						"short": "Date when the beer was first brewed (format: MM/YYYY or YYYY)",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "food_pairing",
+						"short": "List of foods that pair well with this beer",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "ibu",
+						"short": "International Bitterness Units",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "id",
+						"short": "Unique identifier for the beer",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "image",
+						"short": "Filename of the beer's image",
 						"type": "`$STRING`",
 					},
 					map[string]any{
@@ -90,26 +104,32 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "name",
+						"short": "Name of the beer",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "ph",
+						"short": "pH level of the beer",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "srm",
+						"short": "Standard Reference Method color scale",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "tagline",
+						"short": "Short tagline or description",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "target_fg",
+						"short": "Target final gravity",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "target_og",
+						"short": "Target original gravity",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{

@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -303,26 +303,26 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `abv` |  |
-| `attenuation_level` |  |
+| `abv` | Alcohol by volume percentage |
+| `attenuation_level` | Attenuation level percentage |
 | `boil_volume` |  |
-| `brewers_tips` |  |
-| `contributed_by` |  |
-| `description` |  |
-| `ebc` |  |
-| `first_brewed` |  |
-| `food_pairing` |  |
-| `ibu` |  |
-| `id` |  |
-| `image` |  |
+| `brewers_tips` | Tips from the brewers |
+| `contributed_by` | Contributor information |
+| `description` | Detailed description of the beer |
+| `ebc` | European Brewery Convention color scale |
+| `first_brewed` | Date when the beer was first brewed (format: MM/YYYY or YYYY) |
+| `food_pairing` | List of foods that pair well with this beer |
+| `ibu` | International Bitterness Units |
+| `id` | Unique identifier for the beer |
+| `image` | Filename of the beer's image |
 | `ingredients` |  |
 | `method` |  |
-| `name` |  |
-| `ph` |  |
-| `srm` |  |
-| `tagline` |  |
-| `target_fg` |  |
-| `target_og` |  |
+| `name` | Name of the beer |
+| `ph` | pH level of the beer |
+| `srm` | Standard Reference Method color scale |
+| `tagline` | Short tagline or description |
+| `target_fg` | Target final gravity |
+| `target_og` | Target original gravity |
 | `volume` |  |
 
 Operations: list, load.
@@ -358,26 +358,26 @@ Create an instance: `const beer = client.Beer()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `abv` | `number` |  |
-| `attenuation_level` | `number` |  |
+| `abv` | `number` | Alcohol by volume percentage |
+| `attenuation_level` | `number` | Attenuation level percentage |
 | `boil_volume` | `Record<string, any>` |  |
-| `brewers_tips` | `string` |  |
-| `contributed_by` | `string` |  |
-| `description` | `string` |  |
-| `ebc` | `number` |  |
-| `first_brewed` | `string` |  |
-| `food_pairing` | `any[]` |  |
-| `ibu` | `number` |  |
-| `id` | `number` |  |
-| `image` | `string` |  |
+| `brewers_tips` | `string` | Tips from the brewers |
+| `contributed_by` | `string` | Contributor information |
+| `description` | `string` | Detailed description of the beer |
+| `ebc` | `number` | European Brewery Convention color scale |
+| `first_brewed` | `string` | Date when the beer was first brewed (format: MM/YYYY or YYYY) |
+| `food_pairing` | `any[]` | List of foods that pair well with this beer |
+| `ibu` | `number` | International Bitterness Units |
+| `id` | `number` | Unique identifier for the beer |
+| `image` | `string` | Filename of the beer's image |
 | `ingredients` | `Record<string, any>` |  |
 | `method` | `Record<string, any>` |  |
-| `name` | `string` |  |
-| `ph` | `number` |  |
-| `srm` | `number` |  |
-| `tagline` | `string` |  |
-| `target_fg` | `number` |  |
-| `target_og` | `number` |  |
+| `name` | `string` | Name of the beer |
+| `ph` | `number` | pH level of the beer |
+| `srm` | `number` | Standard Reference Method color scale |
+| `tagline` | `string` | Short tagline or description |
+| `target_fg` | `number` | Target final gravity |
+| `target_og` | `number` | Target original gravity |
 | `volume` | `Record<string, any>` |  |
 
 #### Example: Load

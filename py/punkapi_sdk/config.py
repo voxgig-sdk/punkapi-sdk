@@ -28,6 +28,9 @@ def make_config():
     return {
         "main": {
             "name": "Punkapi",
+            "slug": "punkapi",
+            "version": "0.0.1",
+            "target": "py",
         },
         "feature": {
             "test": {
@@ -51,10 +54,12 @@ def make_config():
         "fields": [
           {
             "name": "abv",
+            "short": "Alcohol by volume percentage",
             "type": "`$NUMBER`",
           },
           {
             "name": "attenuation_level",
+            "short": "Attenuation level percentage",
             "type": "`$NUMBER`",
           },
           {
@@ -63,38 +68,47 @@ def make_config():
           },
           {
             "name": "brewers_tips",
+            "short": "Tips from the brewers",
             "type": "`$STRING`",
           },
           {
             "name": "contributed_by",
+            "short": "Contributor information",
             "type": "`$STRING`",
           },
           {
             "name": "description",
+            "short": "Detailed description of the beer",
             "type": "`$STRING`",
           },
           {
             "name": "ebc",
+            "short": "European Brewery Convention color scale",
             "type": "`$NUMBER`",
           },
           {
             "name": "first_brewed",
+            "short": "Date when the beer was first brewed (format: MM/YYYY or YYYY)",
             "type": "`$STRING`",
           },
           {
             "name": "food_pairing",
+            "short": "List of foods that pair well with this beer",
             "type": "`$ARRAY`",
           },
           {
             "name": "ibu",
+            "short": "International Bitterness Units",
             "type": "`$NUMBER`",
           },
           {
             "name": "id",
+            "short": "Unique identifier for the beer",
             "type": "`$INTEGER`",
           },
           {
             "name": "image",
+            "short": "Filename of the beer's image",
             "type": "`$STRING`",
           },
           {
@@ -107,26 +121,32 @@ def make_config():
           },
           {
             "name": "name",
+            "short": "Name of the beer",
             "type": "`$STRING`",
           },
           {
             "name": "ph",
+            "short": "pH level of the beer",
             "type": "`$NUMBER`",
           },
           {
             "name": "srm",
+            "short": "Standard Reference Method color scale",
             "type": "`$NUMBER`",
           },
           {
             "name": "tagline",
+            "short": "Short tagline or description",
             "type": "`$STRING`",
           },
           {
             "name": "target_fg",
+            "short": "Target final gravity",
             "type": "`$NUMBER`",
           },
           {
             "name": "target_og",
+            "short": "Target original gravity",
             "type": "`$NUMBER`",
           },
           {
