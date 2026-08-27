@@ -196,8 +196,13 @@ BeerListMatch = Struct.new(
 )
 
 # Image entity data model.
-class Image
-end
+#
+# @!attribute [rw] id
+#   @return [String, nil]
+Image = Struct.new(
+  :id,
+  keyword_init: true
+)
 
 # Request payload for Image#load.
 #

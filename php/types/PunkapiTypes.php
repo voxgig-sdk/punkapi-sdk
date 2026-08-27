@@ -73,6 +73,7 @@ class BeerListMatch
 /** Image entity data model. */
 class Image
 {
+    public ?string $id = null;
 }
 
 /** Request payload for Image#load. */

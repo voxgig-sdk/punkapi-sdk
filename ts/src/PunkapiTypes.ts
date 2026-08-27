@@ -64,6 +64,7 @@ export interface BeerListMatch {
 }
 
 export interface Image {
+  id?: string
 }
 
 export interface ImageLoadMatch {

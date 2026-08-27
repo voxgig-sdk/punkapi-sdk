@@ -59,9 +59,12 @@ describe('ImageEntity', async () => {
 
     let image_ref01_data = Object.values(setup.data.existing.image)[0] as any
 
-    // LOAD: skipped — no entity id field and load requires path params.
-    // Entity-var is declared here so later flow steps still compile.
+    // LOAD
     const image_ref01_ent = client.Image()
+    const image_ref01_match_dt0: any = {}
+    image_ref01_match_dt0.id = image_ref01_data.id
+    const image_ref01_data_dt0 = (await image_ref01_ent.load(image_ref01_match_dt0)).data()
+    assert(image_ref01_data_dt0.id === image_ref01_data.id)
 
 
   })

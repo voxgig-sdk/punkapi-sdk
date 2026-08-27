@@ -69,6 +69,7 @@ type BeerListMatch struct {
 
 // Image is the typed data model for the image entity.
 type Image struct {
+	Id *string `json:"id,omitempty"`
 }
 
 // ImageLoadMatch is the typed request payload for Image.LoadTyped.

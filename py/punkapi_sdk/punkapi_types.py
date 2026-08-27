@@ -68,8 +68,8 @@ class BeerListMatch(TypedDict, total=False):
     volume: dict
 
 
-class Image(TypedDict):
-    pass
+class Image(TypedDict, total=False):
+    id: str
 
 
 class ImageLoadMatch(TypedDict):

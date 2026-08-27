@@ -56,6 +56,7 @@
 ---@field volume? table
 
 ---@class Image
+---@field id? string
 
 ---@class ImageLoadMatch
 ---@field id string

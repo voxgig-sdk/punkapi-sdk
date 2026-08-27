@@ -42,6 +42,7 @@ class PunkapiConfig
           'options' => [
             'active' => false,
           ],
+          'transport' => 'base',
         ],
             ],
             "options" => [
@@ -348,7 +349,12 @@ class PunkapiConfig
           ],
         ],
         'image' => [
-          'fields' => [],
+          'fields' => [
+            [
+              'name' => 'id',
+              'type' => '`$STRING`',
+            ],
+          ],
           'name' => 'image',
           'op' => [
             'load' => [

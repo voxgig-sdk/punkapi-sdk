@@ -28,6 +28,7 @@ module PunkapiConfig
           "options" => {
             "active" => false,
           },
+          "transport" => "base",
         },
       },
       "options" => {
@@ -334,7 +335,12 @@ module PunkapiConfig
           },
         },
         "image" => {
-          "fields" => [],
+          "fields" => [
+            {
+              "name" => "id",
+              "type" => "`$STRING`",
+            },
+          ],
           "name" => "image",
           "op" => {
             "load" => {

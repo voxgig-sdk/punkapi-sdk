@@ -44,10 +44,14 @@ describe("ImageEntity", function()
 
     -- LOAD
     local image_ref01_ent = client:Image(nil)
-    local image_ref01_match_dt0 = {}
+    local image_ref01_match_dt0 = {
+      id = image_ref01_data["id"],
+    }
     local image_ref01_data_dt0_loaded, err = image_ref01_ent:load(image_ref01_match_dt0, nil)
     assert.is_nil(err)
-    assert.is_not_nil(image_ref01_data_dt0_loaded)
+    local image_ref01_data_dt0_load_result = helpers.to_map(type(image_ref01_data_dt0_loaded) == 'table' and image_ref01_data_dt0_loaded.data_get and image_ref01_data_dt0_loaded:data_get() or image_ref01_data_dt0_loaded)
+    assert.is_not_nil(image_ref01_data_dt0_load_result)
+    assert.are.equal(image_ref01_data_dt0_load_result["id"], image_ref01_data["id"])
 
   end)
 end)
