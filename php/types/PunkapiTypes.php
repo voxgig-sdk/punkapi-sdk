@@ -47,27 +47,19 @@ class BeerLoadMatch
 /** Request payload for Beer#list. */
 class BeerListMatch
 {
-    public ?float $abv = null;
-    public ?float $attenuation_level = null;
-    public ?array $boil_volume = null;
-    public ?string $brewers_tips = null;
-    public ?string $contributed_by = null;
-    public ?string $description = null;
-    public ?float $ebc = null;
-    public ?string $first_brewed = null;
-    public ?array $food_pairing = null;
-    public ?float $ibu = null;
-    public ?int $id = null;
-    public ?string $image = null;
-    public ?array $ingredients = null;
-    public ?array $method = null;
-    public ?string $name = null;
-    public ?float $ph = null;
-    public ?float $srm = null;
-    public ?string $tagline = null;
-    public ?float $target_fg = null;
-    public ?float $target_og = null;
-    public ?array $volume = null;
+    public ?float $abv_gt = null;
+    public ?float $abv_lt = null;
+    public ?string $beer_name = null;
+    public ?string $brewed_after = null;
+    public ?string $brewed_before = null;
+    public ?float $ebc_gt = null;
+    public ?float $ebc_lt = null;
+    public ?string $food = null;
+    public ?float $ibu_gt = null;
+    public ?float $ibu_lt = null;
+    public ?string $ids = null;
+    public ?int $page = null;
+    public ?int $per_page = null;
 }
 
 /** Image entity data model. */

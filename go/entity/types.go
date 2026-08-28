@@ -44,27 +44,19 @@ type BeerLoadMatch struct {
 
 // BeerListMatch is the typed request payload for Beer.ListTyped.
 type BeerListMatch struct {
-	Abv *float64 `json:"abv,omitempty"`
-	AttenuationLevel *float64 `json:"attenuation_level,omitempty"`
-	BoilVolume *map[string]any `json:"boil_volume,omitempty"`
-	BrewersTips *string `json:"brewers_tips,omitempty"`
-	ContributedBy *string `json:"contributed_by,omitempty"`
-	Description *string `json:"description,omitempty"`
-	Ebc *float64 `json:"ebc,omitempty"`
-	FirstBrewed *string `json:"first_brewed,omitempty"`
-	FoodPairing *[]any `json:"food_pairing,omitempty"`
-	Ibu *float64 `json:"ibu,omitempty"`
-	Id *int `json:"id,omitempty"`
-	Image *string `json:"image,omitempty"`
-	Ingredients *map[string]any `json:"ingredients,omitempty"`
-	Method *map[string]any `json:"method,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Ph *float64 `json:"ph,omitempty"`
-	Srm *float64 `json:"srm,omitempty"`
-	Tagline *string `json:"tagline,omitempty"`
-	TargetFg *float64 `json:"target_fg,omitempty"`
-	TargetOg *float64 `json:"target_og,omitempty"`
-	Volume *map[string]any `json:"volume,omitempty"`
+	AbvGt *float64 `json:"abv_gt,omitempty"`
+	AbvLt *float64 `json:"abv_lt,omitempty"`
+	BeerName *string `json:"beer_name,omitempty"`
+	BrewedAfter *string `json:"brewed_after,omitempty"`
+	BrewedBefore *string `json:"brewed_before,omitempty"`
+	EbcGt *float64 `json:"ebc_gt,omitempty"`
+	EbcLt *float64 `json:"ebc_lt,omitempty"`
+	Food *string `json:"food,omitempty"`
+	IbuGt *float64 `json:"ibu_gt,omitempty"`
+	IbuLt *float64 `json:"ibu_lt,omitempty"`
+	Ids *string `json:"ids,omitempty"`
+	Page *int `json:"page,omitempty"`
+	PerPage *int `json:"per_page,omitempty"`
 }
 
 // Image is the typed data model for the image entity.

@@ -108,90 +108,58 @@ BeerLoadMatch = Struct.new(
 
 # Request payload for Beer#list.
 #
-# @!attribute [rw] abv
+# @!attribute [rw] abv_gt
 #   @return [Float, nil]
 #
-# @!attribute [rw] attenuation_level
+# @!attribute [rw] abv_lt
 #   @return [Float, nil]
 #
-# @!attribute [rw] boil_volume
-#   @return [Hash, nil]
-#
-# @!attribute [rw] brewers_tips
+# @!attribute [rw] beer_name
 #   @return [String, nil]
 #
-# @!attribute [rw] contributed_by
+# @!attribute [rw] brewed_after
 #   @return [String, nil]
 #
-# @!attribute [rw] description
+# @!attribute [rw] brewed_before
 #   @return [String, nil]
 #
-# @!attribute [rw] ebc
+# @!attribute [rw] ebc_gt
 #   @return [Float, nil]
 #
-# @!attribute [rw] first_brewed
-#   @return [String, nil]
-#
-# @!attribute [rw] food_pairing
-#   @return [Array, nil]
-#
-# @!attribute [rw] ibu
+# @!attribute [rw] ebc_lt
 #   @return [Float, nil]
 #
-# @!attribute [rw] id
+# @!attribute [rw] food
+#   @return [String, nil]
+#
+# @!attribute [rw] ibu_gt
+#   @return [Float, nil]
+#
+# @!attribute [rw] ibu_lt
+#   @return [Float, nil]
+#
+# @!attribute [rw] ids
+#   @return [String, nil]
+#
+# @!attribute [rw] page
 #   @return [Integer, nil]
 #
-# @!attribute [rw] image
-#   @return [String, nil]
-#
-# @!attribute [rw] ingredients
-#   @return [Hash, nil]
-#
-# @!attribute [rw] method
-#   @return [Hash, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] ph
-#   @return [Float, nil]
-#
-# @!attribute [rw] srm
-#   @return [Float, nil]
-#
-# @!attribute [rw] tagline
-#   @return [String, nil]
-#
-# @!attribute [rw] target_fg
-#   @return [Float, nil]
-#
-# @!attribute [rw] target_og
-#   @return [Float, nil]
-#
-# @!attribute [rw] volume
-#   @return [Hash, nil]
+# @!attribute [rw] per_page
+#   @return [Integer, nil]
 BeerListMatch = Struct.new(
-  :abv,
-  :attenuation_level,
-  :boil_volume,
-  :brewers_tips,
-  :contributed_by,
-  :description,
-  :ebc,
-  :first_brewed,
-  :food_pairing,
-  :ibu,
-  :id,
-  :image,
-  :ingredients,
-  :method,
-  :name,
-  :ph,
-  :srm,
-  :tagline,
-  :target_fg,
-  :target_og,
-  :volume,
+  :abv_gt,
+  :abv_lt,
+  :beer_name,
+  :brewed_after,
+  :brewed_before,
+  :ebc_gt,
+  :ebc_lt,
+  :food,
+  :ibu_gt,
+  :ibu_lt,
+  :ids,
+  :page,
+  :per_page,
   keyword_init: true
 )
 

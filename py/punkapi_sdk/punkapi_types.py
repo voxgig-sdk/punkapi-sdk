@@ -45,27 +45,19 @@ class BeerLoadMatch(TypedDict):
 
 
 class BeerListMatch(TypedDict, total=False):
-    abv: float
-    attenuation_level: float
-    boil_volume: dict
-    brewers_tips: str
-    contributed_by: str
-    description: str
-    ebc: float
-    first_brewed: str
-    food_pairing: list
-    ibu: float
-    id: int
-    image: str
-    ingredients: dict
-    method: dict
-    name: str
-    ph: float
-    srm: float
-    tagline: str
-    target_fg: float
-    target_og: float
-    volume: dict
+    abv_gt: float
+    abv_lt: float
+    beer_name: str
+    brewed_after: str
+    brewed_before: str
+    ebc_gt: float
+    ebc_lt: float
+    food: str
+    ibu_gt: float
+    ibu_lt: float
+    ids: str
+    page: int
+    per_page: int
 
 
 class Image(TypedDict, total=False):
