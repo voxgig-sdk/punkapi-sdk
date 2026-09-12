@@ -37,11 +37,13 @@ func MakeConfig() map[string]any {
 			"beer": map[string]any{
 				"fields": []any{
 					map[string]any{
+						"format": "float",
 						"name": "abv",
 						"short": "Alcohol by volume percentage",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "attenuation_level",
 						"short": "Attenuation level percentage",
 						"type": "`$NUMBER`",
@@ -66,6 +68,7 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "ebc",
 						"short": "European Brewery Convention color scale",
 						"type": "`$NUMBER`",
@@ -81,6 +84,7 @@ func MakeConfig() map[string]any {
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "ibu",
 						"short": "International Bitterness Units",
 						"type": "`$NUMBER`",
@@ -109,11 +113,13 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "ph",
 						"short": "pH level of the beer",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "srm",
 						"short": "Standard Reference Method color scale",
 						"type": "`$NUMBER`",
@@ -124,11 +130,13 @@ func MakeConfig() map[string]any {
 						"type": "`$STRING`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "target_fg",
 						"short": "Target final gravity",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
+						"format": "float",
 						"name": "target_og",
 						"short": "Target original gravity",
 						"type": "`$NUMBER`",
@@ -137,6 +145,10 @@ func MakeConfig() map[string]any {
 						"name": "volume",
 						"type": "`$OBJECT`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "beer",
 				"op": map[string]any{
@@ -242,8 +254,10 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/beers",
-								"parts": []any{
-									"beers",
+								"segments": []any{
+									map[string]any{
+										"lit": "beers",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -266,15 +280,22 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
+								"parts": []any{
+									"beers",
+								},
 							},
 							map[string]any{
 								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/beers/random",
-								"parts": []any{
-									"beers",
-									"random",
+								"segments": []any{
+									map[string]any{
+										"lit": "beers",
+									},
+									map[string]any{
+										"lit": "random",
+									},
 								},
 								"select": map[string]any{
 									"$action": "random",
@@ -282,6 +303,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"beers",
+									"random",
 								},
 							},
 						},
@@ -305,9 +330,13 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/beers/{id}",
-								"parts": []any{
-									"beers",
-									"{id}",
+								"segments": []any{
+									map[string]any{
+										"lit": "beers",
+									},
+									map[string]any{
+										"var": "id",
+									},
 								},
 								"select": map[string]any{
 									"exist": []any{
@@ -317,6 +346,10 @@ func MakeConfig() map[string]any {
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body`",
+								},
+								"parts": []any{
+									"beers",
+									"{id}",
 								},
 							},
 						},
@@ -332,6 +365,10 @@ func MakeConfig() map[string]any {
 						"name": "id",
 						"type": "`$STRING`",
 					},
+				},
+				"id": map[string]any{
+					"field": "id",
+					"name": "id",
 				},
 				"name": "image",
 				"op": map[string]any{
@@ -355,13 +392,17 @@ func MakeConfig() map[string]any {
 								"kind": "http",
 								"method": "GET",
 								"orig": "/images/{filename}",
-								"parts": []any{
-									"images",
-									"{id}",
-								},
 								"rename": map[string]any{
 									"param": map[string]any{
 										"filename": "id",
+									},
+								},
+								"segments": []any{
+									map[string]any{
+										"lit": "images",
+									},
+									map[string]any{
+										"var": "id",
 									},
 								},
 								"select": map[string]any{
@@ -373,6 +414,10 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
+								"parts": []any{
+									"images",
+									"{id}",
+								},
 							},
 						},
 					},
@@ -383,6 +428,17 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+// The plugin definitions the model selected per feature, as []any so a
+// feature package can consume them without core naming its types. Empty
+// when no active feature declares active plugin groups for this target.
+var featurePlugins = map[string][]any{
+}
+
+// FeaturePlugins is the definitions list for one feature's chain.
+func FeaturePlugins(name string) []any {
+	return featurePlugins[name]
 }
 
 var (

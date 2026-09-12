@@ -59,11 +59,13 @@ class PunkapiConfig
         'beer' => [
           'fields' => [
             [
+              'format' => 'float',
               'name' => 'abv',
               'short' => 'Alcohol by volume percentage',
               'type' => '`$NUMBER`',
             ],
             [
+              'format' => 'float',
               'name' => 'attenuation_level',
               'short' => 'Attenuation level percentage',
               'type' => '`$NUMBER`',
@@ -88,6 +90,7 @@ class PunkapiConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'float',
               'name' => 'ebc',
               'short' => 'European Brewery Convention color scale',
               'type' => '`$NUMBER`',
@@ -103,6 +106,7 @@ class PunkapiConfig
               'type' => '`$ARRAY`',
             ],
             [
+              'format' => 'float',
               'name' => 'ibu',
               'short' => 'International Bitterness Units',
               'type' => '`$NUMBER`',
@@ -131,11 +135,13 @@ class PunkapiConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'float',
               'name' => 'ph',
               'short' => 'pH level of the beer',
               'type' => '`$NUMBER`',
             ],
             [
+              'format' => 'float',
               'name' => 'srm',
               'short' => 'Standard Reference Method color scale',
               'type' => '`$NUMBER`',
@@ -146,11 +152,13 @@ class PunkapiConfig
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'float',
               'name' => 'target_fg',
               'short' => 'Target final gravity',
               'type' => '`$NUMBER`',
             ],
             [
+              'format' => 'float',
               'name' => 'target_og',
               'short' => 'Target original gravity',
               'type' => '`$NUMBER`',
@@ -159,6 +167,10 @@ class PunkapiConfig
               'name' => 'volume',
               'type' => '`$OBJECT`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'beer',
           'op' => [
@@ -264,8 +276,10 @@ class PunkapiConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/beers',
-                  'parts' => [
-                    'beers',
+                  'segments' => [
+                    [
+                      'lit' => 'beers',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -288,15 +302,22 @@ class PunkapiConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
+                  'parts' => [
+                    'beers',
+                  ],
                 ],
                 [
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/beers/random',
-                  'parts' => [
-                    'beers',
-                    'random',
+                  'segments' => [
+                    [
+                      'lit' => 'beers',
+                    ],
+                    [
+                      'lit' => 'random',
+                    ],
                   ],
                   'select' => [
                     '$action' => 'random',
@@ -304,6 +325,10 @@ class PunkapiConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'beers',
+                    'random',
                   ],
                 ],
               ],
@@ -327,9 +352,13 @@ class PunkapiConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/beers/{id}',
-                  'parts' => [
-                    'beers',
-                    '{id}',
+                  'segments' => [
+                    [
+                      'lit' => 'beers',
+                    ],
+                    [
+                      'var' => 'id',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -339,6 +368,10 @@ class PunkapiConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'beers',
+                    '{id}',
                   ],
                 ],
               ],
@@ -354,6 +387,10 @@ class PunkapiConfig
               'name' => 'id',
               'type' => '`$STRING`',
             ],
+          ],
+          'id' => [
+            'field' => 'id',
+            'name' => 'id',
           ],
           'name' => 'image',
           'op' => [
@@ -377,13 +414,17 @@ class PunkapiConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/images/{filename}',
-                  'parts' => [
-                    'images',
-                    '{id}',
-                  ],
                   'rename' => [
                     'param' => [
                       'filename' => 'id',
+                    ],
+                  ],
+                  'segments' => [
+                    [
+                      'lit' => 'images',
+                    ],
+                    [
+                      'var' => 'id',
                     ],
                   ],
                   'select' => [
@@ -394,6 +435,10 @@ class PunkapiConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'images',
+                    '{id}',
                   ],
                 ],
               ],

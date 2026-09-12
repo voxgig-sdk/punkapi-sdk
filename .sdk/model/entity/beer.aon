@@ -6,12 +6,14 @@ main: kit: entity: beer: {
 
   fields: [
     {
+      format: "float"
       name: "abv"
       req: false
       short: "Alcohol by volume percentage"
       type: "`$NUMBER`"
     }
     {
+      format: "float"
       name: "attenuation_level"
       req: false
       short: "Attenuation level percentage"
@@ -41,6 +43,7 @@ main: kit: entity: beer: {
       type: "`$STRING`"
     }
     {
+      format: "float"
       name: "ebc"
       req: false
       short: "European Brewery Convention color scale"
@@ -59,6 +62,7 @@ main: kit: entity: beer: {
       type: "`$ARRAY`"
     }
     {
+      format: "float"
       name: "ibu"
       req: false
       short: "International Bitterness Units"
@@ -93,12 +97,14 @@ main: kit: entity: beer: {
       type: "`$STRING`"
     }
     {
+      format: "float"
       name: "ph"
       req: false
       short: "pH level of the beer"
       type: "`$NUMBER`"
     }
     {
+      format: "float"
       name: "srm"
       req: false
       short: "Standard Reference Method color scale"
@@ -111,12 +117,14 @@ main: kit: entity: beer: {
       type: "`$STRING`"
     }
     {
+      format: "float"
       name: "target_fg"
       req: false
       short: "Target final gravity"
       type: "`$NUMBER`"
     }
     {
+      format: "float"
       name: "target_og"
       req: false
       short: "Target original gravity"
@@ -249,8 +257,10 @@ main: kit: entity: beer: {
           }
           method: "GET"
           orig: "/beers"
-          parts: [
-            "beers"
+          segments: [
+            {
+              lit: "beers"
+            }
           ]
           select: {
             exist: [
@@ -277,9 +287,13 @@ main: kit: entity: beer: {
         {
           method: "GET"
           orig: "/beers/random"
-          parts: [
-            "beers"
-            "random"
+          segments: [
+            {
+              lit: "beers"
+            }
+            {
+              lit: "random"
+            }
           ]
           select: {
             "$action": "random"
@@ -308,9 +322,13 @@ main: kit: entity: beer: {
           }
           method: "GET"
           orig: "/beers/{id}"
-          parts: [
-            "beers"
-            "{id}"
+          segments: [
+            {
+              lit: "beers"
+            }
+            {
+              var: "id"
+            }
           ]
           select: {
             exist: [

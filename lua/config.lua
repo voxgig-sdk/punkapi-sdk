@@ -33,11 +33,13 @@ local function make_config()
       ["beer"] = {
         ["fields"] = {
           {
+            ["format"] = "float",
             ["name"] = "abv",
             ["short"] = "Alcohol by volume percentage",
             ["type"] = "`$NUMBER`",
           },
           {
+            ["format"] = "float",
             ["name"] = "attenuation_level",
             ["short"] = "Attenuation level percentage",
             ["type"] = "`$NUMBER`",
@@ -62,6 +64,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "float",
             ["name"] = "ebc",
             ["short"] = "European Brewery Convention color scale",
             ["type"] = "`$NUMBER`",
@@ -77,6 +80,7 @@ local function make_config()
             ["type"] = "`$ARRAY`",
           },
           {
+            ["format"] = "float",
             ["name"] = "ibu",
             ["short"] = "International Bitterness Units",
             ["type"] = "`$NUMBER`",
@@ -105,11 +109,13 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "float",
             ["name"] = "ph",
             ["short"] = "pH level of the beer",
             ["type"] = "`$NUMBER`",
           },
           {
+            ["format"] = "float",
             ["name"] = "srm",
             ["short"] = "Standard Reference Method color scale",
             ["type"] = "`$NUMBER`",
@@ -120,11 +126,13 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "float",
             ["name"] = "target_fg",
             ["short"] = "Target final gravity",
             ["type"] = "`$NUMBER`",
           },
           {
+            ["format"] = "float",
             ["name"] = "target_og",
             ["short"] = "Target original gravity",
             ["type"] = "`$NUMBER`",
@@ -133,6 +141,10 @@ local function make_config()
             ["name"] = "volume",
             ["type"] = "`$OBJECT`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "beer",
         ["op"] = {
@@ -238,8 +250,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/beers",
-                ["parts"] = {
-                  "beers",
+                ["segments"] = {
+                  {
+                    ["lit"] = "beers",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -262,15 +276,22 @@ local function make_config()
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
+                ["parts"] = {
+                  "beers",
+                },
               },
               {
                 ["args"] = {},
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/beers/random",
-                ["parts"] = {
-                  "beers",
-                  "random",
+                ["segments"] = {
+                  {
+                    ["lit"] = "beers",
+                  },
+                  {
+                    ["lit"] = "random",
+                  },
                 },
                 ["select"] = {
                   ["$action"] = "random",
@@ -278,6 +299,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "beers",
+                  "random",
                 },
               },
             },
@@ -301,9 +326,13 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/beers/{id}",
-                ["parts"] = {
-                  "beers",
-                  "{id}",
+                ["segments"] = {
+                  {
+                    ["lit"] = "beers",
+                  },
+                  {
+                    ["var"] = "id",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -313,6 +342,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "beers",
+                  "{id}",
                 },
               },
             },
@@ -328,6 +361,10 @@ local function make_config()
             ["name"] = "id",
             ["type"] = "`$STRING`",
           },
+        },
+        ["id"] = {
+          ["field"] = "id",
+          ["name"] = "id",
         },
         ["name"] = "image",
         ["op"] = {
@@ -351,13 +388,17 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/images/{filename}",
-                ["parts"] = {
-                  "images",
-                  "{id}",
-                },
                 ["rename"] = {
                   ["param"] = {
                     ["filename"] = "id",
+                  },
+                },
+                ["segments"] = {
+                  {
+                    ["lit"] = "images",
+                  },
+                  {
+                    ["var"] = "id",
                   },
                 },
                 ["select"] = {
@@ -368,6 +409,10 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "images",
+                  "{id}",
                 },
               },
             },

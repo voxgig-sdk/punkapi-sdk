@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -70,11 +81,13 @@ class Config {
     "beer": {
       "fields": [
         {
+          "format": "float",
           "name": "abv",
           "short": "Alcohol by volume percentage",
           "type": "`$NUMBER`"
         },
         {
+          "format": "float",
           "name": "attenuation_level",
           "short": "Attenuation level percentage",
           "type": "`$NUMBER`"
@@ -99,6 +112,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "float",
           "name": "ebc",
           "short": "European Brewery Convention color scale",
           "type": "`$NUMBER`"
@@ -114,6 +128,7 @@ class Config {
           "type": "`$ARRAY`"
         },
         {
+          "format": "float",
           "name": "ibu",
           "short": "International Bitterness Units",
           "type": "`$NUMBER`"
@@ -142,11 +157,13 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "float",
           "name": "ph",
           "short": "pH level of the beer",
           "type": "`$NUMBER`"
         },
         {
+          "format": "float",
           "name": "srm",
           "short": "Standard Reference Method color scale",
           "type": "`$NUMBER`"
@@ -157,11 +174,13 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "float",
           "name": "target_fg",
           "short": "Target final gravity",
           "type": "`$NUMBER`"
         },
         {
+          "format": "float",
           "name": "target_og",
           "short": "Target original gravity",
           "type": "`$NUMBER`"
@@ -171,6 +190,10 @@ class Config {
           "type": "`$OBJECT`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "beer",
       "op": {
         "list": {
@@ -275,8 +298,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/beers",
-              "parts": [
-                "beers"
+              "segments": [
+                {
+                  "lit": "beers"
+                }
               ],
               "select": {
                 "exist": [
@@ -298,16 +323,23 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "beers"
+              ]
             },
             {
               "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/beers/random",
-              "parts": [
-                "beers",
-                "random"
+              "segments": [
+                {
+                  "lit": "beers"
+                },
+                {
+                  "lit": "random"
+                }
               ],
               "select": {
                 "$action": "random"
@@ -315,7 +347,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "beers",
+                "random"
+              ]
             }
           ]
         },
@@ -338,9 +374,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/beers/{id}",
-              "parts": [
-                "beers",
-                "{id}"
+              "segments": [
+                {
+                  "lit": "beers"
+                },
+                {
+                  "var": "id"
+                }
               ],
               "select": {
                 "exist": [
@@ -350,7 +390,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "beers",
+                "{id}"
+              ]
             }
           ]
         }
@@ -366,6 +410,10 @@ class Config {
           "type": "`$STRING`"
         }
       ],
+      "id": {
+        "field": "id",
+        "name": "id"
+      },
       "name": "image",
       "op": {
         "load": {
@@ -388,15 +436,19 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/images/{filename}",
-              "parts": [
-                "images",
-                "{id}"
-              ],
               "rename": {
                 "param": {
                   "filename": "id"
                 }
               },
+              "segments": [
+                {
+                  "lit": "images"
+                },
+                {
+                  "var": "id"
+                }
+              ],
               "select": {
                 "exist": [
                   "id"
@@ -405,7 +457,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "images",
+                "{id}"
+              ]
             }
           ]
         }
@@ -421,6 +477,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

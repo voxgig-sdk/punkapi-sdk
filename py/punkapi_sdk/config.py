@@ -1,6 +1,14 @@
 # Punkapi SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -54,11 +62,13 @@ def make_config():
       "beer": {
         "fields": [
           {
+            "format": "float",
             "name": "abv",
             "short": "Alcohol by volume percentage",
             "type": "`$NUMBER`",
           },
           {
+            "format": "float",
             "name": "attenuation_level",
             "short": "Attenuation level percentage",
             "type": "`$NUMBER`",
@@ -83,6 +93,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "float",
             "name": "ebc",
             "short": "European Brewery Convention color scale",
             "type": "`$NUMBER`",
@@ -98,6 +109,7 @@ def make_config():
             "type": "`$ARRAY`",
           },
           {
+            "format": "float",
             "name": "ibu",
             "short": "International Bitterness Units",
             "type": "`$NUMBER`",
@@ -126,11 +138,13 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "float",
             "name": "ph",
             "short": "pH level of the beer",
             "type": "`$NUMBER`",
           },
           {
+            "format": "float",
             "name": "srm",
             "short": "Standard Reference Method color scale",
             "type": "`$NUMBER`",
@@ -141,11 +155,13 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "float",
             "name": "target_fg",
             "short": "Target final gravity",
             "type": "`$NUMBER`",
           },
           {
+            "format": "float",
             "name": "target_og",
             "short": "Target original gravity",
             "type": "`$NUMBER`",
@@ -155,6 +171,10 @@ def make_config():
             "type": "`$OBJECT`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "beer",
         "op": {
           "list": {
@@ -259,8 +279,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/beers",
-                "parts": [
-                  "beers",
+                "segments": [
+                  {
+                    "lit": "beers",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -283,15 +305,22 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "beers",
+                ],
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/beers/random",
-                "parts": [
-                  "beers",
-                  "random",
+                "segments": [
+                  {
+                    "lit": "beers",
+                  },
+                  {
+                    "lit": "random",
+                  },
                 ],
                 "select": {
                   "$action": "random",
@@ -300,6 +329,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "beers",
+                  "random",
+                ],
               },
             ],
           },
@@ -322,9 +355,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/beers/{id}",
-                "parts": [
-                  "beers",
-                  "{id}",
+                "segments": [
+                  {
+                    "lit": "beers",
+                  },
+                  {
+                    "var": "id",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -335,6 +372,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "beers",
+                  "{id}",
+                ],
               },
             ],
           },
@@ -350,6 +391,10 @@ def make_config():
             "type": "`$STRING`",
           },
         ],
+        "id": {
+          "field": "id",
+          "name": "id",
+        },
         "name": "image",
         "op": {
           "load": {
@@ -372,15 +417,19 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/images/{filename}",
-                "parts": [
-                  "images",
-                  "{id}",
-                ],
                 "rename": {
                   "param": {
                     "filename": "id",
                   },
                 },
+                "segments": [
+                  {
+                    "lit": "images",
+                  },
+                  {
+                    "var": "id",
+                  },
+                ],
                 "select": {
                   "exist": [
                     "id",
@@ -390,6 +439,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "images",
+                  "{id}",
+                ],
               },
             ],
           },
