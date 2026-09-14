@@ -105,7 +105,7 @@ local results, err = client:Beer():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/punkapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/punkapi-sdk/releases) |
+| TypeScript | `@voxgig-sdk/punkapi-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/punkapi-sdk/releases) |
 | Python | `voxgig-sdk-punkapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/punkapi-sdk/releases) |
 | PHP | `voxgig-sdk/punkapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/punkapi-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/punkapi-sdk/go` | `go get github.com/voxgig-sdk/punkapi-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Beer():list()
 ### TypeScript
 
 ```ts
-import { PunkapiSDK } from '@voxgig-sdk/punkapi'
+import { PunkapiSDK } from '@voxgig-sdk/punkapi-sdk'
 
 const client = new PunkapiSDK()
 

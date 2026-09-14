@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { PunkapiSDK } from '@voxgig-sdk/punkapi'
+import { PunkapiSDK } from '@voxgig-sdk/punkapi-sdk'
 
 const client = new PunkapiSDK()
 ```
@@ -499,7 +499,7 @@ punkapi/
 Import the SDK from the package root:
 
 ```ts
-import { PunkapiSDK } from '@voxgig-sdk/punkapi'
+import { PunkapiSDK } from '@voxgig-sdk/punkapi-sdk'
 ```
 
 ### Entity state
