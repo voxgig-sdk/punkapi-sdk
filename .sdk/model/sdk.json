@@ -24,7 +24,71 @@
         "repr": "auto"
       },
       "contributor": {},
-      "docs": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "beer": {
           "active": true,
@@ -316,6 +380,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /beers",
+                    "json": "{\"operationId\":\"getBeers\",\"parameters\":[{\"description\":\"Page number for pagination\",\"in\":\"query\",\"name\":\"page\",\"required\":false,\"schema\":{\"default\":1,\"minimum\":1,\"type\":\"integer\"}},{\"description\":\"Number of items to return per page\",\"in\":\"query\",\"name\":\"per_page\",\"required\":false,\"schema\":{\"default\":30,\"maximum\":80,\"minimum\":10,\"type\":\"integer\"}},{\"description\":\"Filter beers by name (partial match)\",\"in\":\"query\",\"name\":\"beer_name\",\"required\":false,\"schema\":{\"type\":\"string\"}},{\"description\":\"Comma-separated list of beer IDs to retrieve\",\"in\":\"query\",\"name\":\"ids\",\"required\":false,\"schema\":{\"example\":\"1,2,3\",\"type\":\"string\"}},{\"description\":\"Filter beers brewed before the specified date (format: MM-YYYY or YYYY)\",\"in\":\"query\",\"name\":\"brewed_before\",\"required\":false,\"schema\":{\"example\":\"12-2018\",\"type\":\"string\"}},{\"description\":\"Filter beers brewed after the specified date (format: MM-YYYY or YYYY)\",\"in\":\"query\",\"name\":\"brewed_after\",\"required\":false,\"schema\":{\"example\":\"01-2015\",\"type\":\"string\"}},{\"description\":\"Filter beers with ABV greater than the specified value\",\"in\":\"query\",\"name\":\"abv_gt\",\"required\":false,\"schema\":{\"example\":5,\"type\":\"number\"}},{\"description\":\"Filter beers with ABV less than the specified value\",\"in\":\"query\",\"name\":\"abv_lt\",\"required\":false,\"schema\":{\"example\":10,\"type\":\"number\"}},{\"description\":\"Filter beers with IBU greater than the specified value\",\"in\":\"query\",\"name\":\"ibu_gt\",\"required\":false,\"schema\":{\"example\":40,\"type\":\"number\"}},{\"description\":\"Filter beers with IBU less than the specified value\",\"in\":\"query\",\"name\":\"ibu_lt\",\"required\":false,\"schema\":{\"example\":100,\"type\":\"number\"}},{\"description\":\"Filter beers with EBC greater than the specified value\",\"in\":\"query\",\"name\":\"ebc_gt\",\"required\":false,\"schema\":{\"example\":20,\"type\":\"number\"}},{\"description\":\"Filter beers with EBC less than the specified value\",\"in\":\"query\",\"name\":\"ebc_lt\",\"required\":false,\"schema\":{\"example\":50,\"type\":\"number\"}},{\"description\":\"Filter beers that pair well with the specified food\",\"in\":\"query\",\"name\":\"food\",\"required\":false,\"schema\":{\"example\":\"chicken\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"items\":{\"properties\":{\"abv\":{\"description\":\"Alcohol by volume percentage\",\"example\":4.7,\"format\":\"float\",\"type\":\"number\"},\"attenuation_level\":{\"description\":\"Attenuation level percentage\",\"example\":86,\"format\":\"float\",\"type\":\"number\"},\"boil_volume\":{\"properties\":{\"unit\":{\"description\":\"Unit of measurement\",\"example\":\"litres\",\"type\":\"string\"},\"value\":{\"description\":\"Volume value\",\"example\":20,\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"},\"brewers_tips\":{\"description\":\"Tips from the brewers\",\"example\":\"Temperature control is extremely important for Lager, fermentation temperature around 10-12°C and a maturation period of 3-4 weeks at 1.5-2°C is ideal.\",\"type\":\"string\"},\"contributed_by\":{\"description\":\"Contributor information\",\"example\":\"Alexander Ivanovsky <alxiw>\",\"type\":\"string\"},\"description\":{\"description\":\"Detailed description of the beer\",\"example\":\"A pilsner that combines the light, crisp and clean lager profile provided by Weihenstephan's house yeast, with the vibrant citrus and stonefruit aromas associated with new German hop Saphir. This lager is easy-going but has subtle depths; toast, hints of spice and a zesty lime marmalade character.\",\"type\":\"string\"},\"ebc\":{\"description\":\"European Brewery Convention color scale\",\"example\":5,\"format\":\"float\",\"type\":\"number\"},\"first_brewed\":{\"description\":\"Date when the beer was first brewed (format: MM/YYYY or YYYY)\",\"example\":\"2018\",\"type\":\"string\"},\"food_pairing\":{\"description\":\"List of foods that pair well with this beer\",\"example\":[\"Vietnamese Pho\",\"Buffalo Chicken Wings\",\"Sashimi\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"ibu\":{\"description\":\"International Bitterness Units\",\"example\":37,\"format\":\"float\",\"type\":\"number\"},\"id\":{\"description\":\"Unique identifier for the beer\",\"example\":366,\"type\":\"integer\"},\"image\":{\"description\":\"Filename of the beer's image\",\"example\":\"366.png\",\"type\":\"string\"},\"ingredients\":{\"properties\":{\"hops\":{\"description\":\"List of hops used\",\"items\":{\"properties\":{\"add\":{\"description\":\"When to add the hop (in minutes or stage)\",\"example\":\"60\",\"type\":\"string\"},\"amount\":{\"properties\":{\"unit\":{\"description\":\"Unit of measurement\",\"example\":\"kilograms\",\"type\":\"string\"},\"value\":{\"description\":\"Amount value\",\"example\":3.36,\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"},\"attribute\":{\"description\":\"Hop attribute (Bitter, Flavour, Aroma)\",\"example\":\"Bitter\",\"type\":\"string\"},\"name\":{\"description\":\"Name of the hop\",\"example\":\"Hallertauer Taurus\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"malt\":{\"description\":\"List of malts used\",\"items\":{\"properties\":{\"amount\":{\"properties\":{\"unit\":{\"description\":\"Unit of measurement\",\"example\":\"kilograms\",\"type\":\"string\"},\"value\":{\"description\":\"Amount value\",\"example\":3.36,\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"},\"name\":{\"description\":\"Name of the malt\",\"example\":\"Pilsner Malt\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"yeast\":{\"description\":\"Yeast strain used\",\"example\":\"W34/70\",\"type\":\"string\"}},\"type\":\"object\"},\"method\":{\"properties\":{\"fermentation\":{\"properties\":{\"temp\":{\"properties\":{\"unit\":{\"description\":\"Temperature unit\",\"example\":\"celsius\",\"type\":\"string\"},\"value\":{\"description\":\"Temperature value\",\"example\":65,\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"}},\"type\":\"object\"},\"mash_temp\":{\"description\":\"Mash temperature steps\",\"items\":{\"properties\":{\"duration\":{\"description\":\"Duration in minutes\",\"example\":65,\"type\":\"number\"},\"temp\":{\"properties\":{\"unit\":{\"description\":\"Temperature unit\",\"example\":\"celsius\",\"type\":\"string\"},\"value\":{\"description\":\"Temperature value\",\"example\":65,\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"}},\"type\":\"object\"},\"type\":\"array\"},\"twist\":{\"description\":\"Special twist or additional method information\",\"example\":\"Amyloglucosidase: 1g\",\"type\":\"string\"}},\"type\":\"object\"},\"name\":{\"description\":\"Name of the beer\",\"example\":\"Lost Lager\",\"type\":\"string\"},\"ph\":{\"description\":\"pH level of the beer\",\"example\":4.4,\"format\":\"float\",\"type\":\"number\"},\"srm\":{\"description\":\"Standard Reference Method color scale\",\"example\":3,\"format\":\"float\",\"type\":\"number\"},\"tagline\":{\"description\":\"Short tagline or description\",\"example\":\"Dry-Hopped Pilsner.\",\"type\":\"string\"},\"target_fg\":{\"description\":\"Target final gravity\",\"example\":1006,\"format\":\"float\",\"type\":\"number\"},\"target_og\":{\"description\":\"Target original gravity\",\"example\":1042,\"format\":\"float\",\"type\":\"number\"},\"volume\":{\"properties\":{\"unit\":{\"description\":\"Unit of measurement\",\"example\":\"litres\",\"type\":\"string\"},\"value\":{\"description\":\"Volume value\",\"example\":20,\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"}},\"type\":\"object\"},\"type\":\"array\"}}},\"description\":\"Successful response\"},\"400\":{\"description\":\"Bad request - invalid parameters\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/beers",
@@ -349,6 +419,12 @@
                 {
                   "active": true,
                   "args": {},
+                  "contract": {
+                    "id": "GET /beers/random",
+                    "json": "{\"operationId\":\"getRandomBeer\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"abv\":{\"description\":\"Alcohol by volume percentage\",\"example\":4.7,\"format\":\"float\",\"type\":\"number\"},\"attenuation_level\":{\"description\":\"Attenuation level percentage\",\"example\":86,\"format\":\"float\",\"type\":\"number\"},\"boil_volume\":{\"properties\":{\"unit\":{\"description\":\"Unit of measurement\",\"example\":\"litres\",\"type\":\"string\"},\"value\":{\"description\":\"Volume value\",\"example\":20,\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"},\"brewers_tips\":{\"description\":\"Tips from the brewers\",\"example\":\"Temperature control is extremely important for Lager, fermentation temperature around 10-12°C and a maturation period of 3-4 weeks at 1.5-2°C is ideal.\",\"type\":\"string\"},\"contributed_by\":{\"description\":\"Contributor information\",\"example\":\"Alexander Ivanovsky <alxiw>\",\"type\":\"string\"},\"description\":{\"description\":\"Detailed description of the beer\",\"example\":\"A pilsner that combines the light, crisp and clean lager profile provided by Weihenstephan's house yeast, with the vibrant citrus and stonefruit aromas associated with new German hop Saphir. This lager is easy-going but has subtle depths; toast, hints of spice and a zesty lime marmalade character.\",\"type\":\"string\"},\"ebc\":{\"description\":\"European Brewery Convention color scale\",\"example\":5,\"format\":\"float\",\"type\":\"number\"},\"first_brewed\":{\"description\":\"Date when the beer was first brewed (format: MM/YYYY or YYYY)\",\"example\":\"2018\",\"type\":\"string\"},\"food_pairing\":{\"description\":\"List of foods that pair well with this beer\",\"example\":[\"Vietnamese Pho\",\"Buffalo Chicken Wings\",\"Sashimi\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"ibu\":{\"description\":\"International Bitterness Units\",\"example\":37,\"format\":\"float\",\"type\":\"number\"},\"id\":{\"description\":\"Unique identifier for the beer\",\"example\":366,\"type\":\"integer\"},\"image\":{\"description\":\"Filename of the beer's image\",\"example\":\"366.png\",\"type\":\"string\"},\"ingredients\":{\"properties\":{\"hops\":{\"description\":\"List of hops used\",\"items\":{\"properties\":{\"add\":{\"description\":\"When to add the hop (in minutes or stage)\",\"example\":\"60\",\"type\":\"string\"},\"amount\":{\"properties\":{\"unit\":{\"description\":\"Unit of measurement\",\"example\":\"kilograms\",\"type\":\"string\"},\"value\":{\"description\":\"Amount value\",\"example\":3.36,\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"},\"attribute\":{\"description\":\"Hop attribute (Bitter, Flavour, Aroma)\",\"example\":\"Bitter\",\"type\":\"string\"},\"name\":{\"description\":\"Name of the hop\",\"example\":\"Hallertauer Taurus\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"malt\":{\"description\":\"List of malts used\",\"items\":{\"properties\":{\"amount\":{\"properties\":{\"unit\":{\"description\":\"Unit of measurement\",\"example\":\"kilograms\",\"type\":\"string\"},\"value\":{\"description\":\"Amount value\",\"example\":3.36,\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"},\"name\":{\"description\":\"Name of the malt\",\"example\":\"Pilsner Malt\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"yeast\":{\"description\":\"Yeast strain used\",\"example\":\"W34/70\",\"type\":\"string\"}},\"type\":\"object\"},\"method\":{\"properties\":{\"fermentation\":{\"properties\":{\"temp\":{\"properties\":{\"unit\":{\"description\":\"Temperature unit\",\"example\":\"celsius\",\"type\":\"string\"},\"value\":{\"description\":\"Temperature value\",\"example\":65,\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"}},\"type\":\"object\"},\"mash_temp\":{\"description\":\"Mash temperature steps\",\"items\":{\"properties\":{\"duration\":{\"description\":\"Duration in minutes\",\"example\":65,\"type\":\"number\"},\"temp\":{\"properties\":{\"unit\":{\"description\":\"Temperature unit\",\"example\":\"celsius\",\"type\":\"string\"},\"value\":{\"description\":\"Temperature value\",\"example\":65,\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"}},\"type\":\"object\"},\"type\":\"array\"},\"twist\":{\"description\":\"Special twist or additional method information\",\"example\":\"Amyloglucosidase: 1g\",\"type\":\"string\"}},\"type\":\"object\"},\"name\":{\"description\":\"Name of the beer\",\"example\":\"Lost Lager\",\"type\":\"string\"},\"ph\":{\"description\":\"pH level of the beer\",\"example\":4.4,\"format\":\"float\",\"type\":\"number\"},\"srm\":{\"description\":\"Standard Reference Method color scale\",\"example\":3,\"format\":\"float\",\"type\":\"number\"},\"tagline\":{\"description\":\"Short tagline or description\",\"example\":\"Dry-Hopped Pilsner.\",\"type\":\"string\"},\"target_fg\":{\"description\":\"Target final gravity\",\"example\":1006,\"format\":\"float\",\"type\":\"number\"},\"target_og\":{\"description\":\"Target original gravity\",\"example\":1042,\"format\":\"float\",\"type\":\"number\"},\"volume\":{\"properties\":{\"unit\":{\"description\":\"Unit of measurement\",\"example\":\"litres\",\"type\":\"string\"},\"value\":{\"description\":\"Volume value\",\"example\":20,\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/beers/random",
@@ -387,6 +463,12 @@
                         "type": "`$INTEGER`"
                       }
                     ]
+                  },
+                  "contract": {
+                    "id": "GET /beers/{id}",
+                    "json": "{\"operationId\":\"getBeerById\",\"parameters\":[{\"description\":\"Beer ID\",\"in\":\"path\",\"name\":\"id\",\"required\":true,\"schema\":{\"maximum\":415,\"minimum\":1,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"abv\":{\"description\":\"Alcohol by volume percentage\",\"example\":4.7,\"format\":\"float\",\"type\":\"number\"},\"attenuation_level\":{\"description\":\"Attenuation level percentage\",\"example\":86,\"format\":\"float\",\"type\":\"number\"},\"boil_volume\":{\"properties\":{\"unit\":{\"description\":\"Unit of measurement\",\"example\":\"litres\",\"type\":\"string\"},\"value\":{\"description\":\"Volume value\",\"example\":20,\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"},\"brewers_tips\":{\"description\":\"Tips from the brewers\",\"example\":\"Temperature control is extremely important for Lager, fermentation temperature around 10-12°C and a maturation period of 3-4 weeks at 1.5-2°C is ideal.\",\"type\":\"string\"},\"contributed_by\":{\"description\":\"Contributor information\",\"example\":\"Alexander Ivanovsky <alxiw>\",\"type\":\"string\"},\"description\":{\"description\":\"Detailed description of the beer\",\"example\":\"A pilsner that combines the light, crisp and clean lager profile provided by Weihenstephan's house yeast, with the vibrant citrus and stonefruit aromas associated with new German hop Saphir. This lager is easy-going but has subtle depths; toast, hints of spice and a zesty lime marmalade character.\",\"type\":\"string\"},\"ebc\":{\"description\":\"European Brewery Convention color scale\",\"example\":5,\"format\":\"float\",\"type\":\"number\"},\"first_brewed\":{\"description\":\"Date when the beer was first brewed (format: MM/YYYY or YYYY)\",\"example\":\"2018\",\"type\":\"string\"},\"food_pairing\":{\"description\":\"List of foods that pair well with this beer\",\"example\":[\"Vietnamese Pho\",\"Buffalo Chicken Wings\",\"Sashimi\"],\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"ibu\":{\"description\":\"International Bitterness Units\",\"example\":37,\"format\":\"float\",\"type\":\"number\"},\"id\":{\"description\":\"Unique identifier for the beer\",\"example\":366,\"type\":\"integer\"},\"image\":{\"description\":\"Filename of the beer's image\",\"example\":\"366.png\",\"type\":\"string\"},\"ingredients\":{\"properties\":{\"hops\":{\"description\":\"List of hops used\",\"items\":{\"properties\":{\"add\":{\"description\":\"When to add the hop (in minutes or stage)\",\"example\":\"60\",\"type\":\"string\"},\"amount\":{\"properties\":{\"unit\":{\"description\":\"Unit of measurement\",\"example\":\"kilograms\",\"type\":\"string\"},\"value\":{\"description\":\"Amount value\",\"example\":3.36,\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"},\"attribute\":{\"description\":\"Hop attribute (Bitter, Flavour, Aroma)\",\"example\":\"Bitter\",\"type\":\"string\"},\"name\":{\"description\":\"Name of the hop\",\"example\":\"Hallertauer Taurus\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"malt\":{\"description\":\"List of malts used\",\"items\":{\"properties\":{\"amount\":{\"properties\":{\"unit\":{\"description\":\"Unit of measurement\",\"example\":\"kilograms\",\"type\":\"string\"},\"value\":{\"description\":\"Amount value\",\"example\":3.36,\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"},\"name\":{\"description\":\"Name of the malt\",\"example\":\"Pilsner Malt\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"yeast\":{\"description\":\"Yeast strain used\",\"example\":\"W34/70\",\"type\":\"string\"}},\"type\":\"object\"},\"method\":{\"properties\":{\"fermentation\":{\"properties\":{\"temp\":{\"properties\":{\"unit\":{\"description\":\"Temperature unit\",\"example\":\"celsius\",\"type\":\"string\"},\"value\":{\"description\":\"Temperature value\",\"example\":65,\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"}},\"type\":\"object\"},\"mash_temp\":{\"description\":\"Mash temperature steps\",\"items\":{\"properties\":{\"duration\":{\"description\":\"Duration in minutes\",\"example\":65,\"type\":\"number\"},\"temp\":{\"properties\":{\"unit\":{\"description\":\"Temperature unit\",\"example\":\"celsius\",\"type\":\"string\"},\"value\":{\"description\":\"Temperature value\",\"example\":65,\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"}},\"type\":\"object\"},\"type\":\"array\"},\"twist\":{\"description\":\"Special twist or additional method information\",\"example\":\"Amyloglucosidase: 1g\",\"type\":\"string\"}},\"type\":\"object\"},\"name\":{\"description\":\"Name of the beer\",\"example\":\"Lost Lager\",\"type\":\"string\"},\"ph\":{\"description\":\"pH level of the beer\",\"example\":4.4,\"format\":\"float\",\"type\":\"number\"},\"srm\":{\"description\":\"Standard Reference Method color scale\",\"example\":3,\"format\":\"float\",\"type\":\"number\"},\"tagline\":{\"description\":\"Short tagline or description\",\"example\":\"Dry-Hopped Pilsner.\",\"type\":\"string\"},\"target_fg\":{\"description\":\"Target final gravity\",\"example\":1006,\"format\":\"float\",\"type\":\"number\"},\"target_og\":{\"description\":\"Target original gravity\",\"example\":1042,\"format\":\"float\",\"type\":\"number\"},\"volume\":{\"properties\":{\"unit\":{\"description\":\"Unit of measurement\",\"example\":\"litres\",\"type\":\"string\"},\"value\":{\"description\":\"Volume value\",\"example\":20,\"format\":\"float\",\"type\":\"number\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Beer not found\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
                   },
                   "kind": "http",
                   "method": "GET",
@@ -454,6 +536,12 @@
                       }
                     ]
                   },
+                  "contract": {
+                    "id": "GET /images/{filename}",
+                    "json": "{\"operationId\":\"getBeerImage\",\"parameters\":[{\"description\":\"Image filename (from the beer's image field)\",\"in\":\"path\",\"name\":\"filename\",\"required\":true,\"schema\":{\"example\":\"366.png\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"image/png\":{\"schema\":{\"format\":\"binary\",\"type\":\"string\"}}},\"description\":\"Successful response\"},\"404\":{\"description\":\"Image not found\"},\"500\":{\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
+                    "source": "openapi3",
+                    "version": 1
+                  },
                   "kind": "http",
                   "method": "GET",
                   "orig": "/images/{filename}",
@@ -489,13 +577,223 @@
         }
       },
       "feature": {
+        "ratelimit": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "burst": 5,
+              "rate": 5
+            },
+            "optspec": {
+              "now": "`$FUNCTION`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "ratelimit",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Client-side rate limiting via a token bucket",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
+        "retry": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "factor": 2,
+              "maxDelay": 2000,
+              "minDelay": 50,
+              "retries": 2,
+              "statuses": [
+                408,
+                425,
+                429,
+                500,
+                502,
+                503,
+                504
+              ]
+            },
+            "optspec": {
+              "jitter": "`$BOOLEAN`",
+              "sleep": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "retry",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Automatic retry of transient failures with exponential backoff",
+          "transport": "wrap",
+          "version": "0.0.1"
+        },
         "test": {
           "active": true,
           "base": "node_modules/@voxgig/sdkgen/project/.sdk",
           "config": {
             "options": {
               "active": false
-            }
+            },
+            "optspec": {
+              "entity": "`$MAP`",
+              "net": "`$MAP`"
+            },
+            "strict": false
           },
           "hook": {
             "GetData": {
@@ -585,6 +883,102 @@
           },
           "title": "In-memory mock transport for testing without a live server",
           "transport": "base",
+          "version": "0.0.1"
+        },
+        "timeout": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "config": {
+            "options": {
+              "active": false,
+              "ms": 30000
+            },
+            "optspec": {
+              "clearTimer": "`$FUNCTION`",
+              "setTimer": "`$FUNCTION`"
+            },
+            "strict": false
+          },
+          "hook": {
+            "GetData": {
+              "active": false,
+              "await": false
+            },
+            "GetMatch": {
+              "active": false,
+              "await": false
+            },
+            "PostConstruct": {
+              "active": false,
+              "await": false
+            },
+            "PostConstructEntity": {
+              "active": false,
+              "await": false
+            },
+            "PostOperation": {
+              "active": false,
+              "await": false
+            },
+            "PreRequest": {
+              "active": false,
+              "await": false
+            },
+            "PreResponse": {
+              "active": false,
+              "await": false
+            },
+            "PreResult": {
+              "active": false,
+              "await": false
+            },
+            "PreSpec": {
+              "active": false,
+              "await": false
+            },
+            "PreTarget": {
+              "active": false,
+              "await": false
+            },
+            "SetData": {
+              "active": false,
+              "await": false
+            }
+          },
+          "name": "timeout",
+          "needs": {},
+          "origname": "",
+          "package": "@voxgig/sdkgen",
+          "plugin": {},
+          "spec": {},
+          "target": {
+            "go": {
+              "deps": {}
+            },
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
+              "deps": {}
+            },
+            "lua": {
+              "deps": {}
+            },
+            "php": {
+              "deps": {}
+            },
+            "py": {
+              "deps": {}
+            },
+            "rb": {
+              "deps": {}
+            },
+            "ts": {
+              "deps": {}
+            }
+          },
+          "title": "Per-request timeout with transport abort",
+          "transport": "wrap",
           "version": "0.0.1"
         }
       },
@@ -694,6 +1088,48 @@
         "website": "https://punkapi-alxiw.amvera.io"
       },
       "option": {},
+      "optspec": {
+        "allow": {
+          "method": "GET,PUT,POST,PATCH,DELETE,OPTIONS",
+          "op": "create,update,load,list,remove,command,direct,graphql"
+        },
+        "apikey": "",
+        "auth": {
+          "basic": false,
+          "prefix": ""
+        },
+        "base": "http://localhost:8000",
+        "clean": {
+          "keys": "key,token,id"
+        },
+        "entity": {
+          "`$CHILD`": {
+            "`$OPEN`": true,
+            "active": false,
+            "alias": {}
+          }
+        },
+        "extend": "`$ANY`",
+        "headers": {
+          "`$CHILD`": "`$STRING`"
+        },
+        "prefix": "",
+        "secret": "",
+        "server": {
+          "`$CHILD`": ""
+        },
+        "suffix": "",
+        "system": {
+          "fetch": "`$ANY`"
+        },
+        "test": {
+          "active": false,
+          "entity": {
+            "`$OPEN`": true
+          }
+        },
+        "utility": {}
+      },
       "repo": {
         "host": "github.com",
         "path": ""
@@ -1248,6 +1684,7 @@
           },
           "package": "@voxgig/sdkgen",
           "provides": {
+            "schema": true,
             "sekreto": true
           },
           "publish": {
@@ -1289,7 +1726,7 @@
         "live": {
           "app": false,
           "base": "",
-          "strict": false
+          "strict": true
         }
       }
     }

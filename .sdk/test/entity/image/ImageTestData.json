@@ -16,5 +16,46 @@
     "image": {
       "image_ref01": {}
     }
+  },
+  "requests": {
+    "GET /images/{filename}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getBeerImage",
+        "parameters": [
+          {
+            "description": "Image filename (from the beer's image field)",
+            "in": "path",
+            "name": "filename",
+            "required": true,
+            "schema": {
+              "example": "366.png",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "image/png": {
+                "schema": {
+                  "format": "binary",
+                  "type": "string"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "404": {
+            "description": "Image not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

@@ -4,7 +4,10 @@ declare(strict_types=1);
 // Punkapi SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class PunkapiFeatures
@@ -14,8 +17,14 @@ class PunkapiFeatures
         switch ($name) {
             case "base":
                 return new PunkapiBaseFeature();
+            case "ratelimit":
+                return new PunkapiRatelimitFeature();
+            case "retry":
+                return new PunkapiRetryFeature();
             case "test":
                 return new PunkapiTestFeature();
+            case "timeout":
+                return new PunkapiTimeoutFeature();
             default:
                 return new PunkapiBaseFeature();
         }
@@ -31,7 +40,10 @@ class PunkapiFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

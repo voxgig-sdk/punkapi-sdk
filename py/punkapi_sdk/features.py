@@ -1,12 +1,18 @@
 # Punkapi SDK feature factory
 
 from punkapi_sdk.feature.base_feature import PunkapiBaseFeature
+from punkapi_sdk.feature.ratelimit_feature import PunkapiRatelimitFeature
+from punkapi_sdk.feature.retry_feature import PunkapiRetryFeature
 from punkapi_sdk.feature.test_feature import PunkapiTestFeature
+from punkapi_sdk.feature.timeout_feature import PunkapiTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: PunkapiBaseFeature(),
+    "ratelimit": lambda: PunkapiRatelimitFeature(),
+    "retry": lambda: PunkapiRetryFeature(),
     "test": lambda: PunkapiTestFeature(),
+    "timeout": lambda: PunkapiTimeoutFeature(),
 }
 
 

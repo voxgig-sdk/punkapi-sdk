@@ -97,5 +97,1058 @@
         "volume": {}
       }
     }
+  },
+  "requests": {
+    "GET /beers": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getBeers",
+        "parameters": [
+          {
+            "description": "Page number for pagination",
+            "in": "query",
+            "name": "page",
+            "required": false,
+            "schema": {
+              "default": 1,
+              "minimum": 1,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Number of items to return per page",
+            "in": "query",
+            "name": "per_page",
+            "required": false,
+            "schema": {
+              "default": 30,
+              "maximum": 80,
+              "minimum": 10,
+              "type": "integer"
+            }
+          },
+          {
+            "description": "Filter beers by name (partial match)",
+            "in": "query",
+            "name": "beer_name",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "description": "Comma-separated list of beer IDs to retrieve",
+            "in": "query",
+            "name": "ids",
+            "required": false,
+            "schema": {
+              "example": "1,2,3",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter beers brewed before the specified date (format: MM-YYYY or YYYY)",
+            "in": "query",
+            "name": "brewed_before",
+            "required": false,
+            "schema": {
+              "example": "12-2018",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter beers brewed after the specified date (format: MM-YYYY or YYYY)",
+            "in": "query",
+            "name": "brewed_after",
+            "required": false,
+            "schema": {
+              "example": "01-2015",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter beers with ABV greater than the specified value",
+            "in": "query",
+            "name": "abv_gt",
+            "required": false,
+            "schema": {
+              "example": 5,
+              "type": "number"
+            }
+          },
+          {
+            "description": "Filter beers with ABV less than the specified value",
+            "in": "query",
+            "name": "abv_lt",
+            "required": false,
+            "schema": {
+              "example": 10,
+              "type": "number"
+            }
+          },
+          {
+            "description": "Filter beers with IBU greater than the specified value",
+            "in": "query",
+            "name": "ibu_gt",
+            "required": false,
+            "schema": {
+              "example": 40,
+              "type": "number"
+            }
+          },
+          {
+            "description": "Filter beers with IBU less than the specified value",
+            "in": "query",
+            "name": "ibu_lt",
+            "required": false,
+            "schema": {
+              "example": 100,
+              "type": "number"
+            }
+          },
+          {
+            "description": "Filter beers with EBC greater than the specified value",
+            "in": "query",
+            "name": "ebc_gt",
+            "required": false,
+            "schema": {
+              "example": 20,
+              "type": "number"
+            }
+          },
+          {
+            "description": "Filter beers with EBC less than the specified value",
+            "in": "query",
+            "name": "ebc_lt",
+            "required": false,
+            "schema": {
+              "example": 50,
+              "type": "number"
+            }
+          },
+          {
+            "description": "Filter beers that pair well with the specified food",
+            "in": "query",
+            "name": "food",
+            "required": false,
+            "schema": {
+              "example": "chicken",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "properties": {
+                      "abv": {
+                        "description": "Alcohol by volume percentage",
+                        "example": 4.7,
+                        "format": "float",
+                        "type": "number"
+                      },
+                      "attenuation_level": {
+                        "description": "Attenuation level percentage",
+                        "example": 86,
+                        "format": "float",
+                        "type": "number"
+                      },
+                      "boil_volume": {
+                        "properties": {
+                          "unit": {
+                            "description": "Unit of measurement",
+                            "example": "litres",
+                            "type": "string"
+                          },
+                          "value": {
+                            "description": "Volume value",
+                            "example": 20,
+                            "format": "float",
+                            "type": "number"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "brewers_tips": {
+                        "description": "Tips from the brewers",
+                        "example": "Temperature control is extremely important for Lager, fermentation temperature around 10-12°C and a maturation period of 3-4 weeks at 1.5-2°C is ideal.",
+                        "type": "string"
+                      },
+                      "contributed_by": {
+                        "description": "Contributor information",
+                        "example": "Alexander Ivanovsky <alxiw>",
+                        "type": "string"
+                      },
+                      "description": {
+                        "description": "Detailed description of the beer",
+                        "example": "A pilsner that combines the light, crisp and clean lager profile provided by Weihenstephan's house yeast, with the vibrant citrus and stonefruit aromas associated with new German hop Saphir. This lager is easy-going but has subtle depths; toast, hints of spice and a zesty lime marmalade character.",
+                        "type": "string"
+                      },
+                      "ebc": {
+                        "description": "European Brewery Convention color scale",
+                        "example": 5,
+                        "format": "float",
+                        "type": "number"
+                      },
+                      "first_brewed": {
+                        "description": "Date when the beer was first brewed (format: MM/YYYY or YYYY)",
+                        "example": "2018",
+                        "type": "string"
+                      },
+                      "food_pairing": {
+                        "description": "List of foods that pair well with this beer",
+                        "example": [
+                          "Vietnamese Pho",
+                          "Buffalo Chicken Wings",
+                          "Sashimi"
+                        ],
+                        "items": {
+                          "type": "string"
+                        },
+                        "type": "array"
+                      },
+                      "ibu": {
+                        "description": "International Bitterness Units",
+                        "example": 37,
+                        "format": "float",
+                        "type": "number"
+                      },
+                      "id": {
+                        "description": "Unique identifier for the beer",
+                        "example": 366,
+                        "type": "integer"
+                      },
+                      "image": {
+                        "description": "Filename of the beer's image",
+                        "example": "366.png",
+                        "type": "string"
+                      },
+                      "ingredients": {
+                        "properties": {
+                          "hops": {
+                            "description": "List of hops used",
+                            "items": {
+                              "properties": {
+                                "add": {
+                                  "description": "When to add the hop (in minutes or stage)",
+                                  "example": "60",
+                                  "type": "string"
+                                },
+                                "amount": {
+                                  "properties": {
+                                    "unit": {
+                                      "description": "Unit of measurement",
+                                      "example": "kilograms",
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "description": "Amount value",
+                                      "example": 3.36,
+                                      "format": "float",
+                                      "type": "number"
+                                    }
+                                  },
+                                  "type": "object"
+                                },
+                                "attribute": {
+                                  "description": "Hop attribute (Bitter, Flavour, Aroma)",
+                                  "example": "Bitter",
+                                  "type": "string"
+                                },
+                                "name": {
+                                  "description": "Name of the hop",
+                                  "example": "Hallertauer Taurus",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          },
+                          "malt": {
+                            "description": "List of malts used",
+                            "items": {
+                              "properties": {
+                                "amount": {
+                                  "properties": {
+                                    "unit": {
+                                      "description": "Unit of measurement",
+                                      "example": "kilograms",
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "description": "Amount value",
+                                      "example": 3.36,
+                                      "format": "float",
+                                      "type": "number"
+                                    }
+                                  },
+                                  "type": "object"
+                                },
+                                "name": {
+                                  "description": "Name of the malt",
+                                  "example": "Pilsner Malt",
+                                  "type": "string"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          },
+                          "yeast": {
+                            "description": "Yeast strain used",
+                            "example": "W34/70",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "method": {
+                        "properties": {
+                          "fermentation": {
+                            "properties": {
+                              "temp": {
+                                "properties": {
+                                  "unit": {
+                                    "description": "Temperature unit",
+                                    "example": "celsius",
+                                    "type": "string"
+                                  },
+                                  "value": {
+                                    "description": "Temperature value",
+                                    "example": 65,
+                                    "format": "float",
+                                    "type": "number"
+                                  }
+                                },
+                                "type": "object"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "mash_temp": {
+                            "description": "Mash temperature steps",
+                            "items": {
+                              "properties": {
+                                "duration": {
+                                  "description": "Duration in minutes",
+                                  "example": 65,
+                                  "type": "number"
+                                },
+                                "temp": {
+                                  "properties": {
+                                    "unit": {
+                                      "description": "Temperature unit",
+                                      "example": "celsius",
+                                      "type": "string"
+                                    },
+                                    "value": {
+                                      "description": "Temperature value",
+                                      "example": 65,
+                                      "format": "float",
+                                      "type": "number"
+                                    }
+                                  },
+                                  "type": "object"
+                                }
+                              },
+                              "type": "object"
+                            },
+                            "type": "array"
+                          },
+                          "twist": {
+                            "description": "Special twist or additional method information",
+                            "example": "Amyloglucosidase: 1g",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "name": {
+                        "description": "Name of the beer",
+                        "example": "Lost Lager",
+                        "type": "string"
+                      },
+                      "ph": {
+                        "description": "pH level of the beer",
+                        "example": 4.4,
+                        "format": "float",
+                        "type": "number"
+                      },
+                      "srm": {
+                        "description": "Standard Reference Method color scale",
+                        "example": 3,
+                        "format": "float",
+                        "type": "number"
+                      },
+                      "tagline": {
+                        "description": "Short tagline or description",
+                        "example": "Dry-Hopped Pilsner.",
+                        "type": "string"
+                      },
+                      "target_fg": {
+                        "description": "Target final gravity",
+                        "example": 1006,
+                        "format": "float",
+                        "type": "number"
+                      },
+                      "target_og": {
+                        "description": "Target original gravity",
+                        "example": 1042,
+                        "format": "float",
+                        "type": "number"
+                      },
+                      "volume": {
+                        "properties": {
+                          "unit": {
+                            "description": "Unit of measurement",
+                            "example": "litres",
+                            "type": "string"
+                          },
+                          "value": {
+                            "description": "Volume value",
+                            "example": 20,
+                            "format": "float",
+                            "type": "number"
+                          }
+                        },
+                        "type": "object"
+                      }
+                    },
+                    "type": "object"
+                  },
+                  "type": "array"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "400": {
+            "description": "Bad request - invalid parameters"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /beers/random": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getRandomBeer",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "abv": {
+                      "description": "Alcohol by volume percentage",
+                      "example": 4.7,
+                      "format": "float",
+                      "type": "number"
+                    },
+                    "attenuation_level": {
+                      "description": "Attenuation level percentage",
+                      "example": 86,
+                      "format": "float",
+                      "type": "number"
+                    },
+                    "boil_volume": {
+                      "properties": {
+                        "unit": {
+                          "description": "Unit of measurement",
+                          "example": "litres",
+                          "type": "string"
+                        },
+                        "value": {
+                          "description": "Volume value",
+                          "example": 20,
+                          "format": "float",
+                          "type": "number"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "brewers_tips": {
+                      "description": "Tips from the brewers",
+                      "example": "Temperature control is extremely important for Lager, fermentation temperature around 10-12°C and a maturation period of 3-4 weeks at 1.5-2°C is ideal.",
+                      "type": "string"
+                    },
+                    "contributed_by": {
+                      "description": "Contributor information",
+                      "example": "Alexander Ivanovsky <alxiw>",
+                      "type": "string"
+                    },
+                    "description": {
+                      "description": "Detailed description of the beer",
+                      "example": "A pilsner that combines the light, crisp and clean lager profile provided by Weihenstephan's house yeast, with the vibrant citrus and stonefruit aromas associated with new German hop Saphir. This lager is easy-going but has subtle depths; toast, hints of spice and a zesty lime marmalade character.",
+                      "type": "string"
+                    },
+                    "ebc": {
+                      "description": "European Brewery Convention color scale",
+                      "example": 5,
+                      "format": "float",
+                      "type": "number"
+                    },
+                    "first_brewed": {
+                      "description": "Date when the beer was first brewed (format: MM/YYYY or YYYY)",
+                      "example": "2018",
+                      "type": "string"
+                    },
+                    "food_pairing": {
+                      "description": "List of foods that pair well with this beer",
+                      "example": [
+                        "Vietnamese Pho",
+                        "Buffalo Chicken Wings",
+                        "Sashimi"
+                      ],
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "ibu": {
+                      "description": "International Bitterness Units",
+                      "example": 37,
+                      "format": "float",
+                      "type": "number"
+                    },
+                    "id": {
+                      "description": "Unique identifier for the beer",
+                      "example": 366,
+                      "type": "integer"
+                    },
+                    "image": {
+                      "description": "Filename of the beer's image",
+                      "example": "366.png",
+                      "type": "string"
+                    },
+                    "ingredients": {
+                      "properties": {
+                        "hops": {
+                          "description": "List of hops used",
+                          "items": {
+                            "properties": {
+                              "add": {
+                                "description": "When to add the hop (in minutes or stage)",
+                                "example": "60",
+                                "type": "string"
+                              },
+                              "amount": {
+                                "properties": {
+                                  "unit": {
+                                    "description": "Unit of measurement",
+                                    "example": "kilograms",
+                                    "type": "string"
+                                  },
+                                  "value": {
+                                    "description": "Amount value",
+                                    "example": 3.36,
+                                    "format": "float",
+                                    "type": "number"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "attribute": {
+                                "description": "Hop attribute (Bitter, Flavour, Aroma)",
+                                "example": "Bitter",
+                                "type": "string"
+                              },
+                              "name": {
+                                "description": "Name of the hop",
+                                "example": "Hallertauer Taurus",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "malt": {
+                          "description": "List of malts used",
+                          "items": {
+                            "properties": {
+                              "amount": {
+                                "properties": {
+                                  "unit": {
+                                    "description": "Unit of measurement",
+                                    "example": "kilograms",
+                                    "type": "string"
+                                  },
+                                  "value": {
+                                    "description": "Amount value",
+                                    "example": 3.36,
+                                    "format": "float",
+                                    "type": "number"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "name": {
+                                "description": "Name of the malt",
+                                "example": "Pilsner Malt",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "yeast": {
+                          "description": "Yeast strain used",
+                          "example": "W34/70",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "method": {
+                      "properties": {
+                        "fermentation": {
+                          "properties": {
+                            "temp": {
+                              "properties": {
+                                "unit": {
+                                  "description": "Temperature unit",
+                                  "example": "celsius",
+                                  "type": "string"
+                                },
+                                "value": {
+                                  "description": "Temperature value",
+                                  "example": 65,
+                                  "format": "float",
+                                  "type": "number"
+                                }
+                              },
+                              "type": "object"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "mash_temp": {
+                          "description": "Mash temperature steps",
+                          "items": {
+                            "properties": {
+                              "duration": {
+                                "description": "Duration in minutes",
+                                "example": 65,
+                                "type": "number"
+                              },
+                              "temp": {
+                                "properties": {
+                                  "unit": {
+                                    "description": "Temperature unit",
+                                    "example": "celsius",
+                                    "type": "string"
+                                  },
+                                  "value": {
+                                    "description": "Temperature value",
+                                    "example": 65,
+                                    "format": "float",
+                                    "type": "number"
+                                  }
+                                },
+                                "type": "object"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "twist": {
+                          "description": "Special twist or additional method information",
+                          "example": "Amyloglucosidase: 1g",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "name": {
+                      "description": "Name of the beer",
+                      "example": "Lost Lager",
+                      "type": "string"
+                    },
+                    "ph": {
+                      "description": "pH level of the beer",
+                      "example": 4.4,
+                      "format": "float",
+                      "type": "number"
+                    },
+                    "srm": {
+                      "description": "Standard Reference Method color scale",
+                      "example": 3,
+                      "format": "float",
+                      "type": "number"
+                    },
+                    "tagline": {
+                      "description": "Short tagline or description",
+                      "example": "Dry-Hopped Pilsner.",
+                      "type": "string"
+                    },
+                    "target_fg": {
+                      "description": "Target final gravity",
+                      "example": 1006,
+                      "format": "float",
+                      "type": "number"
+                    },
+                    "target_og": {
+                      "description": "Target original gravity",
+                      "example": 1042,
+                      "format": "float",
+                      "type": "number"
+                    },
+                    "volume": {
+                      "properties": {
+                        "unit": {
+                          "description": "Unit of measurement",
+                          "example": "litres",
+                          "type": "string"
+                        },
+                        "value": {
+                          "description": "Volume value",
+                          "example": 20,
+                          "format": "float",
+                          "type": "number"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /beers/{id}": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getBeerById",
+        "parameters": [
+          {
+            "description": "Beer ID",
+            "in": "path",
+            "name": "id",
+            "required": true,
+            "schema": {
+              "maximum": 415,
+              "minimum": 1,
+              "type": "integer"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "abv": {
+                      "description": "Alcohol by volume percentage",
+                      "example": 4.7,
+                      "format": "float",
+                      "type": "number"
+                    },
+                    "attenuation_level": {
+                      "description": "Attenuation level percentage",
+                      "example": 86,
+                      "format": "float",
+                      "type": "number"
+                    },
+                    "boil_volume": {
+                      "properties": {
+                        "unit": {
+                          "description": "Unit of measurement",
+                          "example": "litres",
+                          "type": "string"
+                        },
+                        "value": {
+                          "description": "Volume value",
+                          "example": 20,
+                          "format": "float",
+                          "type": "number"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "brewers_tips": {
+                      "description": "Tips from the brewers",
+                      "example": "Temperature control is extremely important for Lager, fermentation temperature around 10-12°C and a maturation period of 3-4 weeks at 1.5-2°C is ideal.",
+                      "type": "string"
+                    },
+                    "contributed_by": {
+                      "description": "Contributor information",
+                      "example": "Alexander Ivanovsky <alxiw>",
+                      "type": "string"
+                    },
+                    "description": {
+                      "description": "Detailed description of the beer",
+                      "example": "A pilsner that combines the light, crisp and clean lager profile provided by Weihenstephan's house yeast, with the vibrant citrus and stonefruit aromas associated with new German hop Saphir. This lager is easy-going but has subtle depths; toast, hints of spice and a zesty lime marmalade character.",
+                      "type": "string"
+                    },
+                    "ebc": {
+                      "description": "European Brewery Convention color scale",
+                      "example": 5,
+                      "format": "float",
+                      "type": "number"
+                    },
+                    "first_brewed": {
+                      "description": "Date when the beer was first brewed (format: MM/YYYY or YYYY)",
+                      "example": "2018",
+                      "type": "string"
+                    },
+                    "food_pairing": {
+                      "description": "List of foods that pair well with this beer",
+                      "example": [
+                        "Vietnamese Pho",
+                        "Buffalo Chicken Wings",
+                        "Sashimi"
+                      ],
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "ibu": {
+                      "description": "International Bitterness Units",
+                      "example": 37,
+                      "format": "float",
+                      "type": "number"
+                    },
+                    "id": {
+                      "description": "Unique identifier for the beer",
+                      "example": 366,
+                      "type": "integer"
+                    },
+                    "image": {
+                      "description": "Filename of the beer's image",
+                      "example": "366.png",
+                      "type": "string"
+                    },
+                    "ingredients": {
+                      "properties": {
+                        "hops": {
+                          "description": "List of hops used",
+                          "items": {
+                            "properties": {
+                              "add": {
+                                "description": "When to add the hop (in minutes or stage)",
+                                "example": "60",
+                                "type": "string"
+                              },
+                              "amount": {
+                                "properties": {
+                                  "unit": {
+                                    "description": "Unit of measurement",
+                                    "example": "kilograms",
+                                    "type": "string"
+                                  },
+                                  "value": {
+                                    "description": "Amount value",
+                                    "example": 3.36,
+                                    "format": "float",
+                                    "type": "number"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "attribute": {
+                                "description": "Hop attribute (Bitter, Flavour, Aroma)",
+                                "example": "Bitter",
+                                "type": "string"
+                              },
+                              "name": {
+                                "description": "Name of the hop",
+                                "example": "Hallertauer Taurus",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "malt": {
+                          "description": "List of malts used",
+                          "items": {
+                            "properties": {
+                              "amount": {
+                                "properties": {
+                                  "unit": {
+                                    "description": "Unit of measurement",
+                                    "example": "kilograms",
+                                    "type": "string"
+                                  },
+                                  "value": {
+                                    "description": "Amount value",
+                                    "example": 3.36,
+                                    "format": "float",
+                                    "type": "number"
+                                  }
+                                },
+                                "type": "object"
+                              },
+                              "name": {
+                                "description": "Name of the malt",
+                                "example": "Pilsner Malt",
+                                "type": "string"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "yeast": {
+                          "description": "Yeast strain used",
+                          "example": "W34/70",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "method": {
+                      "properties": {
+                        "fermentation": {
+                          "properties": {
+                            "temp": {
+                              "properties": {
+                                "unit": {
+                                  "description": "Temperature unit",
+                                  "example": "celsius",
+                                  "type": "string"
+                                },
+                                "value": {
+                                  "description": "Temperature value",
+                                  "example": 65,
+                                  "format": "float",
+                                  "type": "number"
+                                }
+                              },
+                              "type": "object"
+                            }
+                          },
+                          "type": "object"
+                        },
+                        "mash_temp": {
+                          "description": "Mash temperature steps",
+                          "items": {
+                            "properties": {
+                              "duration": {
+                                "description": "Duration in minutes",
+                                "example": 65,
+                                "type": "number"
+                              },
+                              "temp": {
+                                "properties": {
+                                  "unit": {
+                                    "description": "Temperature unit",
+                                    "example": "celsius",
+                                    "type": "string"
+                                  },
+                                  "value": {
+                                    "description": "Temperature value",
+                                    "example": 65,
+                                    "format": "float",
+                                    "type": "number"
+                                  }
+                                },
+                                "type": "object"
+                              }
+                            },
+                            "type": "object"
+                          },
+                          "type": "array"
+                        },
+                        "twist": {
+                          "description": "Special twist or additional method information",
+                          "example": "Amyloglucosidase: 1g",
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "name": {
+                      "description": "Name of the beer",
+                      "example": "Lost Lager",
+                      "type": "string"
+                    },
+                    "ph": {
+                      "description": "pH level of the beer",
+                      "example": 4.4,
+                      "format": "float",
+                      "type": "number"
+                    },
+                    "srm": {
+                      "description": "Standard Reference Method color scale",
+                      "example": 3,
+                      "format": "float",
+                      "type": "number"
+                    },
+                    "tagline": {
+                      "description": "Short tagline or description",
+                      "example": "Dry-Hopped Pilsner.",
+                      "type": "string"
+                    },
+                    "target_fg": {
+                      "description": "Target final gravity",
+                      "example": 1006,
+                      "format": "float",
+                      "type": "number"
+                    },
+                    "target_og": {
+                      "description": "Target original gravity",
+                      "example": 1042,
+                      "format": "float",
+                      "type": "number"
+                    },
+                    "volume": {
+                      "properties": {
+                        "unit": {
+                          "description": "Unit of measurement",
+                          "example": "litres",
+                          "type": "string"
+                        },
+                        "value": {
+                          "description": "Volume value",
+                          "example": 20,
+                          "format": "float",
+                          "type": "number"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          },
+          "404": {
+            "description": "Beer not found"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }
