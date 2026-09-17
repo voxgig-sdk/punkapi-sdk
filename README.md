@@ -105,12 +105,12 @@ local results, err = client:Beer():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/punkapi-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/punkapi-sdk/releases) |
-| Python | `voxgig-sdk-punkapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/punkapi-sdk/releases) |
-| PHP | `voxgig-sdk/punkapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/punkapi-sdk/releases) |
+| TypeScript | `@voxgig-sdk/punkapi-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/punkapi-sdk/tags) |
+| Python | `voxgig-sdk-punkapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/punkapi-sdk/tags) |
+| PHP | `voxgig-sdk/punkapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/punkapi-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/punkapi-sdk/go` | `go get github.com/voxgig-sdk/punkapi-sdk/go@latest` |
-| Ruby | `voxgig-sdk-punkapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/punkapi-sdk/releases) |
-| Lua | `voxgig-sdk-punkapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/punkapi-sdk/releases) |
+| Ruby | `voxgig-sdk-punkapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/punkapi-sdk/tags) |
+| Lua | `voxgig-sdk-punkapi` | publish pending — [install from git tag](https://github.com/voxgig-sdk/punkapi-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/punkapi-sdk/go-cli` | `go install github.com/voxgig-sdk/punkapi-sdk/go-cli/cmd/punkapi@latest` |
 | Go MCP server | `github.com/voxgig-sdk/punkapi-sdk/go-mcp` | `go get github.com/voxgig-sdk/punkapi-sdk/go-mcp@latest` |
 

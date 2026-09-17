@@ -1,4 +1,4 @@
 # Flows
 
-@"BasicBeerFlow.aon"
-@"BasicImageFlow.aon"
+@"./BasicBeerFlow.aon"
+@"./BasicImageFlow.aon"

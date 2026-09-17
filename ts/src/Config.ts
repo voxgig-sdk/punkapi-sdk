@@ -127,12 +127,12 @@ class Config {
 
     entity: {
       
-      beer: {
-      },
-
-      image: {
-      },
-
+        beer: {
+        },
+  
+        image: {
+        },
+  
     }
   }
 
